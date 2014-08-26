@@ -1,0 +1,9 @@
+#! /bin/bash
+
+for javafile
+do
+  echo $javafile
+  echo
+  javac $javafile && time -p java `echo $javafile | sed 's/\.java$//'`
+  echo
+done

@@ -1,0 +1,558 @@
+% control command
+\displaystyle displaystyle
+\textstyle textstyle
+
+% small Greek letters
+\alpha alpha a
+\beta beta b
+\gamma gamma g
+\delta delta d
+\varepsilon varepsilon e
+\zeta zeta z
+\eta eta h
+\theta theta q
+\iota iota i
+\kappa kappa k
+\lambda lambda l
+\mu mu m
+\nu nu n
+\xi xi x
+\pi pi p
+\rho rho r
+\sigma sigma s
+\tau tau t
+\upsilon upsilon u
+\varphi varphi f
+\chi chi c
+\psi psi y
+\omega omega w
+
+% captial Greek letters
+\Gamma Gamma G
+\Delta Delta D
+\Theta Theta Q
+\Lambda Lambda L
+\Xi Xi X
+\Pi Pi P
+\Sigma Sigma S
+\Upsilon Upsilon U
+\Phi Phi F
+\Psi Psi Y
+\Omega Omega W
+
+% slant captial Greek letters
+\varGamma varGamma
+\varDelta varDelta
+\varTheta varTheta
+\varLambda varLambda
+\varXi varXi
+\varPi varPi
+\varSigma varSigma
+\varUpsilon varUpsilon
+\varPhi varPhi
+\varPsi varPsi
+\varOmega varOmega
+
+% mono-operators
+\sqrt sqrt
+\sum sum +
+\prod prod **
+\coprod coprod ++
+\int int I
+\oint oint oI
+\bigcap bigcap Cap
+\bigcup bigcup Cup
+\bigsqcup bigsqcup
+\bigvee bigvee Vee
+\bigwedge bigwedge Wedge
+\bigodot bigodot Odot O.
+\bigotimes bigotimes Otimes O*
+\bigoplus bigoplus Oplus O+
+\biguplus biguplus Uplus U+
+
+% fractions etc
+\frac frac /
+\dfrac dfrac
+\tfrac tfrac
+\cfrac cfrac
+\binom binom
+\genfrac genfrac
+\xrightarrow xrightarrow
+\xleftarrow xleftarrow
+\stackrel stackrel
+
+% brackets
+\lvert lvert
+\rvert rvert
+\lVert lVert
+\rVert rVert
+\lfloor lfloor
+\rfloor rfloor
+\lceil lceil
+\rceil rceil
+\langle langle
+\rangle rangle
+\left left
+\right right
+\bigl bigl
+\bigm bigm
+\bigr bigr
+\Bigl Bigl
+\Bigm Bigm
+\Bigr Bigr
+\biggl biggl
+\biggm biggm
+\biggr biggr
+\Biggl Biggl
+\Biggm Biggm
+\Biggr Biggr
+
+% bioperators
+\pm pm
+\mp mp
+\times times *
+\div div
+\ast ast
+\star star
+\circ circ o
+\bullet bullet
+\cdot cdot .
+\cap cap
+\cup cup
+\uplus uplus u+
+\sqcap sqcap
+\sqcup sqcup
+\vee vee
+\wedge wedge
+\setminus setminus \
+\wr wr
+\diamond diamond
+\bigtriangleup bigtriangleup
+\bigtriangledown bigtriangledown
+\triangleleft triangleleft
+\triangleright triangleright
+\oplus oplus o+
+\ominus ominus o-
+\otimes otimes o*
+\oslash oslash o/
+\odot odot o.
+\bigcirc bigcirc
+\dagger dagger
+\ddagger ddagger
+\amalg amalg
+
+% oriented relations
+\le le <
+\ge ge >
+\prec prec
+\succ succ
+\preceq preceq
+\succeq succeq
+\ll ll
+\gg gg
+\subset subset (
+\supset supset )
+\subseteq subseteq
+\supseteq supseteq
+\sqsubseteq sqsubseteq
+\sqsupseteq sqsupseteq
+\vdash vdash
+\dashv dashv
+\in in j
+\ni ni
+\notin notin
+
+% non-oriented relations
+\equiv equiv
+\sim sim
+\simeq simeq
+\asymp asymp
+\approx approx
+\cong cong
+\neq neq
+\doteq doteq
+\propto propto
+\models models
+\perp perp
+\mid mid
+\parallel parallel
+\bowtie bowtie
+\smile smile
+\frown frown
+
+% arrows
+\gets gets
+\leftarrow leftarrow
+\longleftarrow longleftarrow
+\Leftarrow Leftarrow
+\Longleftarrow Longleftarrow
+\to to
+\rightarrow rightarrow
+\longrightarrow longrightarrow
+\Rightarrow Rightarrow
+\Longrightarrow Longrightarrow
+\leftrightarrow leftrightarrow
+\longleftrightarrow longleftrightarrow
+\Leftrightarrow Leftrightarrow
+\Longleftrightarrow Longleftrightarrow
+\mapsto mapsto
+\longmapsto longmapsto
+\hookleftarrow hookleftarrow
+\hookrightarrow hookrightarrow inc
+\leftharpoonup leftharpoonup
+\rightharpoonup rightharpoonup
+\leftharpoondown leftharpoondown
+\rightharpoondown rightharpoondown
+\implies implies imp
+\iff iff
+\nearrow nearrow
+\nwarrow nwarrow
+\searrow searrow
+\swarrow swarrow
+
+% delimiters
+\backslash backslash
+\uparrow uparrow
+\Uparrow Uparrow
+\downarrow downarrow
+\Downarrow Downarrow
+\updownarrow updownarrow
+\Updownarrow Updownarrow
+
+% symbols
+\aleph aleph
+\hbar hbar
+\imath imath
+\jmath jmath
+\ell ell 1
+\wp wp
+\Re Re
+\Im Im
+\partial partial 6
+\infty infty 8
+\prime prime 0
+\emptyset emptyset
+\nabla nabla
+\surd surd
+\top top
+\bot bot
+\angle angle
+\triangle triangle
+\forall forall AA
+\exists exists EE
+\neg neg
+\lnot lnot
+\flat flat
+\natural natural
+\sharp sharp
+\clubsuit clubsuit
+\diamondsuit diamondsuit
+\heartsuit heartsuit
+\spadesuit spadesuit
+
+% log-type operator
+\arccos arccos
+\arcsin arcsin
+\arctan arctan
+\arg arg
+\cos cos
+\cosh cosh
+\cot cot
+\coth coth
+\csc csc
+\deg deg
+\det det
+\dim dim
+\exp exp
+\gcd gcd
+\hom hom
+\inf inf
+\ker ker
+\lg lg
+\lim lim
+\liminf liminf
+\limsup limsup
+\ln ln
+\log log
+\max max
+\min min
+\Pr Pr
+\sec sec
+\sin sin
+\sinh sinh
+\sup sup
+\tan tan
+\tanh tanh
+\bmod bmod
+\pmod pmod
+
+% accents
+\hat hat
+\check check
+\breve breve
+\acute acute
+\grave grave
+\tilde tilde
+\bar bar
+\vec vec
+\dot dot
+\ddot ddot
+\Hat Hat ^
+\Check Check
+\Breve Breve
+\Acute Acute
+\Grave Grave
+\Tilde Tilde ~
+\Bar Bar -
+\Vec Vec
+\Dot Dot
+\Ddot Ddot
+\dddot dddot
+\ddddot ddddot
+\overline overline --
+\underline underline __
+\widehat widehat ^^
+\widetilde widetilde ~~
+\overbrace overbrace
+\underbrace underbrace
+\overrightarrow overrightarrow
+\overleftarrow overleftarrow
+\overleftrightarrow overleftrightarrow
+\underrightarrow underrightarrow
+\underleftarrow underleftarrow
+\underleftrightarrow underleftrightarrow
+
+% fonts
+\mathrm mathrm rm
+\mathbf mathbf bf
+\mathit mathit it
+\mathcal mathcal cal
+\mathsf mathsf sf
+\mathtt mathtt tt
+
+% dots
+\dots dots ...
+\dotsc dotsc
+\dotsb dotsb
+\dotsm dotsm
+\dotsi dotsi
+
+% integrals
+\iint iint II
+\iiint iiint III
+\iiiint iiiint IIII
+\idotsint idotsint I...I
+
+% bioperators
+\boxdot boxdot
+\boxplus boxplus
+\boxtimes boxtimes
+\boxminus boxminus
+\centerdot centerdot
+\veebar veebar
+\barwedge barwedge
+\doublebarwedge doublebarwedge
+%\Cup Cup
+%\Cap Cap
+\curlywedge curlywedge
+\curlyvee curlyvee
+\leftthreetimes leftthreetimes
+\rightthreetimes rightthreetimes
+\dotplus dotplus
+\intercal intercal
+\circledcirc circledcirc
+\circledast circledast
+\circleddash circleddash
+\divideontimes divideontimes
+\lessdot lessdot
+\gtrdot gtrdot
+\ltimes ltimes l*
+\rtimes rtimes r*
+\smallsetminus smallsetminus
+
+% arrows
+\circlearrowright circlearrowright
+\circlearrowleft circlearrowleft
+\rightleftharpoons rightleftharpoons
+\leftrightharpoons leftrightharpoons
+\Vdash Vdash
+\Vvdash Vvdash
+\vDash vDash
+\twoheadrightarrow twoheadrightarrow
+\twoheadleftarrow twoheadleftarrow
+\leftleftarrows leftleftarrows
+\rightrightarrows rightrightarrows
+\upuparrows upuparrows
+\downdownarrows downdownarrows
+\upharpoonright upharpoonright
+\downharpoonright downharpoonright
+\upharpoonleft upharpoonleft
+\downharpoonleft downharpoonleft
+\rightarrowtail rightarrowtail
+\leftarrowtail leftarrowtail
+\leftrightarrows leftrightarrows
+\rightleftarrows rightleftarrows
+\Lsh Lsh
+\Rsh Rsh
+\rightsquigarrow rightsquigarrow
+\leftrightsquigarrow leftrightsquigarrow
+\looparrowleft looparrowleft
+\looparrowright looparrowright
+\circeq circeq
+\succsim succsim
+\gtrsim gtrsim
+\gtrapprox gtrapprox
+\multimap multimap
+\therefore therefore
+\because because
+\doteqdot doteqdot
+\triangleq triangleq
+\precsim precsim
+\lesssim lesssim
+\lessapprox lessapprox
+\eqslantless eqslantless
+\eqslantgtr eqslantgtr
+\curlyeqprec curlyeqprec
+\curlyeqsucc curlyeqsucc
+\preccurlyeq preccurlyeq
+\leqq leqq
+\leqslant leqslant
+\lessgtr lessgtr
+\risingdotseq risingdotseq
+\fallingdotseq fallingdotseq
+\succcurlyeq succcurlyeq
+\geqq geqq
+\geqslant geqslant
+\gtrless gtrless
+\sqsubset sqsubset
+\sqsupset sqsupset
+\vartriangleright vartriangleright
+\vartriangleleft vartriangleleft
+\trianglerighteq trianglerighteq
+\trianglelefteq trianglelefteq
+\between between
+\blacktriangleright blacktriangleright
+\blacktriangleleft blacktriangleleft
+\vartriangle vartriangle
+\eqcirc eqcirc
+\lesseqgtr lesseqgtr
+\gtreqless gtreqless
+\lesseqqgtr lesseqqgtr
+\gtreqqless gtreqqless
+\Rrightarrow Rrightarrow
+\Lleftarrow Lleftarrow
+\varpropto varpropto
+\smallsmile smallsmile
+\smallfrown smallfrown
+\Subset Subset
+\Supset Supset
+\subseteqq subseteqq
+\supseteqq supseteqq
+\bumpeq bumpeq
+\Bumpeq Bumpeq
+\lll lll
+\ggg ggg
+\pitchfork pitchfork
+\backsim backsim
+\backsimeq backsimeq
+\lvertneqq lvertneqq
+\gvertneqq gvertneqq
+\nleq nleq
+\ngeq ngeq
+\nless nless
+\ngtr ngtr
+\nprec nprec
+\nsucc nsucc
+\lneqq lneqq
+\gneqq gneqq
+\nleqslant nleqslant
+\ngeqslant ngeqslant
+\lneq lneq
+\gneq gneq
+\npreceq npreceq
+\nsucceq nsucceq
+\precnsim precnsim
+\succnsim succnsim
+\lnsim lnsim
+\gnsim gnsim
+\nleqq nleqq
+\ngeqq ngeqq
+\precneqq precneqq
+\succneqq succneqq
+\precnapprox precnapprox
+\succnapprox succnapprox
+\lnapprox lnapprox
+\gnapprox gnapprox
+\nsim nsim
+\ncong ncong
+\varsubsetneq varsubsetneq
+\varsupsetneq varsupsetneq
+\nsubseteqq nsubseteqq
+\nsupseteqq nsupseteqq
+\subsetneqq subsetneqq
+\supsetneqq supsetneqq
+\varsubsetneqq varsubsetneqq
+\varsupsetneqq varsupsetneqq
+\subsetneq subsetneq
+\supsetneq supsetneq
+\nsubseteq nsubseteq
+\nsupseteq nsupseteq
+\nparallel nparallel
+\nmid nmid
+\nshortmid nshortmid
+\nshortparallel nshortparallel
+\nvdash nvdash
+\nVdash nVdash
+\nvDash nvDash
+\nVDash nVDash
+\ntrianglerighteq ntrianglerighteq
+\ntrianglelefteq ntrianglelefteq
+\ntriangleright ntriangleright
+\ntriangleleft ntriangleleft
+\nleftarrow nleftarrow
+\nrightarrow nrightarrow
+\nLeftarrow nLeftarrow
+\nRightarrow nRightarrow
+\nLeftrightarrow nLeftrightarrow
+\nleftrightarrow nleftrightarrow
+\eqsim eqsim
+\shortmid shortmid
+\shortparallel shortparallel
+\thicksim thicksim
+\thickapprox thickapprox
+\approxeq approxeq
+\succapprox succapprox
+\precapprox precapprox
+\curvearrowleft curvearrowleft
+\curvearrowright curvearrowright
+\backepsilon backepsilon
+
+% symbols
+\square square
+\blacksquare blacksquare
+\lozenge lozenge
+\blacklozenge blacklozenge
+\backprime backprime
+\bigstar bigstar
+\blacktriangledown blacktriangledown
+\blacktriangle blacktriangle
+\triangledown triangledown
+\measuredangle measuredangle
+\sphericalangle sphericalangle
+\circledS circledS
+\complement complement
+\diagup diagup
+\diagdown diagdown
+\varnothing varnothing
+\nexists nexists
+\Finv Finv
+\Game Game
+\mho mho
+\eth eth
+\beth beth
+\gimel gimel
+\daleth daleth
+\digamma digamma
+\varkappa varkappa
+\Bbbk Bbbk
+\hslash hslash

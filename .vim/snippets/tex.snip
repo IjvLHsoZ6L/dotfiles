@@ -1,0 +1,343 @@
+snippet documentclass
+alias \documentclass template
+abbr [classfile]
+  \documentclass{${1:classfile}}
+
+  \begin{document}
+
+  \end{document}
+
+snippet article
+abbr [classfile] article
+  \documentclass{article}
+
+  \begin{document}
+
+  ${0:TARGET}
+
+  \end{document}
+
+snippet jarticle
+abbr [classfile] jarticle
+  \documentclass{jarticle}
+
+  \begin{document}
+
+  ${0:TARGET}
+
+  \end{document}
+
+snippet jsarticle
+abbr [classfile] jsarticle
+  \documentclass{jsarticle}
+
+  \begin{document}
+
+  ${0:TARGET}
+
+  \end{document}
+
+snippet amsart
+abbr [classfile] amsart
+  \documentclass{amsart}
+
+  \begin{document}
+
+  ${0:TARGET}
+
+  \end{document}
+
+snippet begin
+alias \begin{} environment
+abbr [env]
+  \begin{${1:environment}}
+    ${0:TARGET}
+  \end{$1}
+
+snippet center
+alias \begin{center} \center
+abbr [env] center
+  \begin{center}
+    ${0:TARGET}
+  \end{center}
+
+snippet flushleft
+alias \begin{flushleft} \flushleft
+abbr [env] flushleft
+  \begin{flushleft}
+    ${0:TARGET}
+  \end{flushleft}
+
+snippet flushright
+alias \begin{flushright} \flushright
+abbr [env] flushright
+  \begin{flushright}
+    ${0:TARGET}
+  \end{flushright}
+
+snippet quote
+alias \begin{quote} \quote
+abbr [env] quote
+  \begin{quote}
+    ${0:TARGET}
+  \end{quote}
+
+snippet quotation
+alias \begin{quotation} \quotation
+abbr [env] quotation
+  \begin{quotation}
+    ${0:TARGET}
+  \end{quotation}
+
+snippet abstract
+alias \begin{abstract} \abstract
+abbr [env] abstract
+  \begin{abstract}
+    ${0:TARGET}
+  \end{abstract}
+
+snippet proof
+alias \begin{proof} \proof
+abbr [env] proof
+  \begin{proof}
+    ${0:TARGET}
+  \end{proof}
+
+snippet theorem
+alias \begin{theorem} \theorem
+abbr [env] theorem
+  \begin{theorem}
+    ${0:TARGET}
+  \end{theorem}
+
+snippet definition
+alias \begin{definition} \definition
+abbr [env] definition
+  \begin{definition}
+    ${0:TARGET}
+  \end{definition}
+
+snippet proposition
+alias \begin{proposition} \proposition
+abbr [env] proposition
+  \begin{proposition}
+    ${0:TARGET}
+  \end{proposition}
+
+snippet lemma
+alias \begin{lemma} \lemma
+abbr [env] lemma
+  \begin{lemma}
+    ${0:TARGET}
+  \end{lemma}
+
+snippet corollary
+alias \begin{corollary} \corollary
+abbr [env] corollary
+  \begin{corollary}
+    ${0:TARGET}
+  \end{corollary}
+
+snippet remark
+alias \begin{remark} \remark
+abbr [env] remark
+  \begin{remark}
+    ${0:TARGET}
+  \end{remark}
+
+snippet example
+alias \begin{example} \example
+abbr [env] example
+  \begin{example}
+    ${0:TARGET}
+  \end{example}
+
+snippet equation
+alias \begin{equation} \equation
+abbr [env] equation
+  \begin{equation}
+    ${0:TARGET}
+  \end{equation}
+
+snippet equation*
+alias \begin{equation*} \equation*
+abbr [env] equation*
+  \begin{equation*}
+    ${0:TARGET}
+  \end{equation*}
+
+snippet gather
+alias \begin{gather} \gather
+abbr [env] gather
+  \begin{gather}
+    ${0:TARGET}
+  \end{gather}
+
+snippet gather*
+alias \begin{gather*} \gather*
+abbr [env] gather*
+  \begin{gather*}
+    ${0:TARGET}
+  \end{gather*}
+
+snippet multline
+alias \begin{multline} \multline
+abbr [env] multline
+  \begin{multline}
+    ${0:TARGET}
+  \end{multline}
+
+snippet multline*
+alias \begin{multline*} \multline*
+abbr [env] multline*
+  \begin{multline*}
+    ${0:TARGET}
+  \end{multline*}
+
+snippet split
+alias \begin{split} \split
+abbr [env] split
+  \begin{split}
+    ${0:TARGET}
+  \end{split}
+
+snippet cases
+alias \begin{cases} \cases
+abbr [env] cases
+  \begin{cases}
+    ${0:TARGET}
+  \end{cases}
+
+snippet matrix
+alias \begin{matrix} \matrix
+abbr [env] matrix
+  \begin{matrix}
+    ${0:TARGET}
+  \end{matrix}
+
+snippet pmatrix
+alias \begin{pmatrix} \pmatrix
+abbr [env] pmatrix
+  \begin{pmatrix}
+    ${0:TARGET}
+  \end{pmatrix}
+
+snippet bmatrix
+alias \begin{bmatrix} \bmatrix
+abbr [env] bmatrix
+  \begin{bmatrix}
+    ${0:TARGET}
+  \end{bmatrix}
+
+snippet Bmatrix
+alias \begin{Bmatrix} \Bmatrix
+abbr [env] Bmatrix
+  \begin{Bmatrix}
+    ${0:TARGET}
+  \end{Bmatrix}
+
+snippet vmatrix
+alias \begin{vmatrix} \vmatrix
+abbr [env] vmatrix
+  \begin{vmatrix}
+    ${0:TARGET}
+  \end{vmatrix}
+
+snippet Vmatrix
+alias \begin{Vmatrix} \Vmatrix
+abbr [env] Vmatrix
+  \begin{Vmatrix}
+    ${0:TARGET}
+  \end{Vmatrix}
+
+snippet smallmatrix
+alias \begin{smallmatrix} \smallmatrix
+abbr [env] smallmatrix
+  \begin{smallmatrix}
+    ${0:TARGET}
+  \end{smallmatrix}
+
+snippet CD
+alias \begin{CD} \CD
+abbr [env] CD
+  \begin{CD}
+    ${0:TARGET}
+  \end{CD}
+
+snippet xy
+alias \begin{xy} \xy
+abbr [env] xy
+  \begin{xy}
+    ${0:TARGET}
+  \end{xy}
+
+snippet itemize
+alias \begin{itemize} \itemize
+abbr [env] itemize
+  \begin{itemize}
+    \item ${0:TARGET}
+  \end{itemize}
+
+snippet enumerate
+alias \begin{enumerate} \enumerate
+abbr [env] enumerate
+  \begin{enumerate}
+    \item ${0:TARGET}
+  \end{enumerate}
+
+snippet description
+alias \begin{description} \description
+abbr [env] description
+  \begin{description}
+    \item ${0:TARGET}
+  \end{description}
+
+snippet thebibliography
+alias \begin{thebibliography} \thebibliography
+abbr [env] thebibliography
+  \begin{thebibliography}
+    \bibitem ${0:TARGET}
+  \end{thebibliography}
+
+snippet part
+alias \part
+abbr [sec] part
+  \part{${1:index}}
+  ${0:TARGET}
+
+snippet chapter
+alias \chapter
+abbr [sec] chapter
+  \chapter{${1:index}}
+  ${0:TARGET}
+
+snippet section
+alias \section
+abbr [sec] section
+  \section{${1:index}}
+  ${0:TARGET}
+
+snippet subsection
+alias \subsection
+abbr [sec] subsection
+  \subsection{${1:index}}
+  ${0:TARGET}
+
+snippet subsubsection
+alias \subsubsection
+abbr [sec] subsubsection
+  \subsubsection{${1:index}}
+  ${0:TARGET}
+
+snippet paragraph
+alias \paragraph
+abbr [sec] paragraph
+  \paragraph{${1:index}}
+  ${0:TARGET}
+
+snippet subparagraph
+alias \subparagraph
+abbr [sec] subparagraph
+  \subparagraph{${1:index}}
+  ${0:TARGET}
+
