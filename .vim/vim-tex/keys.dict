@@ -96,7 +96,9 @@ Wedge
 X
 Xi
 Y
+[
 \
+]
 ^
 ^^
 __
@@ -606,5 +608,7 @@ xrightarrow
 y
 z
 zeta
+{
+}
 ~
 ~~

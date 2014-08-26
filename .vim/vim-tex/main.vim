@@ -78,7 +78,7 @@ function! s:complete()
   let l:val = s:dict[l:maxkey]
   return repeat("\<BS>", l:maxlen) . l:val
 endfunction
-inoremap <expr> <C-K> <SID>complete()
+inoremap <expr> <C-J> <SID>complete()
 
 "============================================================
 

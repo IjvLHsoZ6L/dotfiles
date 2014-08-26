@@ -118,9 +118,9 @@ let g:neocomplcache_dictionary_filetype_lists    = {
       \ }
 
 " neosnippet
-imap <expr> <C-J> neosnippet#expandable_or_jumpable() ?
+imap <expr> <C-K> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : ""
-nmap <expr> <C-J> neosnippet#jumpable() ?
+nmap <expr> <C-K> neosnippet#jumpable() ?
       \ "i\<Plug>(neosnippet_jump)" : ""
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
 

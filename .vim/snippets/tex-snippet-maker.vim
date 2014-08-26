@@ -1,16 +1,26 @@
 let s:output = []
 
-let s:output += [
-      \ 'snippet documentclass',
-      \ 'alias \documentclass template',
-      \ 'abbr [classfile]',
-      \ '  \documentclass{${1:classfile}}',
-      \ '',
-      \ '  \begin{document}',
-      \ '',
-      \ '  \end{document}',
-      \ '',
-      \ ]
+function! s:addsnip(name, abbr, alias, options, body)
+  call add(s:output, 'snippet ' . a:name)
+  call add(s:output, 'abbr ' . a:abbr)
+  if !empty(a:alias)
+    call add(s:output, 'alias ' . a:alias)
+  endif
+  if !empty(a:options)
+    call add(s:output, 'options ' . a:options)
+  endif
+  for l:line in split(a:body, '@')
+    if empty(l:line)
+      call add(s:output, '')
+    else
+      call add(s:output, '  ' . l:line)
+    endif
+  endfor
+  call add(s:output, '')
+endfunction
+
+call s:addsnip('documentclass', '\documentclass', '\documentclass', 'head',
+      \ '\documentclass{${1}}@@\begin{document}@@${0}@@\end{document}')
 
 for s:cf in [
       \ 'article',
@@ -18,29 +28,12 @@ for s:cf in [
       \ 'jsarticle',
       \ 'amsart',
       \ ]
-  let s:output += [
-        \ 'snippet ' . s:cf,
-        \ 'abbr [classfile] ' . s:cf,
-        \ '  \documentclass{' . s:cf . '}',
-        \ '',
-        \ '  \begin{document}',
-        \ '',
-        \ '  ${0:TARGET}',
-        \ '',
-        \ '  \end{document}',
-        \ '',
-        \ ]
+  call s:addsnip(s:cf, printf('\documentclass{%s}', s:cf), '', 'head',
+        \ printf('\documentclass{%s}@@\begin{document}@@${0}@@\end{document}', s:cf))
 endfor
 
-let s:output += [
-      \ 'snippet begin',
-      \ 'alias \begin{} environment',
-      \ 'abbr [env]',
-      \ '  \begin{${1:environment}}',
-      \ '    ${0:TARGET}',
-      \ '  \end{$1}',
-      \ '',
-      \ ]
+call s:addsnip('begin', '\begin{} ... \end{}', '\begin', 'head',
+      \ '\begin{${1}}@  ${0}@\end{$1}')
 
 for s:env in [
       \ 'center',
@@ -61,6 +54,8 @@ for s:env in [
       \ 'equation*',
       \ 'gather',
       \ 'gather*',
+      \ 'align',
+      \ 'align*',
       \ 'multline',
       \ 'multline*',
       \ 'split',
@@ -75,33 +70,22 @@ for s:env in [
       \ 'CD',
       \ 'xy',
       \ ]
-  let s:output += [
-        \ 'snippet ' . s:env,
-        \ 'alias \begin{' . s:env . '} \' . s:env,
-        \ 'abbr [env] ' . s:env,
-        \ '  \begin{' . s:env . '}',
-        \ '    ${0:TARGET}',
-        \ '  \end{' . s:env . '}',
-        \ '',
-        \ ]
+  call s:addsnip(s:env, printf('\begin{%s}', s:env), printf('\begin{%s}', s:env), 'head',
+        \ printf('\begin{%s}@  ${0}@\end{%s}', s:env, s:env))
 endfor
 
-for s:env in [
-      \ 'itemize',
-      \ 'enumerate',
-      \ 'description',
-      \ 'thebibliography',
+for [s:env, s:item] in [
+      \ ['itemize', '\item'],
+      \ ['enumerate', '\item'],
+      \ ['description', '\item'],
+      \ ['thebibliography', '\bibitem'],
       \ ]
-  let s:output += [
-        \ 'snippet ' . s:env,
-        \ 'alias \begin{' . s:env . '} \' . s:env,
-        \ 'abbr [env] ' . s:env,
-        \ '  \begin{' . s:env . '}',
-        \ '    \item ${0:TARGET}',
-        \ '  \end{' . s:env . '}',
-        \ '',
-        \ ]
+  call s:addsnip(s:env, printf('\begin{%s}', s:env), printf('\begin{%s}', s:env), 'head',
+        \ printf('\begin{%s}@  %s ${0}@\end{%s}', s:env, s:item, s:env))
 endfor
+
+call s:addsnip('eq', '\[ ... \]', '\[', 'head',
+      \ '\[@  ${0}@\]')
 
 for s:sec in [
       \ 'part',
@@ -112,14 +96,40 @@ for s:sec in [
       \ 'paragraph',
       \ 'subparagraph',
       \ ]
-  let s:output += [
-        \ 'snippet ' . s:sec,
-        \ 'alias \' . s:sec,
-        \ 'abbr [sec] ' . s:sec,
-        \ '  \'. s:sec . '{${1:index}}',
-        \ '  ${0:TARGET}',
-        \ '',
-        \ ]
+  call s:addsnip(s:sec, printf('\%s{...}', s:sec), printf('\%s', s:sec), 'head',
+        \ printf('\%s{${1}}@${0}', s:sec))
+endfor
+
+for [s:name, s:left, s:right] in [
+      \ ['paren', '(', ')'],
+      \ ['bracket', '[', ']'],
+      \ ['brace', '\{', '\}'],
+      \ ['vert', '\lvert', '\rvert'],
+      \ ['Vert', '\lVert', '\rVert'],
+      \ ['floor', '\lfloor', '\rfloor'],
+      \ ['ceil', '\lceil', '\rceil'],
+      \ ['angle', '\langle', '\rangle'],
+      \ ]
+  call s:addsnip(s:name, printf('%s ... %s', s:left, s:right), s:left, '',
+        \ printf('%s ${1} %s${0}', s:left, s:right))
+  call s:addsnip(
+        \ printf('auto%s', s:name),
+        \ printf('\left%s ... \right%s', s:left, s:right),
+        \ printf('\left%s', s:left), '',
+        \ printf('\left%s ${1} \right%s${0}', s:left, s:right))
+  for s:size in ['big', 'Big', 'bigg', 'Bigg']
+    call s:addsnip(
+          \ printf('%s%s', s:size, s:name),
+          \ printf('\%sl%s ... \%sr%s', s:size, s:left, s:size, s:right),
+          \ printf('\%sl%s', s:size, s:left), '',
+          \ printf('\%sl%s ${1} \%sr%s${0}', s:size, s:left, s:size, s:right))
+    call s:addsnip(
+          \ printf('%s%s3', s:size, s:name),
+          \ printf('\%sl%s ... \%sm| ... \%sr%s', s:size, s:left, s:size, s:size, s:right),
+          \ printf('\%sl%s3', s:size, s:left), '',
+          \ printf('\%sl%s\, ${1} \,\%sm|\, %{2} \%sr%s${0}',
+          \ s:size, s:left, s:size, s:size, s:right))
+  endfor
 endfor
 
 if writefile(s:output, expand('~/.vim/snippets/tex.snip')) == -1

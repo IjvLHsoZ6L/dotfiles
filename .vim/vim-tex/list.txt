@@ -75,6 +75,10 @@ xrightarrow
 xleftarrow
 stackrel
 
+[
+]
+{
+}
 lvert
 rvert
 lVert

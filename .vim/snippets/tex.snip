@@ -1,343 +1,817 @@
 snippet documentclass
-alias \documentclass template
-abbr [classfile]
-  \documentclass{${1:classfile}}
+abbr \documentclass
+alias \documentclass
+options head
+  \documentclass{${1}}
 
   \begin{document}
+
+  ${0}
 
   \end{document}
 
 snippet article
-abbr [classfile] article
+abbr \documentclass{article}
+options head
   \documentclass{article}
 
   \begin{document}
 
-  ${0:TARGET}
+  ${0}
 
   \end{document}
 
 snippet jarticle
-abbr [classfile] jarticle
+abbr \documentclass{jarticle}
+options head
   \documentclass{jarticle}
 
   \begin{document}
 
-  ${0:TARGET}
+  ${0}
 
   \end{document}
 
 snippet jsarticle
-abbr [classfile] jsarticle
+abbr \documentclass{jsarticle}
+options head
   \documentclass{jsarticle}
 
   \begin{document}
 
-  ${0:TARGET}
+  ${0}
 
   \end{document}
 
 snippet amsart
-abbr [classfile] amsart
+abbr \documentclass{amsart}
+options head
   \documentclass{amsart}
 
   \begin{document}
 
-  ${0:TARGET}
+  ${0}
 
   \end{document}
 
 snippet begin
-alias \begin{} environment
-abbr [env]
-  \begin{${1:environment}}
-    ${0:TARGET}
+abbr \begin{} ... \end{}
+alias \begin
+options head
+  \begin{${1}}
+    ${0}
   \end{$1}
 
 snippet center
-alias \begin{center} \center
-abbr [env] center
+abbr \begin{center}
+alias \begin{center}
+options head
   \begin{center}
-    ${0:TARGET}
+    ${0}
   \end{center}
 
 snippet flushleft
-alias \begin{flushleft} \flushleft
-abbr [env] flushleft
+abbr \begin{flushleft}
+alias \begin{flushleft}
+options head
   \begin{flushleft}
-    ${0:TARGET}
+    ${0}
   \end{flushleft}
 
 snippet flushright
-alias \begin{flushright} \flushright
-abbr [env] flushright
+abbr \begin{flushright}
+alias \begin{flushright}
+options head
   \begin{flushright}
-    ${0:TARGET}
+    ${0}
   \end{flushright}
 
 snippet quote
-alias \begin{quote} \quote
-abbr [env] quote
+abbr \begin{quote}
+alias \begin{quote}
+options head
   \begin{quote}
-    ${0:TARGET}
+    ${0}
   \end{quote}
 
 snippet quotation
-alias \begin{quotation} \quotation
-abbr [env] quotation
+abbr \begin{quotation}
+alias \begin{quotation}
+options head
   \begin{quotation}
-    ${0:TARGET}
+    ${0}
   \end{quotation}
 
 snippet abstract
-alias \begin{abstract} \abstract
-abbr [env] abstract
+abbr \begin{abstract}
+alias \begin{abstract}
+options head
   \begin{abstract}
-    ${0:TARGET}
+    ${0}
   \end{abstract}
 
 snippet proof
-alias \begin{proof} \proof
-abbr [env] proof
+abbr \begin{proof}
+alias \begin{proof}
+options head
   \begin{proof}
-    ${0:TARGET}
+    ${0}
   \end{proof}
 
 snippet theorem
-alias \begin{theorem} \theorem
-abbr [env] theorem
+abbr \begin{theorem}
+alias \begin{theorem}
+options head
   \begin{theorem}
-    ${0:TARGET}
+    ${0}
   \end{theorem}
 
 snippet definition
-alias \begin{definition} \definition
-abbr [env] definition
+abbr \begin{definition}
+alias \begin{definition}
+options head
   \begin{definition}
-    ${0:TARGET}
+    ${0}
   \end{definition}
 
 snippet proposition
-alias \begin{proposition} \proposition
-abbr [env] proposition
+abbr \begin{proposition}
+alias \begin{proposition}
+options head
   \begin{proposition}
-    ${0:TARGET}
+    ${0}
   \end{proposition}
 
 snippet lemma
-alias \begin{lemma} \lemma
-abbr [env] lemma
+abbr \begin{lemma}
+alias \begin{lemma}
+options head
   \begin{lemma}
-    ${0:TARGET}
+    ${0}
   \end{lemma}
 
 snippet corollary
-alias \begin{corollary} \corollary
-abbr [env] corollary
+abbr \begin{corollary}
+alias \begin{corollary}
+options head
   \begin{corollary}
-    ${0:TARGET}
+    ${0}
   \end{corollary}
 
 snippet remark
-alias \begin{remark} \remark
-abbr [env] remark
+abbr \begin{remark}
+alias \begin{remark}
+options head
   \begin{remark}
-    ${0:TARGET}
+    ${0}
   \end{remark}
 
 snippet example
-alias \begin{example} \example
-abbr [env] example
+abbr \begin{example}
+alias \begin{example}
+options head
   \begin{example}
-    ${0:TARGET}
+    ${0}
   \end{example}
 
 snippet equation
-alias \begin{equation} \equation
-abbr [env] equation
+abbr \begin{equation}
+alias \begin{equation}
+options head
   \begin{equation}
-    ${0:TARGET}
+    ${0}
   \end{equation}
 
 snippet equation*
-alias \begin{equation*} \equation*
-abbr [env] equation*
+abbr \begin{equation*}
+alias \begin{equation*}
+options head
   \begin{equation*}
-    ${0:TARGET}
+    ${0}
   \end{equation*}
 
 snippet gather
-alias \begin{gather} \gather
-abbr [env] gather
+abbr \begin{gather}
+alias \begin{gather}
+options head
   \begin{gather}
-    ${0:TARGET}
+    ${0}
   \end{gather}
 
 snippet gather*
-alias \begin{gather*} \gather*
-abbr [env] gather*
+abbr \begin{gather*}
+alias \begin{gather*}
+options head
   \begin{gather*}
-    ${0:TARGET}
+    ${0}
   \end{gather*}
 
+snippet align
+abbr \begin{align}
+alias \begin{align}
+options head
+  \begin{align}
+    ${0}
+  \end{align}
+
+snippet align*
+abbr \begin{align*}
+alias \begin{align*}
+options head
+  \begin{align*}
+    ${0}
+  \end{align*}
+
 snippet multline
-alias \begin{multline} \multline
-abbr [env] multline
+abbr \begin{multline}
+alias \begin{multline}
+options head
   \begin{multline}
-    ${0:TARGET}
+    ${0}
   \end{multline}
 
 snippet multline*
-alias \begin{multline*} \multline*
-abbr [env] multline*
+abbr \begin{multline*}
+alias \begin{multline*}
+options head
   \begin{multline*}
-    ${0:TARGET}
+    ${0}
   \end{multline*}
 
 snippet split
-alias \begin{split} \split
-abbr [env] split
+abbr \begin{split}
+alias \begin{split}
+options head
   \begin{split}
-    ${0:TARGET}
+    ${0}
   \end{split}
 
 snippet cases
-alias \begin{cases} \cases
-abbr [env] cases
+abbr \begin{cases}
+alias \begin{cases}
+options head
   \begin{cases}
-    ${0:TARGET}
+    ${0}
   \end{cases}
 
 snippet matrix
-alias \begin{matrix} \matrix
-abbr [env] matrix
+abbr \begin{matrix}
+alias \begin{matrix}
+options head
   \begin{matrix}
-    ${0:TARGET}
+    ${0}
   \end{matrix}
 
 snippet pmatrix
-alias \begin{pmatrix} \pmatrix
-abbr [env] pmatrix
+abbr \begin{pmatrix}
+alias \begin{pmatrix}
+options head
   \begin{pmatrix}
-    ${0:TARGET}
+    ${0}
   \end{pmatrix}
 
 snippet bmatrix
-alias \begin{bmatrix} \bmatrix
-abbr [env] bmatrix
+abbr \begin{bmatrix}
+alias \begin{bmatrix}
+options head
   \begin{bmatrix}
-    ${0:TARGET}
+    ${0}
   \end{bmatrix}
 
 snippet Bmatrix
-alias \begin{Bmatrix} \Bmatrix
-abbr [env] Bmatrix
+abbr \begin{Bmatrix}
+alias \begin{Bmatrix}
+options head
   \begin{Bmatrix}
-    ${0:TARGET}
+    ${0}
   \end{Bmatrix}
 
 snippet vmatrix
-alias \begin{vmatrix} \vmatrix
-abbr [env] vmatrix
+abbr \begin{vmatrix}
+alias \begin{vmatrix}
+options head
   \begin{vmatrix}
-    ${0:TARGET}
+    ${0}
   \end{vmatrix}
 
 snippet Vmatrix
-alias \begin{Vmatrix} \Vmatrix
-abbr [env] Vmatrix
+abbr \begin{Vmatrix}
+alias \begin{Vmatrix}
+options head
   \begin{Vmatrix}
-    ${0:TARGET}
+    ${0}
   \end{Vmatrix}
 
 snippet smallmatrix
-alias \begin{smallmatrix} \smallmatrix
-abbr [env] smallmatrix
+abbr \begin{smallmatrix}
+alias \begin{smallmatrix}
+options head
   \begin{smallmatrix}
-    ${0:TARGET}
+    ${0}
   \end{smallmatrix}
 
 snippet CD
-alias \begin{CD} \CD
-abbr [env] CD
+abbr \begin{CD}
+alias \begin{CD}
+options head
   \begin{CD}
-    ${0:TARGET}
+    ${0}
   \end{CD}
 
 snippet xy
-alias \begin{xy} \xy
-abbr [env] xy
+abbr \begin{xy}
+alias \begin{xy}
+options head
   \begin{xy}
-    ${0:TARGET}
+    ${0}
   \end{xy}
 
 snippet itemize
-alias \begin{itemize} \itemize
-abbr [env] itemize
+abbr \begin{itemize}
+alias \begin{itemize}
+options head
   \begin{itemize}
-    \item ${0:TARGET}
+    \item ${0}
   \end{itemize}
 
 snippet enumerate
-alias \begin{enumerate} \enumerate
-abbr [env] enumerate
+abbr \begin{enumerate}
+alias \begin{enumerate}
+options head
   \begin{enumerate}
-    \item ${0:TARGET}
+    \item ${0}
   \end{enumerate}
 
 snippet description
-alias \begin{description} \description
-abbr [env] description
+abbr \begin{description}
+alias \begin{description}
+options head
   \begin{description}
-    \item ${0:TARGET}
+    \item ${0}
   \end{description}
 
 snippet thebibliography
-alias \begin{thebibliography} \thebibliography
-abbr [env] thebibliography
+abbr \begin{thebibliography}
+alias \begin{thebibliography}
+options head
   \begin{thebibliography}
-    \bibitem ${0:TARGET}
+    \bibitem ${0}
   \end{thebibliography}
 
+snippet eq
+abbr \[ ... \]
+alias \[
+options head
+  \[
+    ${0}
+  \]
+
 snippet part
+abbr \part{...}
 alias \part
-abbr [sec] part
-  \part{${1:index}}
-  ${0:TARGET}
+options head
+  \part{${1}}
+  ${0}
 
 snippet chapter
+abbr \chapter{...}
 alias \chapter
-abbr [sec] chapter
-  \chapter{${1:index}}
-  ${0:TARGET}
+options head
+  \chapter{${1}}
+  ${0}
 
 snippet section
+abbr \section{...}
 alias \section
-abbr [sec] section
-  \section{${1:index}}
-  ${0:TARGET}
+options head
+  \section{${1}}
+  ${0}
 
 snippet subsection
+abbr \subsection{...}
 alias \subsection
-abbr [sec] subsection
-  \subsection{${1:index}}
-  ${0:TARGET}
+options head
+  \subsection{${1}}
+  ${0}
 
 snippet subsubsection
+abbr \subsubsection{...}
 alias \subsubsection
-abbr [sec] subsubsection
-  \subsubsection{${1:index}}
-  ${0:TARGET}
+options head
+  \subsubsection{${1}}
+  ${0}
 
 snippet paragraph
+abbr \paragraph{...}
 alias \paragraph
-abbr [sec] paragraph
-  \paragraph{${1:index}}
-  ${0:TARGET}
+options head
+  \paragraph{${1}}
+  ${0}
 
 snippet subparagraph
+abbr \subparagraph{...}
 alias \subparagraph
-abbr [sec] subparagraph
-  \subparagraph{${1:index}}
-  ${0:TARGET}
+options head
+  \subparagraph{${1}}
+  ${0}
+
+snippet paren
+abbr ( ... )
+alias (
+  ( ${1} )${0}
+
+snippet autoparen
+abbr \left( ... \right)
+alias \left(
+  \left( ${1} \right)${0}
+
+snippet bigparen
+abbr \bigl( ... \bigr)
+alias \bigl(
+  \bigl( ${1} \bigr)${0}
+
+snippet bigparen3
+abbr \bigl( ... \bigm| ... \bigr)
+alias \bigl(3
+  \bigl(\, ${1} \,\bigm|\, {2} \bigr)${0}
+
+snippet Bigparen
+abbr \Bigl( ... \Bigr)
+alias \Bigl(
+  \Bigl( ${1} \Bigr)${0}
+
+snippet Bigparen3
+abbr \Bigl( ... \Bigm| ... \Bigr)
+alias \Bigl(3
+  \Bigl(\, ${1} \,\Bigm|\, {2} \Bigr)${0}
+
+snippet biggparen
+abbr \biggl( ... \biggr)
+alias \biggl(
+  \biggl( ${1} \biggr)${0}
+
+snippet biggparen3
+abbr \biggl( ... \biggm| ... \biggr)
+alias \biggl(3
+  \biggl(\, ${1} \,\biggm|\, {2} \biggr)${0}
+
+snippet Biggparen
+abbr \Biggl( ... \Biggr)
+alias \Biggl(
+  \Biggl( ${1} \Biggr)${0}
+
+snippet Biggparen3
+abbr \Biggl( ... \Biggm| ... \Biggr)
+alias \Biggl(3
+  \Biggl(\, ${1} \,\Biggm|\, {2} \Biggr)${0}
+
+snippet bracket
+abbr [ ... ]
+alias [
+  [ ${1} ]${0}
+
+snippet autobracket
+abbr \left[ ... \right]
+alias \left[
+  \left[ ${1} \right]${0}
+
+snippet bigbracket
+abbr \bigl[ ... \bigr]
+alias \bigl[
+  \bigl[ ${1} \bigr]${0}
+
+snippet bigbracket3
+abbr \bigl[ ... \bigm| ... \bigr]
+alias \bigl[3
+  \bigl[\, ${1} \,\bigm|\, {2} \bigr]${0}
+
+snippet Bigbracket
+abbr \Bigl[ ... \Bigr]
+alias \Bigl[
+  \Bigl[ ${1} \Bigr]${0}
+
+snippet Bigbracket3
+abbr \Bigl[ ... \Bigm| ... \Bigr]
+alias \Bigl[3
+  \Bigl[\, ${1} \,\Bigm|\, {2} \Bigr]${0}
+
+snippet biggbracket
+abbr \biggl[ ... \biggr]
+alias \biggl[
+  \biggl[ ${1} \biggr]${0}
+
+snippet biggbracket3
+abbr \biggl[ ... \biggm| ... \biggr]
+alias \biggl[3
+  \biggl[\, ${1} \,\biggm|\, {2} \biggr]${0}
+
+snippet Biggbracket
+abbr \Biggl[ ... \Biggr]
+alias \Biggl[
+  \Biggl[ ${1} \Biggr]${0}
+
+snippet Biggbracket3
+abbr \Biggl[ ... \Biggm| ... \Biggr]
+alias \Biggl[3
+  \Biggl[\, ${1} \,\Biggm|\, {2} \Biggr]${0}
+
+snippet brace
+abbr \{ ... \}
+alias \{
+  \{ ${1} \}${0}
+
+snippet autobrace
+abbr \left\{ ... \right\}
+alias \left\{
+  \left\{ ${1} \right\}${0}
+
+snippet bigbrace
+abbr \bigl\{ ... \bigr\}
+alias \bigl\{
+  \bigl\{ ${1} \bigr\}${0}
+
+snippet bigbrace3
+abbr \bigl\{ ... \bigm| ... \bigr\}
+alias \bigl\{3
+  \bigl\{\, ${1} \,\bigm|\, {2} \bigr\}${0}
+
+snippet Bigbrace
+abbr \Bigl\{ ... \Bigr\}
+alias \Bigl\{
+  \Bigl\{ ${1} \Bigr\}${0}
+
+snippet Bigbrace3
+abbr \Bigl\{ ... \Bigm| ... \Bigr\}
+alias \Bigl\{3
+  \Bigl\{\, ${1} \,\Bigm|\, {2} \Bigr\}${0}
+
+snippet biggbrace
+abbr \biggl\{ ... \biggr\}
+alias \biggl\{
+  \biggl\{ ${1} \biggr\}${0}
+
+snippet biggbrace3
+abbr \biggl\{ ... \biggm| ... \biggr\}
+alias \biggl\{3
+  \biggl\{\, ${1} \,\biggm|\, {2} \biggr\}${0}
+
+snippet Biggbrace
+abbr \Biggl\{ ... \Biggr\}
+alias \Biggl\{
+  \Biggl\{ ${1} \Biggr\}${0}
+
+snippet Biggbrace3
+abbr \Biggl\{ ... \Biggm| ... \Biggr\}
+alias \Biggl\{3
+  \Biggl\{\, ${1} \,\Biggm|\, {2} \Biggr\}${0}
+
+snippet vert
+abbr \lvert ... \rvert
+alias \lvert
+  \lvert ${1} \rvert${0}
+
+snippet autovert
+abbr \left\lvert ... \right\rvert
+alias \left\lvert
+  \left\lvert ${1} \right\rvert${0}
+
+snippet bigvert
+abbr \bigl\lvert ... \bigr\rvert
+alias \bigl\lvert
+  \bigl\lvert ${1} \bigr\rvert${0}
+
+snippet bigvert3
+abbr \bigl\lvert ... \bigm| ... \bigr\rvert
+alias \bigl\lvert3
+  \bigl\lvert\, ${1} \,\bigm|\, {2} \bigr\rvert${0}
+
+snippet Bigvert
+abbr \Bigl\lvert ... \Bigr\rvert
+alias \Bigl\lvert
+  \Bigl\lvert ${1} \Bigr\rvert${0}
+
+snippet Bigvert3
+abbr \Bigl\lvert ... \Bigm| ... \Bigr\rvert
+alias \Bigl\lvert3
+  \Bigl\lvert\, ${1} \,\Bigm|\, {2} \Bigr\rvert${0}
+
+snippet biggvert
+abbr \biggl\lvert ... \biggr\rvert
+alias \biggl\lvert
+  \biggl\lvert ${1} \biggr\rvert${0}
+
+snippet biggvert3
+abbr \biggl\lvert ... \biggm| ... \biggr\rvert
+alias \biggl\lvert3
+  \biggl\lvert\, ${1} \,\biggm|\, {2} \biggr\rvert${0}
+
+snippet Biggvert
+abbr \Biggl\lvert ... \Biggr\rvert
+alias \Biggl\lvert
+  \Biggl\lvert ${1} \Biggr\rvert${0}
+
+snippet Biggvert3
+abbr \Biggl\lvert ... \Biggm| ... \Biggr\rvert
+alias \Biggl\lvert3
+  \Biggl\lvert\, ${1} \,\Biggm|\, {2} \Biggr\rvert${0}
+
+snippet Vert
+abbr \lVert ... \rVert
+alias \lVert
+  \lVert ${1} \rVert${0}
+
+snippet autoVert
+abbr \left\lVert ... \right\rVert
+alias \left\lVert
+  \left\lVert ${1} \right\rVert${0}
+
+snippet bigVert
+abbr \bigl\lVert ... \bigr\rVert
+alias \bigl\lVert
+  \bigl\lVert ${1} \bigr\rVert${0}
+
+snippet bigVert3
+abbr \bigl\lVert ... \bigm| ... \bigr\rVert
+alias \bigl\lVert3
+  \bigl\lVert\, ${1} \,\bigm|\, {2} \bigr\rVert${0}
+
+snippet BigVert
+abbr \Bigl\lVert ... \Bigr\rVert
+alias \Bigl\lVert
+  \Bigl\lVert ${1} \Bigr\rVert${0}
+
+snippet BigVert3
+abbr \Bigl\lVert ... \Bigm| ... \Bigr\rVert
+alias \Bigl\lVert3
+  \Bigl\lVert\, ${1} \,\Bigm|\, {2} \Bigr\rVert${0}
+
+snippet biggVert
+abbr \biggl\lVert ... \biggr\rVert
+alias \biggl\lVert
+  \biggl\lVert ${1} \biggr\rVert${0}
+
+snippet biggVert3
+abbr \biggl\lVert ... \biggm| ... \biggr\rVert
+alias \biggl\lVert3
+  \biggl\lVert\, ${1} \,\biggm|\, {2} \biggr\rVert${0}
+
+snippet BiggVert
+abbr \Biggl\lVert ... \Biggr\rVert
+alias \Biggl\lVert
+  \Biggl\lVert ${1} \Biggr\rVert${0}
+
+snippet BiggVert3
+abbr \Biggl\lVert ... \Biggm| ... \Biggr\rVert
+alias \Biggl\lVert3
+  \Biggl\lVert\, ${1} \,\Biggm|\, {2} \Biggr\rVert${0}
+
+snippet floor
+abbr \lfloor ... \rfloor
+alias \lfloor
+  \lfloor ${1} \rfloor${0}
+
+snippet autofloor
+abbr \left\lfloor ... \right\rfloor
+alias \left\lfloor
+  \left\lfloor ${1} \right\rfloor${0}
+
+snippet bigfloor
+abbr \bigl\lfloor ... \bigr\rfloor
+alias \bigl\lfloor
+  \bigl\lfloor ${1} \bigr\rfloor${0}
+
+snippet bigfloor3
+abbr \bigl\lfloor ... \bigm| ... \bigr\rfloor
+alias \bigl\lfloor3
+  \bigl\lfloor\, ${1} \,\bigm|\, {2} \bigr\rfloor${0}
+
+snippet Bigfloor
+abbr \Bigl\lfloor ... \Bigr\rfloor
+alias \Bigl\lfloor
+  \Bigl\lfloor ${1} \Bigr\rfloor${0}
+
+snippet Bigfloor3
+abbr \Bigl\lfloor ... \Bigm| ... \Bigr\rfloor
+alias \Bigl\lfloor3
+  \Bigl\lfloor\, ${1} \,\Bigm|\, {2} \Bigr\rfloor${0}
+
+snippet biggfloor
+abbr \biggl\lfloor ... \biggr\rfloor
+alias \biggl\lfloor
+  \biggl\lfloor ${1} \biggr\rfloor${0}
+
+snippet biggfloor3
+abbr \biggl\lfloor ... \biggm| ... \biggr\rfloor
+alias \biggl\lfloor3
+  \biggl\lfloor\, ${1} \,\biggm|\, {2} \biggr\rfloor${0}
+
+snippet Biggfloor
+abbr \Biggl\lfloor ... \Biggr\rfloor
+alias \Biggl\lfloor
+  \Biggl\lfloor ${1} \Biggr\rfloor${0}
+
+snippet Biggfloor3
+abbr \Biggl\lfloor ... \Biggm| ... \Biggr\rfloor
+alias \Biggl\lfloor3
+  \Biggl\lfloor\, ${1} \,\Biggm|\, {2} \Biggr\rfloor${0}
+
+snippet ceil
+abbr \lceil ... \rceil
+alias \lceil
+  \lceil ${1} \rceil${0}
+
+snippet autoceil
+abbr \left\lceil ... \right\rceil
+alias \left\lceil
+  \left\lceil ${1} \right\rceil${0}
+
+snippet bigceil
+abbr \bigl\lceil ... \bigr\rceil
+alias \bigl\lceil
+  \bigl\lceil ${1} \bigr\rceil${0}
+
+snippet bigceil3
+abbr \bigl\lceil ... \bigm| ... \bigr\rceil
+alias \bigl\lceil3
+  \bigl\lceil\, ${1} \,\bigm|\, {2} \bigr\rceil${0}
+
+snippet Bigceil
+abbr \Bigl\lceil ... \Bigr\rceil
+alias \Bigl\lceil
+  \Bigl\lceil ${1} \Bigr\rceil${0}
+
+snippet Bigceil3
+abbr \Bigl\lceil ... \Bigm| ... \Bigr\rceil
+alias \Bigl\lceil3
+  \Bigl\lceil\, ${1} \,\Bigm|\, {2} \Bigr\rceil${0}
+
+snippet biggceil
+abbr \biggl\lceil ... \biggr\rceil
+alias \biggl\lceil
+  \biggl\lceil ${1} \biggr\rceil${0}
+
+snippet biggceil3
+abbr \biggl\lceil ... \biggm| ... \biggr\rceil
+alias \biggl\lceil3
+  \biggl\lceil\, ${1} \,\biggm|\, {2} \biggr\rceil${0}
+
+snippet Biggceil
+abbr \Biggl\lceil ... \Biggr\rceil
+alias \Biggl\lceil
+  \Biggl\lceil ${1} \Biggr\rceil${0}
+
+snippet Biggceil3
+abbr \Biggl\lceil ... \Biggm| ... \Biggr\rceil
+alias \Biggl\lceil3
+  \Biggl\lceil\, ${1} \,\Biggm|\, {2} \Biggr\rceil${0}
+
+snippet angle
+abbr \langle ... \rangle
+alias \langle
+  \langle ${1} \rangle${0}
+
+snippet autoangle
+abbr \left\langle ... \right\rangle
+alias \left\langle
+  \left\langle ${1} \right\rangle${0}
+
+snippet bigangle
+abbr \bigl\langle ... \bigr\rangle
+alias \bigl\langle
+  \bigl\langle ${1} \bigr\rangle${0}
+
+snippet bigangle3
+abbr \bigl\langle ... \bigm| ... \bigr\rangle
+alias \bigl\langle3
+  \bigl\langle\, ${1} \,\bigm|\, {2} \bigr\rangle${0}
+
+snippet Bigangle
+abbr \Bigl\langle ... \Bigr\rangle
+alias \Bigl\langle
+  \Bigl\langle ${1} \Bigr\rangle${0}
+
+snippet Bigangle3
+abbr \Bigl\langle ... \Bigm| ... \Bigr\rangle
+alias \Bigl\langle3
+  \Bigl\langle\, ${1} \,\Bigm|\, {2} \Bigr\rangle${0}
+
+snippet biggangle
+abbr \biggl\langle ... \biggr\rangle
+alias \biggl\langle
+  \biggl\langle ${1} \biggr\rangle${0}
+
+snippet biggangle3
+abbr \biggl\langle ... \biggm| ... \biggr\rangle
+alias \biggl\langle3
+  \biggl\langle\, ${1} \,\biggm|\, {2} \biggr\rangle${0}
+
+snippet Biggangle
+abbr \Biggl\langle ... \Biggr\rangle
+alias \Biggl\langle
+  \Biggl\langle ${1} \Biggr\rangle${0}
+
+snippet Biggangle3
+abbr \Biggl\langle ... \Biggm| ... \Biggr\rangle
+alias \Biggl\langle3
+  \Biggl\langle\, ${1} \,\Biggm|\, {2} \Biggr\rangle${0}
 

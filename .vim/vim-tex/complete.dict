@@ -82,6 +82,10 @@
 \stackrel stackrel
 
 % brackets
+\{ {
+\} }
+\[ [
+\] ]
 \lvert lvert
 \rvert rvert
 \lVert lVert
