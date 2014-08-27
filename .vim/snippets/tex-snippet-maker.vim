@@ -32,8 +32,21 @@ for s:cf in [
         \ printf('\documentclass{%s}@@\begin{document}@@${0}@@\end{document}', s:cf))
 endfor
 
+for s:sec in [
+      \ 'part',
+      \ 'chapter',
+      \ 'section',
+      \ 'subsection',
+      \ 'subsubsection',
+      \ 'paragraph',
+      \ 'subparagraph',
+      \ ]
+  call s:addsnip(s:sec, printf('\%s{...}', s:sec), printf('\%s', s:sec), 'head',
+        \ printf('\%s{${1}}@${0}', s:sec))
+endfor
+
 call s:addsnip('begin', '\begin{} ... \end{}', '\begin', 'head',
-      \ '\begin{${1}}@  ${0}@\end{$1}')
+      \ '\begin{${1}}@  ${2}@\end{$1}${0}')
 
 for s:env in [
       \ 'center',
@@ -60,6 +73,9 @@ for s:env in [
       \ 'multline*',
       \ 'split',
       \ 'cases',
+      \ 'cases*',
+      \ 'dcases',
+      \ 'dcases*',
       \ 'matrix',
       \ 'pmatrix',
       \ 'bmatrix',
@@ -71,7 +87,7 @@ for s:env in [
       \ 'xy',
       \ ]
   call s:addsnip(s:env, printf('\begin{%s}', s:env), printf('\begin{%s}', s:env), 'head',
-        \ printf('\begin{%s}@  ${0}@\end{%s}', s:env, s:env))
+        \ printf('\begin{%s}@  ${1}@\end{%s}${0}', s:env, s:env))
 endfor
 
 for [s:env, s:item] in [
@@ -81,24 +97,11 @@ for [s:env, s:item] in [
       \ ['thebibliography', '\bibitem'],
       \ ]
   call s:addsnip(s:env, printf('\begin{%s}', s:env), printf('\begin{%s}', s:env), 'head',
-        \ printf('\begin{%s}@  %s ${0}@\end{%s}', s:env, s:item, s:env))
+        \ printf('\begin{%s}@  %s ${1}@\end{%s}${0}', s:env, s:item, s:env))
 endfor
 
 call s:addsnip('eq', '\[ ... \]', '\[', 'head',
-      \ '\[@  ${0}@\]')
-
-for s:sec in [
-      \ 'part',
-      \ 'chapter',
-      \ 'section',
-      \ 'subsection',
-      \ 'subsubsection',
-      \ 'paragraph',
-      \ 'subparagraph',
-      \ ]
-  call s:addsnip(s:sec, printf('\%s{...}', s:sec), printf('\%s', s:sec), 'head',
-        \ printf('\%s{${1}}@${0}', s:sec))
-endfor
+      \ '\[@  ${1}@\]${0}')
 
 for [s:name, s:left, s:right] in [
       \ ['paren', '(', ')'],
@@ -117,6 +120,12 @@ for [s:name, s:left, s:right] in [
         \ printf('\left%s ... \right%s', s:left, s:right),
         \ printf('\left%s', s:left), '',
         \ printf('\left%s ${1} \right%s${0}', s:left, s:right))
+  call s:addsnip(
+        \ printf('auto%s3', s:name),
+        \ printf('\left%s ... \middle| ... \right%s', s:left, s:right),
+        \ printf('\left%s3', s:left), '',
+        \ printf('\left%s\, ${1} \,\%middle|\, ${2} \,\right%s${0}',
+        \ s:left, s:right))
   for s:size in ['big', 'Big', 'bigg', 'Bigg']
     call s:addsnip(
           \ printf('%s%s', s:size, s:name),
@@ -127,7 +136,7 @@ for [s:name, s:left, s:right] in [
           \ printf('%s%s3', s:size, s:name),
           \ printf('\%sl%s ... \%sm| ... \%sr%s', s:size, s:left, s:size, s:size, s:right),
           \ printf('\%sl%s3', s:size, s:left), '',
-          \ printf('\%sl%s\, ${1} \,\%sm|\, %{2} \%sr%s${0}',
+          \ printf('\%sl%s\, ${1} \,\%sm|\, ${2} \,\%sr%s${0}',
           \ s:size, s:left, s:size, s:size, s:right))
   endfor
 endfor
