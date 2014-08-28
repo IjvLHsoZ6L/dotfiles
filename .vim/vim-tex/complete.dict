@@ -1,16 +1,25 @@
-% control command
-\displaystyle displaystyle
-\textstyle textstyle
+\usepackage usepackage us
+\newcommand newcommand nc
+\renewcommand renewcommand rnc
+\newtheorem newtheorem nt
 
-% small Greek letters
+\colon colon :
+\label label
+\qedhere qedhere qh
+\quad quad q
+\qquad qquad qq
+
+\displaystyle displaystyle ds
+\textstyle textstyle ts
+
 \alpha alpha a
 \beta beta b
 \gamma gamma g
 \delta delta d
 \varepsilon varepsilon e
 \zeta zeta z
-\eta eta h
-\theta theta q
+\eta eta y
+\theta theta th
 \iota iota i
 \kappa kappa k
 \lambda lambda l
@@ -22,25 +31,23 @@
 \sigma sigma s
 \tau tau t
 \upsilon upsilon u
-\varphi varphi f
-\chi chi c
-\psi psi y
+\varphi varphi ph
+\chi chi ch
+\psi psi ps
 \omega omega w
 
-% captial Greek letters
 \Gamma Gamma G
 \Delta Delta D
-\Theta Theta Q
+\Theta Theta Th
 \Lambda Lambda L
 \Xi Xi X
 \Pi Pi P
 \Sigma Sigma S
 \Upsilon Upsilon U
-\Phi Phi F
-\Psi Psi Y
+\Phi Phi Ph
+\Psi Psi Ps
 \Omega Omega W
 
-% slant captial Greek letters
 \varGamma varGamma
 \varDelta varDelta
 \varTheta varTheta
@@ -53,39 +60,41 @@
 \varPsi varPsi
 \varOmega varOmega
 
-% mono-operators
-\sqrt sqrt
+\sqrt sqrt rt
 \sum sum +
 \prod prod **
 \coprod coprod ++
 \int int I
+\iint iint II
+\iiint iiint III
+\iiiint iiiint IIII
+\idotsint idotsint I...I
 \oint oint oI
 \bigcap bigcap Cap
 \bigcup bigcup Cup
-\bigsqcup bigsqcup
+\bigsqcup bigsqcup Sqcup
 \bigvee bigvee Vee
 \bigwedge bigwedge Wedge
 \bigodot bigodot Odot O.
 \bigotimes bigotimes Otimes O*
 \bigoplus bigoplus Oplus O+
-\biguplus biguplus Uplus U+
+\biguplus biguplus Uplus U-
 
-% fractions etc
-\frac frac /
+\frac frac
 \dfrac dfrac
 \tfrac tfrac
 \cfrac cfrac
 \binom binom
 \genfrac genfrac
-\xrightarrow xrightarrow
-\xleftarrow xleftarrow
+
+\xrightarrow xrightarrow xto
+\xleftarrow xleftarrow xgets
 \stackrel stackrel
 
-% brackets
-\{ {
-\} }
 \[ [
 \] ]
+\{ {
+\} }
 \lvert lvert
 \rvert rvert
 \lVert lVert
@@ -96,7 +105,9 @@
 \rceil rceil
 \langle langle
 \rangle rangle
+
 \left left
+\middle middle
 \right right
 \bigl bigl
 \bigm bigm
@@ -111,7 +122,6 @@
 \Biggm Biggm
 \Biggr Biggr
 
-% bioperators
 \pm pm
 \mp mp
 \times times *
@@ -140,20 +150,19 @@
 \otimes otimes o*
 \oslash oslash o/
 \odot odot o.
-\bigcirc bigcirc
+\bigcirc bigcirc O
 \dagger dagger
 \ddagger ddagger
 \amalg amalg
 
-% oriented relations
 \le le <
 \ge ge >
 \prec prec
 \succ succ
 \preceq preceq
 \succeq succeq
-\ll ll
-\gg gg
+\ll ll <<
+\gg gg >>
 \subset subset (
 \supset supset )
 \subseteq subseteq
@@ -166,7 +175,6 @@
 \ni ni
 \notin notin
 
-% non-oriented relations
 \equiv equiv
 \sim sim
 \simeq simeq
@@ -184,7 +192,6 @@
 \smile smile
 \frown frown
 
-% arrows
 \gets gets
 \leftarrow leftarrow
 \longleftarrow longleftarrow
@@ -214,7 +221,6 @@
 \searrow searrow
 \swarrow swarrow
 
-% delimiters
 \backslash backslash
 \uparrow uparrow
 \Uparrow Uparrow
@@ -223,27 +229,26 @@
 \updownarrow updownarrow
 \Updownarrow Updownarrow
 
-% symbols
 \aleph aleph
 \hbar hbar
 \imath imath
 \jmath jmath
-\ell ell 1
+\ell ell
 \wp wp
 \Re Re
 \Im Im
 \partial partial 6
 \infty infty 8
-\prime prime 0
-\emptyset emptyset
+\prime prime
+\emptyset emptyset 0
 \nabla nabla
 \surd surd
 \top top
 \bot bot
 \angle angle
 \triangle triangle
-\forall forall AA
-\exists exists EE
+\forall forall A
+\exists exists E
 \neg neg
 \lnot lnot
 \flat flat
@@ -254,7 +259,6 @@
 \heartsuit heartsuit
 \spadesuit spadesuit
 
-% log-type operator
 \arccos arccos
 \arcsin arcsin
 \arctan arctan
@@ -290,7 +294,13 @@
 \bmod bmod
 \pmod pmod
 
-% accents
+\mathrm mathrm
+\mathbf mathbf
+\mathit mathit
+\mathcal mathcal
+\mathsf mathsf
+\mathtt mathtt
+
 \hat hat
 \check check
 \breve breve
@@ -301,6 +311,8 @@
 \vec vec
 \dot dot
 \ddot ddot
+\dddot dddot
+\ddddot ddddot
 \Hat Hat ^
 \Check Check
 \Breve Breve
@@ -311,8 +323,7 @@
 \Vec Vec
 \Dot Dot
 \Ddot Ddot
-\dddot dddot
-\ddddot ddddot
+
 \overline overline --
 \underline underline __
 \widehat widehat ^^
@@ -326,28 +337,12 @@
 \underleftarrow underleftarrow
 \underleftrightarrow underleftrightarrow
 
-% fonts
-\mathrm mathrm rm
-\mathbf mathbf bf
-\mathit mathit it
-\mathcal mathcal cal
-\mathsf mathsf sf
-\mathtt mathtt tt
-
-% dots
 \dots dots ...
 \dotsc dotsc
 \dotsb dotsb
 \dotsm dotsm
 \dotsi dotsi
 
-% integrals
-\iint iint II
-\iiint iiint III
-\iiiint iiiint IIII
-\idotsint idotsint I...I
-
-% bioperators
 \boxdot boxdot
 \boxplus boxplus
 \boxtimes boxtimes
@@ -374,7 +369,6 @@
 \rtimes rtimes r*
 \smallsetminus smallsetminus
 
-% arrows
 \circlearrowright circlearrowright
 \circlearrowleft circlearrowleft
 \rightleftharpoons rightleftharpoons
@@ -531,7 +525,6 @@
 \curvearrowright curvearrowright
 \backepsilon backepsilon
 
-% symbols
 \square square
 \blacksquare blacksquare
 \lozenge lozenge

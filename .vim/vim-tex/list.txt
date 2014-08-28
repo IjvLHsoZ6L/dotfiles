@@ -1,3 +1,14 @@
+usepackage
+newcommand
+renewcommand
+newtheorem
+
+colon
+label
+qedhere
+quad
+qquad
+
 displaystyle
 textstyle
 
@@ -54,6 +65,10 @@ sum
 prod
 coprod
 int
+iint
+iiint
+iiiint
+idotsint
 oint
 bigcap
 bigcup
@@ -71,6 +86,7 @@ tfrac
 cfrac
 binom
 genfrac
+
 xrightarrow
 xleftarrow
 stackrel
@@ -91,6 +107,7 @@ langle
 rangle
 
 left
+middle
 right
 bigl
 bigm
@@ -203,7 +220,6 @@ nearrow
 nwarrow
 searrow
 swarrow
-rightleftharpoons
 
 backslash
 uparrow
@@ -278,6 +294,13 @@ tanh
 bmod
 pmod
 
+mathrm
+mathbf
+mathit
+mathcal
+mathsf
+mathtt
+
 hat
 check
 breve
@@ -288,7 +311,8 @@ bar
 vec
 dot
 ddot
-
+dddot
+ddddot
 Hat
 Check
 Breve
@@ -299,8 +323,6 @@ Bar
 Vec
 Dot
 Ddot
-dddot
-ddddot
 
 overline
 underline
@@ -315,23 +337,11 @@ underrightarrow
 underleftarrow
 underleftrightarrow
 
-mathrm
-mathbf
-mathit
-mathcal
-mathsf
-mathtt
-
 dots
 dotsc
 dotsb
 dotsm
 dotsi
-
-iint
-iiint
-iiiint
-idotsint
 
 boxdot
 boxplus
@@ -524,7 +534,6 @@ bigstar
 blacktriangledown
 blacktriangle
 triangledown
-angle
 measuredangle
 sphericalangle
 circledS
@@ -544,4 +553,3 @@ digamma
 varkappa
 Bbbk
 hslash
-hbar

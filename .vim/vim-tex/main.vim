@@ -29,32 +29,49 @@ function! s:writecompile()
   normal! G
   execute l:nr 'wincmd w'
 endfunction
+
 nnoremap <silent> <C-@> :call <SID>writecompile()<CR>
 inoremap <silent> <C-@> <ESC>:call <SID>writecompile()<CR>
 
 let s:dict = {}
 let s:tail = {}
+
+function! s:addcomp(key, val)
+  if has_key(s:dict, a:key)
+    echomsg 'tryed to define completion' a:key '->' a:val
+          \ 'but completion' a:key '->' s:dict[a:key] 'already exists'
+  else
+    let s:dict[a:key] = a:val
+    for l:i in range(1, len(a:key))
+      let s:tail[a:key[(-l:i):]] = 1
+    endfor
+  endif
+endfunction
+
 for s:line in readfile(expand('~/.vim/vim-tex/complete.dict'))
   if !empty(s:line) && s:line[0] !=# '%'
     let s:list = split(s:line)
     let s:val = remove(s:list, 0)
     for s:key in s:list
-      if has_key(s:dict, s:key)
-        echomsg '"' . s:key . '" is already used for ' . s:dict[s:key]
-      else
-        let s:dict[s:key] = s:val
-        for s:i in range(1, len(s:key))
-          let s:tail[s:key[(-s:i):]] = 1
-        endfor
-      endif
+      call s:addcomp(s:key, s:val)
     endfor
   endif
 endfor
+
+for s:line in readfile(expand('%'))
+  let s:match = matchlist(s:line, '\v^\\\a*new\a+\s*\{?(\\\a+).*\%(.+)$')
+  if !empty(s:match)
+    echomsg 'define completion' s:match[2] '->' s:match[1]
+    call s:addcomp(s:match[2], s:match[1])
+  endif
+endfor
+
 call writefile(sort(keys(s:dict)), expand('~/.vim/vim-tex/keys.dict'))
+
 function! s:complete()
   let l:col = col('.')
   if col('.') == 1
-    return ''
+    return '\'
   endif
   let l:line = getline('.')[:l:col - 2]
   let l:maxlen = 0
@@ -73,11 +90,12 @@ function! s:complete()
     let l:len += 1
   endwhile
   if l:maxlen == 0
-    return ''
+    return '\'
   endif
   let l:val = s:dict[l:maxkey]
   return repeat("\<BS>", l:maxlen) . l:val
 endfunction
+
 inoremap <expr> <C-J> <SID>complete()
 
 "============================================================
