@@ -1,38 +1,32 @@
 snippet print
-alias System.out.print(
 abbr System.out.print(
 options head
   System.out.print(${1});${0}
 
-snippet println
-alias System.out.println(
-abbr System.out.print(
-options head
-  System.out.println(${1});${0}
-
 snippet printf
-alias System.out.printf(
 abbr System.out.printf(
 options head
   System.out.printf(${1});${0}
 
+snippet println
+abbr System.out.println(
+options head
+  System.out.println(${1});${0}
+
 snippet errprint
-alias System.err.print(
 abbr System.err.print(
 options head
   System.err.print(${1});${0}
 
-snippet errprintln
-alias System.err.println(
-abbr System.err.println(
-options head
-  System.err.println(${1});${0}
-
 snippet errprintf
-alias System.err.printf(
 abbr System.err.printf(
 options head
   System.err.printf(${1});${0}
+
+snippet errprintln
+abbr System.err.println(
+options head
+  System.err.println(${1});${0}
 
 snippet if
 abbr if (__) {
@@ -119,7 +113,7 @@ options head
   }
 
 snippet class
-abbr [class]
+abbr class
 options head
   class ${1} {
 
@@ -127,7 +121,7 @@ options head
   }${0}
 
 snippet main
-abbr [method] main
+abbr main
 options head
   public static void main(String[] args) {
 

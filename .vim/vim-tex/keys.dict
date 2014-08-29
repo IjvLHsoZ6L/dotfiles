@@ -183,7 +183,6 @@ circledast
 circledcirc
 circleddash
 clubsuit
-colim
 colon
 complement
 cong
@@ -248,6 +247,7 @@ eta
 eth
 exists
 exp
+face
 fallingdotseq
 flat
 forall
@@ -431,7 +431,6 @@ nvdash
 nwarrow
 o
 o*
-o**
 o+
 o-
 o.
@@ -515,6 +514,7 @@ sim
 simeq
 sin
 sinh
+sj
 smallfrown
 smallsetminus
 smallsmile

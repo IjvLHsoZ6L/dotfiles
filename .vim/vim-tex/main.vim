@@ -17,16 +17,18 @@ function! s:writecompile()
   write
   let l:out = split(system('pdflatex -halt-on-error ' . expand('%')), "\n")
   let l:nr = winnr()
-  if bufexists('__output__')
-    bdelete __output__
+  let l:outnr = bufwinnr('__output__')
+  if l:outnr == -1
+    silent! sview __output__
+    setlocal buftype=nofile
+  else
+    execute l:outnr 'wincmd w'
+    silent! % delete
   endif
-  silent! belowright 8 sview __output__
-  setlocal buftype=nofile
-  setlocal noswapfile
-  setlocal undolevels=-1
-  silent! call append('.', l:out)
-  delete
-  normal! G
+  silent! call append('.', l:out) | delete
+  if search('\v!|Warning|Overfull|Underfull', 'W') == 0
+    normal! G
+  endif
   execute l:nr 'wincmd w'
 endfunction
 
@@ -58,13 +60,15 @@ for s:line in readfile(expand('~/.vim/vim-tex/complete.dict'))
   endif
 endfor
 
-for s:line in readfile(expand('%'))
-  let s:match = matchlist(s:line, '\v^\\\a*new\a+\s*\{?(\\\a+).*\%(.+)$')
-  if !empty(s:match)
-    echomsg 'define completion' s:match[2] '->' s:match[1]
-    call s:addcomp(s:match[2], s:match[1])
-  endif
-endfor
+if filereadable(expand('%'))
+  for s:line in readfile(expand('%'))
+    let s:match = matchlist(s:line, '\v^\\\a*new\a+\s*\{?(\\\a+).*\%(.+)$')
+    if !empty(s:match)
+      echomsg 'define completion' s:match[2] '->' s:match[1]
+      call s:addcomp(s:match[2], s:match[1])
+    endif
+  endfor
+endif
 
 call writefile(sort(keys(s:dict)), expand('~/.vim/vim-tex/keys.dict'))
 

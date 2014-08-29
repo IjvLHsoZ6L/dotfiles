@@ -120,6 +120,8 @@ let g:neocomplcache_dictionary_filetype_lists    = {
 " neosnippet
 imap <expr> <C-K> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : ""
+vmap <expr> <C-K> neosnippet#jumpable() ?
+      \ "\<Plug>(neosnippet_jump)" : ""
 nmap <expr> <C-K> neosnippet#jumpable() ?
       \ "i\<Plug>(neosnippet_jump)" : ""
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
