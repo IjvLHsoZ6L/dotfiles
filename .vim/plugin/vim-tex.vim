@@ -5,5 +5,5 @@ let g:tex_conceal = ''
 " call main.vim
 augroup vim-tex
         autocmd!
-        autocmd FileType tex runtime vim-tex/main.vim
+        autocmd FileType tex runtime vim-tex/vim-tex.vim
 augroup END

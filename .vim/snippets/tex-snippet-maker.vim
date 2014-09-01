@@ -105,7 +105,7 @@ call s:addsnip('eq', '\[ ... \]', '\[', 'head',
 
 for [s:name, s:left, s:right] in [
       \ ['paren', '(', ')'],
-      \ ['bracket', '[', ']'],
+      \ ['brack', '[', ']'],
       \ ['brace', '\{', '\}'],
       \ ['vert', '\lvert', '\rvert'],
       \ ['Vert', '\lVert', '\rVert'],

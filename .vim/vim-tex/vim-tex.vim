@@ -12,6 +12,8 @@ let s:saved_cpopotions = &cpoptions
 set cpoptions&vim
 
 "============================================================
+" write and complie
+"============================================================
 
 function! s:writecompile()
   write
@@ -35,22 +37,27 @@ endfunction
 nnoremap <silent> <C-@> :call <SID>writecompile()<CR>
 inoremap <silent> <C-@> <ESC>:call <SID>writecompile()<CR>
 
+"============================================================
+" command completion
+"============================================================
+
 let s:dict = {}
 let s:tail = {}
 
 function! s:addcomp(key, val)
-  if has_key(s:dict, a:key)
-    echomsg 'tryed to define completion' a:key '->' a:val
-          \ 'but completion' a:key '->' s:dict[a:key] 'already exists'
-  else
-    let s:dict[a:key] = a:val
-    for l:i in range(1, len(a:key))
-      let s:tail[a:key[(-l:i):]] = 1
-    endfor
-  endif
+  let s:dict[a:key] = a:val
+  for l:i in range(1, len(a:key))
+    let s:tail[a:key[(-l:i):]] = 1
+  endfor
 endfunction
 
-for s:line in readfile(expand('~/.vim/vim-tex/complete.dict'))
+for s:line in readfile(expand('~/.vim/vim-tex/commands.txt'))
+  if !empty(s:line) && s:line[0] !=# '%'
+    call s:addcomp(s:line, '\' . s:line)
+  endif
+endfor
+
+for s:line in readfile(expand('~/.vim/vim-tex/mycomp.txt'))
   if !empty(s:line) && s:line[0] !=# '%'
     let s:list = split(s:line)
     let s:val = remove(s:list, 0)
@@ -62,10 +69,10 @@ endfor
 
 if filereadable(expand('%'))
   for s:line in readfile(expand('%'))
-    let s:match = matchlist(s:line, '\v^\\\a*new\a+\s*\{?(\\\a+).*\%(.+)$')
+    let s:match = matchlist(s:line, '\v^\% (.+) -\> (.+)$')
     if !empty(s:match)
-      echomsg 'define completion' s:match[2] '->' s:match[1]
-      call s:addcomp(s:match[2], s:match[1])
+      echomsg 'define completion' s:match[1] '->' s:match[2]
+      call s:addcomp(s:match[1], s:match[2])
     endif
   endfor
 endif
@@ -101,6 +108,30 @@ function! s:complete()
 endfunction
 
 inoremap <expr> <C-J> <SID>complete()
+
+"============================================================
+" expand environments
+"============================================================
+
+function! s:expenv()
+  let l:line = getline('.')
+  let l:match = matchlist(l:line, '\v^\s*(\a+\*?)$')
+  if !empty(l:match)
+    let l:env = l:match[1]
+    let l:list = [
+          \ printf('\begin{%s}', l:env),
+          \ '<`1`>',
+          \ printf('\end{%s}<`0`>', l:env),
+          \ ]
+    call append('.', l:list)
+    delete
+    execute 'normal!' len(l:list) . '=='
+    execute 'normal' "\<C-K>"
+    startinsert!
+  endif
+endfunction
+
+inoremap <silent> <C-E> <ESC>:call <SID>expenv()<CR>
 
 "============================================================
 
