@@ -11,3 +11,5 @@ sudo apt-get autoremove -y
 echo sudo apt-get autoclean
 sudo apt-get autoclean
 echo Done.
+
+exit 0

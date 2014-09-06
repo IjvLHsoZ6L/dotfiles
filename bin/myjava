@@ -1,8 +1,10 @@
 #! /bin/bash
 
-for javafile
-do
+for javafile; do
   echo $javafile
-  echo
-  javac $javafile && time -p (java ${javafile%.java}; echo)
+  if javac $javafile; then
+    time -p (echo; java ${javafile%.java}; echo)
+  fi
 done
+
+exit 0
