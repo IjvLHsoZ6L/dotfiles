@@ -15,7 +15,7 @@ endfunction
 
 call s:extcmds(readfile(expand('~/.vim/vim-tex/latex2e.pdf.txt')))
 call s:extcmds(readfile(expand('~/.vim/vim-tex/amsmath.pdf.txt')))
-call s:extcmds(readfile(expand('~/.vim/vim-tex/mathtools.pdf.txt')))
+"call s:extcmds(readfile(expand('~/.vim/vim-tex/mathtools.pdf.txt')))
 
 call sort(s:cmds)
 
