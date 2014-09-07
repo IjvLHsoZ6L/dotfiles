@@ -1,5 +1,3 @@
 #! /bin/bash
 
 sudo powertop --auto-tune
-
-exit 0

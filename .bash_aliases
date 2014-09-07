@@ -24,5 +24,6 @@ alias r='fc -s'
 
 # change directory with listing
 function cd {
-    builtin cd "$@" && ls -ACF
+  builtin cd "$@" && ls -ACF
 }
+alias bcd='builtin cd'

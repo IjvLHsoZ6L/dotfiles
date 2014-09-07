@@ -6,5 +6,3 @@ for javafile; do
     time -p (echo; java ${javafile%.java}; echo)
   fi
 done
-
-exit 0

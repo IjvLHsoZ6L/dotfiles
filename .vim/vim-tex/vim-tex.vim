@@ -28,9 +28,13 @@ function! s:writecompile()
     silent! % delete
   endif
   silent! call append('.', l:out) | delete
-  if search('\v!|Warning|Overfull|Underfull', 'W') == 0
+  if search('\v!', 'W')
+  elseif search('\vWarning', 'W')
+  elseif search('\vOverfull|Underfull', 'W')
+  else
     normal! G
   endif
+  redraw
   execute l:nr 'wincmd w'
 endfunction
 
