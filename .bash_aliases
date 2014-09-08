@@ -6,11 +6,15 @@ PS1="\[\e]0;\u : \w\a\]\u:\w $ "
 EDITOR=vi
 FCEDIT=vi
 
+# color
+alias grep='grep --color'
+alias less='less -R'
+
 # list
-alias l='ls -CF'
-alias la='ls -ACF'
-alias ll='ls -hlF'
-alias lla='ls -hlAF'
+alias l='ls --color -CF'
+alias la='ls --color -ACF'
+alias ll='ls --color -hlF'
+alias lla='ls --color -hlAF'
 export LC_COLLATE=C
 
 # -i option
