@@ -1,0 +1,10 @@
+[user]
+	email = tounai.shouta@gmail.com
+	name = TOUNAI Shouta
+[core]
+	editor = vim
+[color]
+	ui = auto
+[alias]
+	s = status
+	l = log --oneline --graph
