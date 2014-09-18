@@ -13,7 +13,7 @@ alias l='\ls --color=auto -CF'
 alias la='\ls --color=auto -ACF'
 alias ll='\ls --color=auto -hlF'
 alias lla='\ls --color=auto -hlAF'
-LC_COLLATE=C
+export LC_COLLATE=C
 
 # -i option
 alias rm='\rm -i'
