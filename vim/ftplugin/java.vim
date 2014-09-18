@@ -1,6 +1,16 @@
+if exists('loaded_my_java_plugin')
+  finish
+endif
+let loaded_my_java_plugin = 1
+
+let s:saved_cpopotions = &cpoptions
+set cpoptions&vim
+
+"===========================================================
+
 if has('conceal')
-  setlocal conceallevel=2
-  setlocal concealcursor=i
+  setlocal conceallevel=0
+  setlocal concealcursor=
 endif
 
 function! s:writecompile()
@@ -13,12 +23,17 @@ function! s:writecompile()
     setlocal buftype=nofile
   else
     execute l:outnr  'wincmd w'
+    silent! % delete
   endif
-  silent! % delete
-  silent! call append('.', l:out)
-  silent! delete
+  silent! call append('.', l:out) | delete
+  redraw
   execute l:nr 'wincmd w'
 endfunction
 
 nnoremap <silent> <C-@> :call <SID>writecompile()<CR>
 inoremap <silent> <C-@> <ESC>:call <SID>writecompile()<CR>
+
+"===========================================================
+
+let &cpoptions = s:saved_cpopotions
+unlet s:saved_cpopotions
