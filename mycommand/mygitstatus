@@ -1,0 +1,11 @@
+#! /bin/bash
+
+cur=$(pwd)
+
+for git in $(find $cur -name .git); do
+  dir=${git%/.git}
+  cd $dir
+  pwd
+  git status -s
+  echo
+done
