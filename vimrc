@@ -66,9 +66,6 @@ autocmd BufEnter * set formatoptions=Bj
 set fileencodings=utf-8,euc-jp,sjis,latin1
 set fileformats=unix,mac,dos
 
-" netrw
-let g:netrw_list_hide = '\v\.[^.]'
-
 " colorscheme
 syntax on
 highlight Search       ctermfg=0
@@ -85,6 +82,17 @@ highlight SpellLocal   ctermfg=0
 highlight CursorColumn ctermfg=0
 highlight ColorColumn  ctermfg=0
 highlight MatchParen   ctermfg=0
+
+" IME
+let g:ime_switcher_enable = 1
+let g:ime_switcher_check = !empty(system('which ibus'))
+let g:ime_switcher_to_eisu = 'ibus engine xkb:jp::jpn'
+if g:ime_switcher_enable && g:ime_switcher_check
+  inoremap <ESC> <ESC>:call system(g:ime_switcher_to_eisu)<CR>
+endif
+
+" netrw
+let g:netrw_list_hide = '\v\.[^.]'
 
 " neobundle
 if has('vim_starting')

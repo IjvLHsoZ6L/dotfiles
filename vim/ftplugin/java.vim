@@ -19,13 +19,14 @@ function! s:writecompile()
   let l:nr = winnr()
   let l:outnr = bufwinnr('__output__')
   if l:outnr == -1
-    silent! sview __output__
+    silent! 8 sview __output__
     setlocal buftype=nofile
   else
     execute l:outnr  'wincmd w'
-    silent! % delete
   endif
-  silent! call append('.', l:out) | delete
+  silent! % delete
+  silent! call append('.', l:out)
+  silent! delete
   redraw
   execute l:nr 'wincmd w'
 endfunction

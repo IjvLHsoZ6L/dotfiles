@@ -25,13 +25,15 @@ function! s:writecompile()
     setlocal buftype=nofile
   else
     execute l:outnr 'wincmd w'
-    silent! % delete
   endif
-  silent! call append('.', l:out) | delete
-  if search('\v!', 'W')
-  elseif search('\vWarning', 'W')
-  elseif search('\vOverfull|Underfull', 'W')
-  else
+  silent! % delete
+  silent! call append('.', l:out)
+  silent! delete
+  if !(
+        \ search('\v!', 'W') ||
+        \ search('\vWarning', 'W') ||
+        \ search('\vOverfull|Underfull', 'W')
+        \ )
     normal! G
   endif
   redraw
