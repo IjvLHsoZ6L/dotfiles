@@ -88,8 +88,27 @@ let g:ime_switcher_enable = 1
 let g:ime_switcher_check = !empty(system('which ibus'))
 let g:ime_switcher_to_eisu = 'ibus engine xkb:jp::jpn'
 if g:ime_switcher_enable && g:ime_switcher_check
-  inoremap <ESC> <ESC>:call system(g:ime_switcher_to_eisu)<CR>
+  inoremap <Esc> <Esc>:call system(g:ime_switcher_to_eisu)<CR>
 endif
+
+" make
+set autowrite
+inoremap <C-@> <Nop>
+nnoremap <C-@> <Nop>
+inoremap <C-@>b <Esc>:make<CR>
+nnoremap <C-@>b :make<CR>
+inoremap <C-@>r <Esc>:make run<CR>
+nnoremap <C-@>r :make run<CR>
+inoremap <C-@>l <Esc>:clist<CR>
+nnoremap <C-@>l :clist<CR>
+inoremap <C-@>o <Esc>:copen<CR>
+nnoremap <C-@>o :copen<CR>
+inoremap <C-@>c <Esc>:cclose<CR>
+nnoremap <C-@>c :cclose<CR>
+inoremap <C-@>n <Esc>:cnext<CR>
+nnoremap <C-@>n :cnext<CR>
+inoremap <C-@>p <Esc>:cprevious<CR>
+nnoremap <C-@>p :cprevious<CR>
 
 " netrw
 let g:netrw_list_hide = '\v\.[^.]'
@@ -110,8 +129,8 @@ call neobundle#end()
 " neocomplcache
 inoremap <expr> <CR>    neocomplcache#close_popup() . "\<CR>"
 inoremap <expr> <C-L>   neocomplcache#complete_common_string()
-inoremap <expr> <TAB>   pumvisible() ? "\<C-N>" : "\<TAB>"
-inoremap <expr> <S-TAB> pumvisible() ? "\<C-P>" : "\<S-TAB>"
+inoremap <expr> <Tab>   pumvisible() ? "\<C-N>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 let g:neocomplcache_enable_at_startup            = 1
 let g:neocomplcache_auto_completion_start_length = 1
 let g:neocomplcache_min_keyword_length           = 3
