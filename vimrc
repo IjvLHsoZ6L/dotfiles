@@ -83,14 +83,6 @@ highlight CursorColumn ctermfg=0
 highlight ColorColumn  ctermfg=0
 highlight MatchParen   ctermfg=0
 
-" IME
-let g:ime_switcher_enable = 1
-let g:ime_switcher_check = !empty(system('which ibus'))
-let g:ime_switcher_to_eisu = 'ibus engine xkb:jp::jpn'
-if g:ime_switcher_enable && g:ime_switcher_check
-  inoremap <Esc> <Esc>:call system(g:ime_switcher_to_eisu)<CR>
-endif
-
 " make
 set autowrite
 inoremap <C-@> <Nop>
