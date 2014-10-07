@@ -115,6 +115,7 @@ NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'tpope/vim-surround'
 NeoBundleCheck
 call neobundle#end()
 

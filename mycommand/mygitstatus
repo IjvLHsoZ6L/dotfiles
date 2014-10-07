@@ -5,8 +5,8 @@ cur=$(pwd)
 for git in $(find * -name .git); do
   dir=${git%.git}
   cd $dir
+  pwd
   if [ "x$(git status -s)" != "x" ]; then
-    echo $dir
     git status -s
   fi
   cd $cur
