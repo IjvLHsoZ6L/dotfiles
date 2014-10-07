@@ -1,12 +1,7 @@
-" support your tex file editing with Vim
-" Title: vim-tex
-" Author: TOUNAI Shouta
-" Version: 0.0
-
-if exists('loaded_vim_tex')
+if exists('loaded_tex_vim')
   finish
 endif
-let loaded_vim_tex = 1
+let loaded_tex_vim = 1
 
 let s:saved_cpopotions = &cpoptions
 set cpoptions&vim
@@ -19,8 +14,12 @@ let g:tex_conceal = ''
 
 if search('jsarticle', 'n')
   let g:tex_flavor = 'platex'
+  nnoremap <C-@>r :! dvipdfmx %<.dvi && evince %<.pdf &<CR>
+  imap <C-@>r <Esc><C-@>r
 else
   let g:tex_flavor = 'pdflatex'
+  nnoremap <C-@>r  :! evince %<.pdf &<CR>
+  imap <C-@>r <Esc><C-@>r
 endif
 
 compiler tex
@@ -39,13 +38,13 @@ function! s:addcomp(key, val)
   endfor
 endfunction
 
-for s:line in readfile(expand('~/.vim/vim-tex/commands.txt'))
+for s:line in readfile(expand('~/.vim/ftplugin/tex/commands.txt'))
   if !empty(s:line) && s:line[0] !=# '%'
     call s:addcomp(s:line, '\' . s:line)
   endif
 endfor
 
-for s:line in readfile(expand('~/.vim/vim-tex/mycomp.txt'))
+for s:line in readfile(expand('~/.vim/ftplugin/tex/abbreviation.txt'))
   if !empty(s:line) && s:line[0] !=# '%'
     let s:list = split(s:line)
     let s:val = remove(s:list, 0)
@@ -65,7 +64,7 @@ if filereadable(expand('%'))
   endfor
 endif
 
-call writefile(sort(keys(s:dict)), expand('~/.vim/vim-tex/keys.dict'))
+call writefile(sort(keys(s:dict)), expand('~/.vim/ftplugin/tex/keys.dict'))
 
 function! s:complete()
   let l:col = col('.')

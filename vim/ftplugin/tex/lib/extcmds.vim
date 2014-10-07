@@ -13,9 +13,9 @@ function! s:extcmds(list)
   endfor
 endfunction
 
-call s:extcmds(readfile(expand('~/.vim/vim-tex/latex2e.pdf.txt')))
-call s:extcmds(readfile(expand('~/.vim/vim-tex/amsmath.pdf.txt')))
-"call s:extcmds(readfile(expand('~/.vim/vim-tex/mathtools.pdf.txt')))
+call s:extcmds(readfile(expand('~/.vim/ftplugin/tex/lib/latex2e.pdf.txt')))
+call s:extcmds(readfile(expand('~/.vim/ftplugin/tex/lib/amsmath.pdf.txt')))
+"call s:extcmds(readfile(expand('~/.vim/ftplugin/tex/lib/mathtools.pdf.txt')))
 
 call sort(s:cmds)
 
@@ -29,4 +29,4 @@ for s:cmd in s:before
   endif
 endfor
 
-call writefile(s:cmds, expand('~/.vim/vim-tex/commands.txt'))
+call writefile(s:cmds, expand('~/.vim/ftplugin/tex/commands.txt'))

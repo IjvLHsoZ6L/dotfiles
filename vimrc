@@ -85,17 +85,13 @@ highlight MatchParen   ctermfg=0
 
 " make
 set autowrite
-inoremap <C-@> <Nop>
 nnoremap <C-@> <Nop>
-inoremap <C-@><C-@> <Esc>:make %<CR>
 nnoremap <C-@><C-@> :make %<CR>
-inoremap <C-@>l <Esc>:clist<CR>
+nnoremap <C-@>b :make %<CR>
+nnoremap <C-@>r :make run %<CR>
 nnoremap <C-@>l :clist<CR>
-inoremap <C-@>c <Esc>:cc<CR>
 nnoremap <C-@>c :cc<CR>
-inoremap <C-@>n <Esc>:cnext<CR>
 nnoremap <C-@>n :cnext<CR>
-inoremap <C-@>p <Esc>:cprevious<CR>
 nnoremap <C-@>p :cprevious<CR>
 
 " netrw
@@ -129,7 +125,7 @@ let g:neocomplcache_enable_smart_case            = 1
 let g:neocomplcache_dictionary_filetype_lists    = {
       \ 'java': expand('~/.vim/dict/java.dict'),
       \ 'javascript': expand('~/.vim/dict/javascript.dict'),
-      \ 'text': expand('~/.vim/vim-tex/keys.dict'),
+      \ 'text': expand('~/.vim/ftplugin/tex/keys.dict'),
       \ 'default': '',
       \ }
 
@@ -141,6 +137,9 @@ vmap <expr> <C-K> neosnippet#jumpable() ?
 nmap <expr> <C-K> neosnippet#jumpable() ?
       \ "i\<Plug>(neosnippet_jump)" : ""
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
+
+" latex
+let g:tex_flavor = 'latex'
 
 " set on filetype detection
 filetype on
