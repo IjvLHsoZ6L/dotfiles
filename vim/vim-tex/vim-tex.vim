@@ -12,6 +12,20 @@ let s:saved_cpopotions = &cpoptions
 set cpoptions&vim
 
 "===========================================================
+" set some options
+"===========================================================
+
+let g:tex_conceal = ''
+
+if search('jsarticle', 'n')
+  let g:tex_flavor = 'platex'
+else
+  let g:tex_flavor = 'pdflatex'
+endif
+
+compiler tex
+
+"===========================================================
 " command completion
 "===========================================================
 

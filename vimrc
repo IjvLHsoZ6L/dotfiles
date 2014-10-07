@@ -87,16 +87,12 @@ highlight MatchParen   ctermfg=0
 set autowrite
 inoremap <C-@> <Nop>
 nnoremap <C-@> <Nop>
-inoremap <C-@>b <Esc>:make<CR>
-nnoremap <C-@>b :make<CR>
-inoremap <C-@>r <Esc>:make run<CR>
-nnoremap <C-@>r :make run<CR>
+inoremap <C-@><C-@> <Esc>:make %<CR>
+nnoremap <C-@><C-@> :make %<CR>
 inoremap <C-@>l <Esc>:clist<CR>
 nnoremap <C-@>l :clist<CR>
-inoremap <C-@>o <Esc>:copen<CR>
-nnoremap <C-@>o :copen<CR>
-inoremap <C-@>c <Esc>:cclose<CR>
-nnoremap <C-@>c :cclose<CR>
+inoremap <C-@>c <Esc>:cc<CR>
+nnoremap <C-@>c :cc<CR>
 inoremap <C-@>n <Esc>:cnext<CR>
 nnoremap <C-@>n :cnext<CR>
 inoremap <C-@>p <Esc>:cprevious<CR>
