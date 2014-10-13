@@ -27,7 +27,7 @@ set splitbelow
 set splitright
 set helpheight=999
 set laststatus=2
-set cmdheight=3
+set cmdheight=2
 
 " serch, substitute
 set nohlsearch
@@ -66,6 +66,9 @@ autocmd BufEnter * set formatoptions=Bj
 set fileencodings=utf-8,euc-jp,sjis,latin1
 set fileformats=unix,mac,dos
 
+" latex
+let g:tex_flavor = 'latex'
+
 " colorscheme
 syntax on
 highlight Search       ctermfg=0
@@ -93,6 +96,27 @@ nnoremap <C-@>l :clist<CR>
 nnoremap <C-@>c :cc<CR>
 nnoremap <C-@>n :cnext<CR>
 nnoremap <C-@>p :cprevious<CR>
+imap <C-@> <Nop>
+imap <C-@><C-@> <Esc><C-@><C-@>
+imap <C-@>b <Esc><C-@>b
+imap <C-@>r <Esc><C-@>r
+imap <C-@>l <Esc><C-@>l
+imap <C-@>c <Esc><C-@>c
+imap <C-@>n <Esc><C-@>n
+imap <C-@>p <Esc><C-@>p
+augroup SetCompiler
+  autocmd!
+  autocmd FileType java
+        \ compiler javac
+        \ | nnoremap <C-@>r :!java %<<CR>
+  autocmd FileType ocaml
+        \ compiler ocaml
+        \ | set makeprg=ocamlopt
+        \ | nnoremap <C-@>r :!./a.out<CR>
+  autocmd FileType tex
+        \ compiler tex
+        \ | nnoremap <C-@>r :!evince %<.dvi<CR>
+augroup END
 
 " netrw
 let g:netrw_list_hide = '\v\.[^.]'
@@ -137,9 +161,6 @@ vmap <expr> <C-K> neosnippet#jumpable() ?
 nmap <expr> <C-K> neosnippet#jumpable() ?
       \ "i\<Plug>(neosnippet_jump)" : ""
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
-
-" latex
-let g:tex_flavor = 'latex'
 
 " set on filetype detection
 filetype on

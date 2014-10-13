@@ -1,7 +1,7 @@
 #! /bin/bash
 
-for f in $(ls "$HOME/dotfiles/"); do
+for f in $(ls dotfiles/); do
   echo .$f
-  [ -e "$HOME/.$f" -o -L "$HOME/.$f" ] && rm "$HOME/.$f"
-  ln -s "$HOME/dotfiles/$f" "$HOME/.$f"
+  [ -e .$f -o -L .$f ] && rm .$f
+  ln -s dotfiles/$f .$f
 done
