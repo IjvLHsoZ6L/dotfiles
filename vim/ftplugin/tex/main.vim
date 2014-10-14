@@ -13,12 +13,12 @@ set cpoptions&vim
 let g:tex_conceal = ''
 
 if search('jsarticle', 'n')
-  let g:tex_flavor = 'platex'
-  nnoremap <C-@>r :! dvipdfmx %<.dvi && evince %<.pdf &<CR>
+  let b:tex_flavor = 'platex'
+  nnoremap <C-@>r :!dvipdfmx %<.dvi && evince %<.pdf &<CR>
   imap <C-@>r <Esc><C-@>r
 else
-  let g:tex_flavor = 'pdflatex'
-  nnoremap <C-@>r  :! evince %<.pdf &<CR>
+  let b:tex_flavor = 'pdflatex'
+  nnoremap <C-@>r  :!evince %<.pdf &<CR>
   imap <C-@>r <Esc><C-@>r
 endif
 

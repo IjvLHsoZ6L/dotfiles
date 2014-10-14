@@ -60,7 +60,10 @@ set noswapfile
 set confirm
 set hidden
 set autoread
-autocmd BufEnter * set formatoptions=Bj
+augroup SetFormatOptions
+  autocmd!
+  autocmd BufEnter * set formatoptions=Bj
+augroup END
 
 " encoding
 set fileencodings=utf-8,euc-jp,sjis,latin1
@@ -89,32 +92,35 @@ highlight MatchParen   ctermfg=0
 " make
 set autowrite
 nnoremap <C-@> <Nop>
-nnoremap <C-@><C-@> :make %<CR>
-nnoremap <C-@>b :make %<CR>
-nnoremap <C-@>r :make run %<CR>
+nnoremap <C-@>b :make<CR>
+nnoremap <C-@>r :make run<CR>
 nnoremap <C-@>l :clist<CR>
 nnoremap <C-@>c :cc<CR>
 nnoremap <C-@>n :cnext<CR>
 nnoremap <C-@>p :cprevious<CR>
-imap <C-@> <Nop>
-imap <C-@><C-@> <Esc><C-@><C-@>
+inoremap <C-@> <Nop>
 imap <C-@>b <Esc><C-@>b
 imap <C-@>r <Esc><C-@>r
 imap <C-@>l <Esc><C-@>l
 imap <C-@>c <Esc><C-@>c
 imap <C-@>n <Esc><C-@>n
 imap <C-@>p <Esc><C-@>p
+nmap <C-@><C-@> <C-@>b
+imap <C-@><C-@> <Esc><C-@>b
 augroup SetCompiler
   autocmd!
   autocmd FileType java
         \ compiler javac
+        \ | nnoremap <C-@>b :make %<CR>
         \ | nnoremap <C-@>r :!java %<<CR>
   autocmd FileType ocaml
         \ compiler ocaml
-        \ | set makeprg=ocamlopt
-        \ | nnoremap <C-@>r :!./a.out<CR>
+        \ | set makeprg=ocaml
+        \ | nnoremap <C-@>b :make %<CR>
+        \ | nnoremap <C-@>r :make %<CR>
   autocmd FileType tex
         \ compiler tex
+        \ | nnoremap <C-@>b :make %<CR>
         \ | nnoremap <C-@>r :!evince %<.dvi<CR>
 augroup END
 
