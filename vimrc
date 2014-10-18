@@ -91,22 +91,14 @@ highlight MatchParen   ctermfg=0
 
 " make
 set autowrite
-nnoremap <C-@> <Nop>
-nnoremap <C-@>b :make<CR>
-nnoremap <C-@>r :make run<CR>
-nnoremap <C-@>l :clist<CR>
-nnoremap <C-@>c :cc<CR>
-nnoremap <C-@>n :cnext<CR>
-nnoremap <C-@>p :cprevious<CR>
-inoremap <C-@> <Nop>
-imap <C-@>b <Esc><C-@>b
-imap <C-@>r <Esc><C-@>r
-imap <C-@>l <Esc><C-@>l
-imap <C-@>c <Esc><C-@>c
-imap <C-@>n <Esc><C-@>n
-imap <C-@>p <Esc><C-@>p
-nmap <C-@><C-@> <C-@>b
-imap <C-@><C-@> <Esc><C-@>b
+nnoremap <Space> <Nop>
+nnoremap <Space><Space> :make<CR>
+nnoremap <Space>b :make<CR>
+nnoremap <Space>r :make run<CR>
+nnoremap <Space>l :clist<CR>
+nnoremap <Space>c :cc<CR>
+nnoremap <Space>n :cnext<CR>
+nnoremap <Space>p :cprevious<CR>
 augroup SetCompiler
   autocmd!
   autocmd FileType java
@@ -115,9 +107,6 @@ augroup SetCompiler
         \ | nnoremap <C-@>r :!java %<<CR>
   autocmd FileType ocaml
         \ compiler ocaml
-        \ | set makeprg=ocaml
-        \ | nnoremap <C-@>b :make %<CR>
-        \ | nnoremap <C-@>r :make %<CR>
   autocmd FileType tex
         \ compiler tex
         \ | nnoremap <C-@>b :make %<CR>
@@ -125,7 +114,8 @@ augroup SetCompiler
 augroup END
 
 " netrw
-let g:netrw_list_hide = '\v\.[^.]'
+let g:netrw_list_hide = '\v^\.[^.]'
+let g:netrw_sort_sequence = '\v.*'
 
 " neobundle
 if has('vim_starting')
@@ -138,6 +128,7 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'jvoorhis/coq.vim'
 NeoBundleCheck
 call neobundle#end()
 
