@@ -7,17 +7,22 @@ let s:saved_cpopotions = &cpoptions
 set cpoptions&vim
 
 "===========================================================
-" set some options
+" some options
 "===========================================================
 
 let g:tex_conceal = ''
 
+"===========================================================
+" compiler settings
+"===========================================================
+
 if search('jsarticle', 'n')
   let b:tex_flavor = 'platex'
-  nnoremap <buffer> ,r :!dvipdfmx %<.dvi && evince %<.pdf &<CR>
+  nnoremap <buffer> ,c :!dvipdfmx %<.dvi<CR>
+  nnoremap <buffer> ,v :!evince %<.pdf &<CR>
 else
   let b:tex_flavor = 'pdflatex'
-  nnoremap <buffer> ,r :!evince %<.pdf &<CR>
+  nnoremap <buffer> ,v :!evince %<.pdf &<CR>
 endif
 
 compiler tex
@@ -95,7 +100,7 @@ endfunction
 inoremap <buffer><expr> <C-J> <SID>complete()
 
 "===========================================================
-" expand environments
+" environment expansion
 "===========================================================
 
 function! s:expenv()

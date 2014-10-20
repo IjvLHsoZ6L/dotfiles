@@ -94,27 +94,36 @@ set autowrite
 nnoremap + ,
 nnoremap , <Nop>
 nnoremap ,, :make<CR>
-nnoremap ,r :make run<CR>
+nnoremap ,wo :copen<CR>
+nnoremap ,wc :cclose<CR>
 nnoremap ,l :clist<CR>
 nnoremap ,c :cc<CR>
 nnoremap ,n :cnext<CR>
 nnoremap ,p :cprevious<CR>
 augroup SetCompiler
   autocmd!
-  autocmd FileType c compiler gcc
+  autocmd FileType c
+        \ compiler gcc
         \|setlocal makeprg=gcc
         \|nnoremap <buffer> ,, :make % -o %<<CR>
         \|nnoremap <buffer> ,r :!./%<<CR>
-  autocmd FileType java compiler javac
+  autocmd FileType coq
+        \ setlocal makeprg=coqtop
+        \|nnoremap <buffer> ,, :make -lv %<CR>
+  autocmd FileType java
+        \ compiler javac
         \|nnoremap <buffer> ,, :make %<CR>
         \|nnoremap <buffer> ,r :!java %<<CR>
-  autocmd FileType ocaml compiler ocaml
+  autocmd FileType ocaml
+        \ compiler ocaml
         \|setlocal makeprg=ocamlopt
         \|nnoremap <buffer> ,, :make -i %<CR>
-        \|nnoremap <buffer> ,r :!ocaml %<CR>
-  autocmd FileType tex compiler tex
+        \|nnoremap <buffer> ,c :make % -o %<<CR>
+        \|nnoremap <buffer> ,r :!./%<<CR>
+  autocmd FileType tex
+        \ compiler tex
         \|nnoremap <buffer> ,, :make %<CR>
-        \|nnoremap <buffer> ,r :!evince %<.dvi<CR>
+        \|nnoremap <buffer> ,v :!evince %<.dvi<CR>
 augroup END
 
 " netrw
