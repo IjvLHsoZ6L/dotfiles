@@ -91,26 +91,30 @@ highlight MatchParen   ctermfg=0
 
 " make
 set autowrite
-nnoremap <Space> <Nop>
-nnoremap <Space><Space> :make<CR>
-nnoremap <Space>b :make<CR>
-nnoremap <Space>r :make run<CR>
-nnoremap <Space>l :clist<CR>
-nnoremap <Space>c :cc<CR>
-nnoremap <Space>n :cnext<CR>
-nnoremap <Space>p :cprevious<CR>
+nnoremap + ,
+nnoremap , <Nop>
+nnoremap ,, :make<CR>
+nnoremap ,r :make run<CR>
+nnoremap ,l :clist<CR>
+nnoremap ,c :cc<CR>
+nnoremap ,n :cnext<CR>
+nnoremap ,p :cprevious<CR>
 augroup SetCompiler
   autocmd!
-  autocmd FileType java
-        \ compiler javac
-        \ | nnoremap <C-@>b :make %<CR>
-        \ | nnoremap <C-@>r :!java %<<CR>
-  autocmd FileType ocaml
-        \ compiler ocaml
-  autocmd FileType tex
-        \ compiler tex
-        \ | nnoremap <C-@>b :make %<CR>
-        \ | nnoremap <C-@>r :!evince %<.dvi<CR>
+  autocmd FileType c compiler gcc
+        \|setlocal makeprg=gcc
+        \|nnoremap <buffer> ,, :make % -o %<<CR>
+        \|nnoremap <buffer> ,r :!./%<<CR>
+  autocmd FileType java compiler javac
+        \|nnoremap <buffer> ,, :make %<CR>
+        \|nnoremap <buffer> ,r :!java %<<CR>
+  autocmd FileType ocaml compiler ocaml
+        \|setlocal makeprg=ocamlopt
+        \|nnoremap <buffer> ,, :make -i %<CR>
+        \|nnoremap <buffer> ,r :!ocaml %<CR>
+  autocmd FileType tex compiler tex
+        \|nnoremap <buffer> ,, :make %<CR>
+        \|nnoremap <buffer> ,r :!evince %<.dvi<CR>
 augroup END
 
 " netrw

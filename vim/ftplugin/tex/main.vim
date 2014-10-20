@@ -14,12 +14,10 @@ let g:tex_conceal = ''
 
 if search('jsarticle', 'n')
   let b:tex_flavor = 'platex'
-  nnoremap <C-@>r :!dvipdfmx %<.dvi && evince %<.pdf &<CR>
-  imap <C-@>r <Esc><C-@>r
+  nnoremap <buffer> ,r :!dvipdfmx %<.dvi && evince %<.pdf &<CR>
 else
   let b:tex_flavor = 'pdflatex'
-  nnoremap <C-@>r  :!evince %<.pdf &<CR>
-  imap <C-@>r <Esc><C-@>r
+  nnoremap <buffer> ,r :!evince %<.pdf &<CR>
 endif
 
 compiler tex
@@ -94,7 +92,7 @@ function! s:complete()
   return repeat("\<BS>", l:maxlen) . l:val
 endfunction
 
-inoremap <expr> <C-J> <SID>complete()
+inoremap <buffer><expr> <C-J> <SID>complete()
 
 "===========================================================
 " expand environments
@@ -118,7 +116,7 @@ function! s:expenv()
   endif
 endfunction
 
-inoremap <silent> <C-E> <Esc>:call <SID>expenv()<CR>
+inoremap <buffer><silent> <C-E> <Esc>:call <SID>expenv()<CR>
 
 "===========================================================
 
