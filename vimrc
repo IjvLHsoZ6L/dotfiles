@@ -117,8 +117,9 @@ augroup SetCompiler
   autocmd FileType ocaml
         \ compiler ocaml
         \|setlocal makeprg=ocamlopt
-        \|nnoremap <buffer> ,, :make -i %<CR>
-        \|nnoremap <buffer> ,c :make % -o %<<CR>
+        \|nnoremap <buffer> ,, :!ocaml %<CR>
+        \|nnoremap <buffer> ,i :make -i %<CR>
+        \|nnoremap <buffer> ,b :make % -o %<<CR>
         \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType tex
         \ compiler tex
