@@ -1,4 +1,6 @@
 [alias]
+	br = branch
+	co = checkout
 	l = log --oneline --graph
 	s = status
 [color]
