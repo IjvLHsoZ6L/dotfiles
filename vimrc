@@ -60,10 +60,7 @@ set noswapfile
 set confirm
 set hidden
 set autoread
-augroup SetFormatOptions
-  autocmd!
-  autocmd BufEnter * set formatoptions=Bj
-augroup END
+set formatoptions=Bj
 
 " encoding
 set fileencodings=utf-8,euc-jp,sjis,latin1
@@ -73,7 +70,7 @@ set fileformats=unix,mac,dos
 let g:tex_flavor = 'latex'
 
 " colorscheme
-syntax on
+syntax reset
 highlight Search       ctermfg=0
 highlight Visual       ctermfg=0
 highlight Folded       ctermfg=0
@@ -125,7 +122,15 @@ augroup SetCompiler
         \ compiler tex
         \|nnoremap <buffer> ,, :make %<CR>
         \|nnoremap <buffer> ,v :!evince %<.dvi<CR>
+  autocmd BufEnter * call <SID>make_keybind()
 augroup END
+function! s:make_keybind()
+  if filereadable('Makefile')
+    setlocal makeprg=make
+    nnoremap <buffer> ,, :make<CR>
+    nnoremap <buffer> ,r :make run<CR>
+  endif
+endfunction
 
 " netrw
 let g:netrw_list_hide = '\v^\.[^.]'
@@ -160,6 +165,7 @@ let g:neocomplcache_enable_smart_case            = 1
 let g:neocomplcache_dictionary_filetype_lists    = {
       \ 'java': expand('~/.vim/dict/java.dict'),
       \ 'javascript': expand('~/.vim/dict/javascript.dict'),
+      \ 'ocaml': expand('~/.vim/dict/ocaml.dict'),
       \ 'text': expand('~/.vim/ftplugin/tex/keys.dict'),
       \ 'default': '',
       \ }
