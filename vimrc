@@ -107,6 +107,10 @@ augroup SetCompiler
   autocmd FileType coq
         \ setlocal makeprg=coqtop
         \|nnoremap <buffer> ,, :make -lv %<CR>
+  autocmd FileType haskell
+        \ setlocal makeprg=ghc
+        \|nnoremap <buffer> ,, :make -O2 % -o %<<CR>
+        \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType java
         \ compiler javac
         \|nnoremap <buffer> ,, :make %<CR>
