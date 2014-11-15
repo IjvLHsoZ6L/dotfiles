@@ -16,23 +16,20 @@ set t_Co=256
 set title
 set number
 set list
-set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:~
-set ambiwidth=double
+set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 set showmatch
 set showcmd
 set wildmenu
+set ambiwidth=double
 
 " window
 set splitbelow
 set splitright
-set helpheight=999
 set laststatus=2
 set cmdheight=2
 
 " serch, substitute
-set nohlsearch
 set incsearch
-set magic
 set ignorecase
 set smartcase
 set gdefault
@@ -45,6 +42,13 @@ set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+nnoremap <silent> =a :call <SID>indentAllLine()<CR>
+function! s:indentAllLine()
+  let lnum = line('.')
+  let cnum = col('.')
+  normal! gg=G
+  call cursor(lnum, cnum)
+endfunction
 
 " moving
 set scrolloff=4
@@ -54,13 +58,15 @@ set virtualedit=all
 set backspace=indent,eol,start
 noremap j gj
 noremap k gk
+noremap H ^
+noremap L $
 
 " editing
 set noswapfile
 set confirm
 set hidden
 set autoread
-set formatoptions=Bj
+set autowrite
 
 " encoding
 set fileencodings=utf-8,euc-jp,sjis,latin1
@@ -87,7 +93,6 @@ highlight ColorColumn  ctermfg=0
 highlight MatchParen   ctermfg=0
 
 " make
-set autowrite
 nnoremap + ,
 nnoremap , <Nop>
 nnoremap ,, :make<CR>
@@ -106,7 +111,7 @@ augroup SetCompiler
         \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType coq
         \ setlocal makeprg=coqtop
-        \|nnoremap <buffer> ,, :make -lv %<CR>
+        \|nnoremap <buffer> ,, :make -emacs < %<CR>
   autocmd FileType haskell
         \ setlocal makeprg=ghc
         \|nnoremap <buffer> ,, :make -O2 % -o %<<CR>
@@ -124,8 +129,9 @@ augroup SetCompiler
         \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType tex
         \ compiler tex
+        \|setlocal makeprg=pdflatex
         \|nnoremap <buffer> ,, :make %<CR>
-        \|nnoremap <buffer> ,v :!evince %<.dvi<CR>
+        \|nnoremap <buffer> ,v :!evince %<.pdf<CR>
   autocmd BufEnter * call <SID>make_keybind()
 augroup END
 function! s:make_keybind()
@@ -156,10 +162,6 @@ NeoBundleCheck
 call neobundle#end()
 
 " neocomplcache
-inoremap <expr> <CR>    neocomplcache#close_popup() . "\<CR>"
-inoremap <expr> <C-L>   neocomplcache#complete_common_string()
-inoremap <expr> <Tab>   pumvisible() ? "\<C-N>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 let g:neocomplcache_enable_at_startup            = 1
 let g:neocomplcache_auto_completion_start_length = 1
 let g:neocomplcache_min_keyword_length           = 3
@@ -173,15 +175,17 @@ let g:neocomplcache_dictionary_filetype_lists    = {
       \ 'text': expand('~/.vim/ftplugin/tex/keys.dict'),
       \ 'default': '',
       \ }
+inoremap <expr> <CR>    neocomplcache#close_popup() . "\<CR>"
+inoremap <expr> <C-L>   neocomplcache#complete_common_string()
+inoremap <expr> <Tab>   pumvisible() ? "\<C-N>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 
 " neosnippet
+let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
 imap <expr> <C-K> neosnippet#expandable_or_jumpable() ?
       \ "\<Plug>(neosnippet_expand_or_jump)" : ""
-vmap <expr> <C-K> neosnippet#jumpable() ?
-      \ "\<Plug>(neosnippet_jump)" : ""
 nmap <expr> <C-K> neosnippet#jumpable() ?
       \ "i\<Plug>(neosnippet_jump)" : ""
-let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
 
 " set on filetype detection
 filetype on
