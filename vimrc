@@ -109,9 +109,6 @@ augroup SetCompiler
         \|setlocal makeprg=gcc
         \|nnoremap <buffer> ,, :make % -o %<<CR>
         \|nnoremap <buffer> ,r :!./%<<CR>
-  autocmd FileType coq
-        \ setlocal makeprg=coqtop
-        \|nnoremap <buffer> ,, :make -emacs < %<CR>
   autocmd FileType haskell
         \ setlocal makeprg=ghc
         \|nnoremap <buffer> ,, :make -O2 % -o %<<CR>
@@ -157,7 +154,6 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'jvoorhis/coq.vim'
 NeoBundleCheck
 call neobundle#end()
 

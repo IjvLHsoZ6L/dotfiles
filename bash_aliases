@@ -4,15 +4,15 @@
 #PS1="\[\e]0;\u : \w\a\]\u:\w $ "
 
 # color
-alias grep='\grep --color=auto'
+alias grep='\grep --color=always'
 alias less='\less -R'
 
 # list
-alias ls='\ls --color=auto'
-alias l='\ls --color=auto -CF'
-alias la='\ls --color=auto -ACF'
-alias ll='\ls --color=auto -hlF'
-alias lla='\ls --color=auto -hlAF'
+alias ls='\ls --color=always'
+alias l='ls -CF'
+alias la='ls -ACF'
+alias ll='ls -hlF'
+alias lla='ls -hlAF'
 export LC_COLLATE=C
 
 # -i option
@@ -26,6 +26,6 @@ alias r='\fc -s'
 
 # change directory with listing
 function cd {
-  builtin cd "$@" && ls -ACF
+  builtin cd "$@" && ls --color=always -ACF
 }
 alias bcd='builtin cd'
