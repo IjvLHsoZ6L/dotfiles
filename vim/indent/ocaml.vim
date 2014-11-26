@@ -54,7 +54,7 @@ function! s:prevmatch(lnum, pat, negpat)
   endwhile
 endfunction
 
-function! s:is_begining(line)
+function! s:is_beginning(line)
   if a:line =~ '\v^\s*\(\*'
     return 1
   elseif a:line =~ '\v^\s*<(let|val|method|exception|external)>'
@@ -66,12 +66,13 @@ function! s:is_begining(line)
   endif
 endfunction
 
-function! s:is_complete(line)
+function! s:is_completed(line)
   if a:line =~ '\v<(if|then|else|match|try|with|while|for|do|begin|object|struct|sig)>\s*$'
     return 0
   elseif a:line =~ '\v(\w|"|\)|\}|\])\s*$'
     return 1
-  elseif a:line =~ "\v'\s*$"
+  elseif a:line =~ "\\v'\\s*$"
+    return 1
   else
     return 0
   endif
@@ -142,19 +143,22 @@ function! GetOCamlIndent()
   elseif pline =~ '\v(<in>|\*\))\s*$'
     return indent(plnum)
 
-  elseif s:is_begining(line) && s:is_complete(pline)
-    try
-      let pmlnum = s:prevmatch(plnum, '\v(<begin>|<object>|<struct>|<sig>)', '\v<end>')
-      return indent(pmlnum) + &shiftwidth
-    catch 'prevmatch: Not found.'
-      return 0
-    endtry
-
   elseif pline =~ '\v;;\s*$'
     return 0
 
   elseif pline =~ '\v;\s*$'
     return indent(plnum)
+
+  elseif pline =~ '\v^\s*\|' && !s:is_completed(pline)
+    return indent(plnum) + 2 * &shiftwidth
+
+  elseif s:is_completed(pline) && s:is_beginning(line)
+    try
+      let pmlnum = s:prevmatch(plnum, '\v<begin>|<object>|<struct>|<sig>|\(\*', '\v<end>|\*\)')
+      return indent(pmlnum) + &shiftwidth
+    catch 'prevmatch: Not found.'
+      return 0
+    endtry
 
   else
     return indent(plnum) + &shiftwidth

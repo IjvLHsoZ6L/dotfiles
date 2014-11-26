@@ -67,6 +67,10 @@ set confirm
 set hidden
 set autoread
 set autowrite
+augroup SetFormatOptions
+  autocmd!
+  autocmd BufEnter * setlocal formatoptions=Bj
+augroup END
 
 " encoding
 set fileencodings=utf-8,euc-jp,sjis,latin1
@@ -128,7 +132,7 @@ augroup SetCompiler
         \ compiler tex
         \|setlocal makeprg=pdflatex
         \|nnoremap <buffer> ,, :make %<CR>
-        \|nnoremap <buffer> ,v :!evince %<.pdf<CR>
+        \|nnoremap <buffer> ,v :!evince %<.pdf &<CR>
   autocmd BufEnter * call <SID>make_keybind()
 augroup END
 function! s:make_keybind()
