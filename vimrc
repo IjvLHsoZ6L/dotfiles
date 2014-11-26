@@ -6,11 +6,6 @@
 " this is Vim not Vi
 set nocompatible
 
-" set off filetype detection
-filetype off
-filetype plugin off
-filetype indent off
-
 " display
 set t_Co=256
 set title
@@ -23,8 +18,6 @@ set wildmenu
 set ambiwidth=double
 
 " window
-set splitbelow
-set splitright
 set laststatus=2
 set cmdheight=2
 
@@ -44,10 +37,9 @@ set softtabstop=2
 set shiftwidth=2
 nnoremap <silent> =a :call <SID>indentAllLine()<CR>
 function! s:indentAllLine()
-  let lnum = line('.')
-  let cnum = col('.')
+  let save_cursor = getpos('.')
   normal! gg=G
-  call cursor(lnum, cnum)
+  call setpos('.', save_cursor)
 endfunction
 
 " moving
@@ -67,6 +59,10 @@ set confirm
 set hidden
 set autoread
 set autowrite
+augroup SetFormatOptions
+  autocmd!
+  autocmd BufEnter * setlocal formatoptions=Bj
+augroup END
 
 " encoding
 set fileencodings=utf-8,euc-jp,sjis,latin1
@@ -74,23 +70,6 @@ set fileformats=unix,mac,dos
 
 " latex
 let g:tex_flavor = 'latex'
-
-" colorscheme
-syntax reset
-highlight Search       ctermfg=0
-highlight Visual       ctermfg=0
-highlight Folded       ctermfg=0
-highlight FoldColumn   ctermfg=0
-highlight DiffAdd      ctermfg=0
-highlight DiffChange   ctermfg=0
-highlight DiffDelete   ctermfg=0
-highlight SpellBad     ctermfg=0
-highlight SpellCap     ctermfg=0
-highlight SpellRare    ctermfg=0
-highlight SpellLocal   ctermfg=0
-highlight CursorColumn ctermfg=0
-highlight ColorColumn  ctermfg=0
-highlight MatchParen   ctermfg=0
 
 " make
 nnoremap + ,
@@ -128,7 +107,7 @@ augroup SetCompiler
         \ compiler tex
         \|setlocal makeprg=pdflatex
         \|nnoremap <buffer> ,, :make %<CR>
-        \|nnoremap <buffer> ,v :!evince %<.pdf<CR>
+        \|nnoremap <buffer> ,v :!evince %<.pdf &<CR>
   autocmd BufEnter * call <SID>make_keybind()
 augroup END
 function! s:make_keybind()
@@ -154,6 +133,7 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
 call neobundle#end()
 
@@ -183,7 +163,22 @@ imap <expr> <C-K> neosnippet#expandable_or_jumpable() ?
 nmap <expr> <C-K> neosnippet#jumpable() ?
       \ "i\<Plug>(neosnippet_jump)" : ""
 
+" colorscheme
+syntax on
+highlight Search       ctermfg=0
+highlight Visual       ctermfg=0
+highlight Folded       ctermfg=0
+highlight FoldColumn   ctermfg=0
+highlight DiffAdd      ctermfg=0
+highlight DiffChange   ctermfg=0
+highlight DiffDelete   ctermfg=0
+highlight SpellBad     ctermfg=0
+highlight SpellCap     ctermfg=0
+highlight SpellRare    ctermfg=0
+highlight SpellLocal   ctermfg=0
+highlight CursorColumn ctermfg=0
+highlight ColorColumn  ctermfg=0
+highlight MatchParen   ctermfg=0
+
 " set on filetype detection
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin plugin on
