@@ -181,4 +181,4 @@ highlight ColorColumn  ctermfg=0
 highlight MatchParen   ctermfg=0
 
 " set on filetype detection
-filetype plugin plugin on
+filetype plugin indent on
