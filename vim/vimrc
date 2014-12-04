@@ -1,13 +1,10 @@
-" .vimrc
-" Vim setting file
-" Author: TOUNAI Shouta
-" Version: 0.0
+" Maintainer:  IjvLHsoZ6L
+" Last Change: 2015 Dec 4
 
 " this is Vim not Vi
 set nocompatible
 
 " display
-set t_Co=256
 set title
 set number
 set list
@@ -16,8 +13,6 @@ set showmatch
 set showcmd
 set wildmenu
 set ambiwidth=double
-
-" window
 set laststatus=2
 set cmdheight=2
 
@@ -132,6 +127,7 @@ NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
@@ -151,34 +147,24 @@ let g:neocomplcache_dictionary_filetype_lists    = {
       \ 'text': expand('~/.vim/ftplugin/tex/keys.dict'),
       \ 'default': '',
       \ }
-inoremap <expr> <CR>    neocomplcache#close_popup() . "\<CR>"
+inoremap <expr> <CR>    neocomplcache#close_popup() . '<CR>'
 inoremap <expr> <C-L>   neocomplcache#complete_common_string()
-inoremap <expr> <Tab>   pumvisible() ? "\<C-N>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
+inoremap <expr> <Tab>   pumvisible() ? '<C-N>' : '<Tab>'
+inoremap <expr> <S-Tab> pumvisible() ? '<C-P>' : '<S-Tab>'
 
 " neosnippet
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
 imap <expr> <C-K> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)" : ""
+      \ '<Plug>(neosnippet_expand_or_jump)' : ''
 nmap <expr> <C-K> neosnippet#jumpable() ?
-      \ "i\<Plug>(neosnippet_jump)" : ""
+      \ 'i<Plug>(neosnippet_jump)' : ''
 
 " colorscheme
-syntax on
-highlight Search       ctermfg=0
-highlight Visual       ctermfg=0
-highlight Folded       ctermfg=0
-highlight FoldColumn   ctermfg=0
-highlight DiffAdd      ctermfg=0
-highlight DiffChange   ctermfg=0
-highlight DiffDelete   ctermfg=0
-highlight SpellBad     ctermfg=0
-highlight SpellCap     ctermfg=0
-highlight SpellRare    ctermfg=0
-highlight SpellLocal   ctermfg=0
-highlight CursorColumn ctermfg=0
-highlight ColorColumn  ctermfg=0
-highlight MatchParen   ctermfg=0
+syntax enable
+set t_Co=16
+set background=dark
+let g:solarized_termcolors = 16
+colorscheme solarized
 
 " set on filetype detection
 filetype plugin indent on
