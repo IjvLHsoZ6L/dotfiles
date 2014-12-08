@@ -63,9 +63,6 @@ augroup END
 set fileencodings=utf-8,euc-jp,sjis,latin1
 set fileformats=unix,mac,dos
 
-" latex
-let g:tex_flavor = 'latex'
-
 " make
 nnoremap + ,
 nnoremap , <Nop>
@@ -84,8 +81,8 @@ augroup SetCompiler
         \|nnoremap <buffer> ,, :make % -o %<<CR>
         \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType haskell
-        \ setlocal makeprg=ghc
-        \|nnoremap <buffer> ,, :make -O2 % -o %<<CR>
+        \ setlocal makeprg=ghc\ -02
+        \|nnoremap <buffer> ,, :make % -o %<<CR>
         \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType java
         \ compiler javac
@@ -100,18 +97,21 @@ augroup SetCompiler
         \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType tex
         \ compiler tex
-        \|setlocal makeprg=pdflatex
+        \|setlocal makeprg=pdflatex\ -interaction=nonstopmode
         \|nnoremap <buffer> ,, :make %<CR>
         \|nnoremap <buffer> ,v :!evince %<.pdf &<CR>
-  autocmd BufEnter * call <SID>make_keybind()
+  autocmd BufEnter * call <SID>makefile_exists()
 augroup END
-function! s:make_keybind()
+function! s:makefile_exists()
   if filereadable('Makefile')
     setlocal makeprg=make
     nnoremap <buffer> ,, :make<CR>
     nnoremap <buffer> ,r :make run<CR>
   endif
 endfunction
+
+" latex
+let g:tex_flavor = 'latex'
 
 " netrw
 let g:netrw_list_hide = '\v^\.[^.]'
@@ -128,7 +128,6 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
 call neobundle#end()
@@ -163,7 +162,6 @@ nmap <expr> <C-K> neosnippet#jumpable() ?
 syntax enable
 set t_Co=16
 set background=dark
-let g:solarized_termcolors = 16
 colorscheme solarized
 
 " set on filetype detection
