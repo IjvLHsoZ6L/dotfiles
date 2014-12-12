@@ -47,6 +47,8 @@ noremap j gj
 noremap k gk
 noremap H ^
 noremap L $
+noremap <C-n> gt
+noremap <C-p> gT
 
 " editing
 set noswapfile
