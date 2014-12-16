@@ -14,7 +14,7 @@ setlocal indentexpr=GetOCamlIndent()
 setlocal indentkeys=!^F,o,O
 setlocal indentkeys+=0=let,0=val,0=method,0=exception,0=external
 setlocal indentkeys+=0=type,0=class,0=module,0=open,0=include
-setlocal indentkeys+=0=(*,0=*)
+setlocal indentkeys+=0=(*
 setlocal indentkeys+=0=and,0=in,0=then,0=else,0=with,0=do,0=done,0=end
 setlocal indentkeys+=\|,),},]
 setlocal nolisp
@@ -69,9 +69,7 @@ endfunction
 function! s:is_completed(line)
   if a:line =~ '\v<(if|then|else|match|try|with|while|for|do|begin|object|struct|sig)>\s*$'
     return 0
-  elseif a:line =~ '\v(\w|"|\)|\}|\])\s*$'
-    return 1
-  elseif a:line =~ "\\v'\\s*$"
+  elseif a:line =~ '\v(\w|''|"|\)|\}|\])\s*$'
     return 1
   else
     return 0
@@ -89,7 +87,7 @@ function! GetOCamlIndent()
   if plnum == 0
     return 0
 
-  elseif line =~ '\v^\s*(<and>|<in>)>'
+  elseif line =~ '\v^\s*<(and|in)>'
     return indent(s:prevmatch(plnum, '\v<let>', '\v<in>'))
 
   elseif line =~ '\v^\s*<then>'
@@ -101,11 +99,11 @@ function! GetOCamlIndent()
   elseif line =~ '\v^\s*<with>'
     return indent(s:prevmatch(plnum, '\v<(match|try)>', '\v<with>'))
 
-  elseif line =~ '\v^\s*(<do>|<done>)'
-    return indent(s:prevmatch(plnum, '\v<for>', '\v<done>'))
+  elseif line =~ '\v^\s*<(do|done)>'
+    return indent(s:prevmatch(plnum, '\v<(while|for)>', '\v<done>'))
 
   elseif line =~ '\v^\s*<end>'
-    return indent(s:prevmatch(plnum, '\v(<begin>|<object>|<struct>|<sig>)', '\v<end>'))
+    return indent(s:prevmatch(plnum, '\v<(begin|object|struct|sig)>', '\v<end>'))
 
   elseif line =~ '\v^\s*;;'
     return 0
