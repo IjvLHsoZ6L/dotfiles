@@ -1,14 +1,12 @@
 #! /bin/bash
 # .bash_aliases
 
-#PS1="\[\e]0;\u : \w\a\]\u:\w $ "
-
 # color
+alias ls='\ls --color=always'
 alias grep='\grep --color=always'
 alias less='\less -R'
 
 # list
-alias ls='\ls --color=always'
 alias l='ls -CF'
 alias la='ls -ACF'
 alias ll='ls -hlF'
@@ -25,7 +23,7 @@ alias his='\fc -l'
 alias r='\fc -s'
 
 # change directory with listing
-function cd {
-  builtin cd "$@" && ls --color=always -ACF
+function cdla {
+  cd "$@" && ls --color=always -ACF
 }
-alias bcd='builtin cd'
+alias cd='cdla'
