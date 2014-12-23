@@ -1,0 +1,16 @@
+" vim: set filetype=vim :
+
+set focuscontent
+
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+
+set gui=all
+
+noremap h 3h
+noremap j 3j
+noremap k 3k
+noremap l 3l
+
+highlight Hint z-index: 5000; font: bold 16px Courier, monospace; color: red; background: white;
+highlight HintElem   color: gray; background-color: cyan;
+highlight HintActive color: black; background-color: lime;
