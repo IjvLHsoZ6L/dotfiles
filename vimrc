@@ -1,8 +1,18 @@
 " Maintainer:  IjvLHsoZ6L
 " Last Change: 2015 Dec 4
 
-" this is Vim not Vi
-set nocompatible
+" encoding
+set encoding=utf-8
+set fileencodings=utf-8,euc-jp,sjis,latin1
+set fileformats=unix,mac,dos
+scriptencoding utf-8
+
+" for GVim
+if has('gui_running')
+  set lines=999
+  set columns=999
+  set guifont=Monospace\ 18
+endif
 
 " display
 set title
@@ -32,9 +42,9 @@ set softtabstop=2
 set shiftwidth=2
 nnoremap <silent> =a :call <SID>indentAllLine()<CR>
 function! s:indentAllLine()
-  let save_cursor = getpos('.')
+  let l:save_cursor = getpos('.')
   normal! gg=G
-  call setpos('.', save_cursor)
+  call setpos('.', l:save_cursor)
 endfunction
 
 " moving
@@ -60,10 +70,6 @@ augroup SetFormatOptions
   autocmd!
   autocmd BufEnter * setlocal formatoptions=Bj
 augroup END
-
-" encoding
-set fileencodings=utf-8,euc-jp,sjis,latin1
-set fileformats=unix,mac,dos
 
 " make
 nnoremap + ,
@@ -161,10 +167,10 @@ nmap <expr> <C-K> neosnippet#jumpable() ?
       \ 'i<Plug>(neosnippet_jump)' : ''
 
 " colorscheme
-syntax enable
 set t_Co=16
 set background=dark
 colorscheme solarized
+syntax on
 
 " set on filetype detection
 filetype plugin indent on
