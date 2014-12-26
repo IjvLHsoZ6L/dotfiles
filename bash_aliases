@@ -24,6 +24,6 @@ alias r='\fc -s'
 
 # change directory with listing
 function cdla {
-  cd "$@" && ls --color=always -ACF
+  builtin cd "$@" && la
 }
 alias cd='cdla'
