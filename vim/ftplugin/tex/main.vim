@@ -17,11 +17,9 @@ let g:tex_conceal = ''
 "===========================================================
 
 if search('jsarticle', 'n') || search('msjproc', 'n')
-  let b:tex_flavor = 'platex'
-  nnoremap <buffer> ,v :!dvipdfmx %<.dvi && okular %<.pdf &<CR>
+  let b:tex_flavor = 'pdfplatex'
 else
   let b:tex_flavor = 'pdflatex'
-  nnoremap <buffer> ,v :!okular %<.pdf &<CR>
 endif
 
 compiler tex
