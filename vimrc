@@ -19,12 +19,15 @@ set title
 set number
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
+set display=lastline,uhex
 set showmatch
+set matchtime=1
 set showcmd
 set wildmenu
 set ambiwidth=double
 set laststatus=2
 set cmdheight=2
+set pumheight=10
 
 " serch, substitute
 set incsearch
@@ -40,12 +43,6 @@ set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-nnoremap <silent> =a :call <SID>indentAllLine()<CR>
-function! s:indentAllLine()
-  let l:save_cursor = getpos('.')
-  normal! gg=G
-  call setpos('.', l:save_cursor)
-endfunction
 
 " moving
 set scrolloff=4
@@ -53,12 +50,6 @@ set sidescrolloff=8
 set nostartofline
 set virtualedit=all
 set backspace=indent,eol,start
-noremap j gj
-noremap k gk
-noremap H ^
-noremap L $
-noremap <C-n> gt
-noremap <C-p> gT
 
 " editing
 set noswapfile
@@ -70,6 +61,21 @@ augroup SetFormatOptions
   autocmd!
   autocmd BufEnter * setlocal formatoptions=Bj
 augroup END
+
+" mappings
+noremap j gj
+noremap k gk
+noremap H ^
+noremap L $
+nnoremap <C-n> gt
+nnoremap <C-p> gT
+nnoremap Y y$
+nnoremap <silent> =a :call <SID>indentAllLine()<CR>
+function! s:indentAllLine()
+  let l:save_cursor = getpos('.')
+  normal! gg=G
+  call setpos('.', l:save_cursor)
+endfunction
 
 " make
 nnoremap + ,
