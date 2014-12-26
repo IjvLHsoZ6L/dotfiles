@@ -113,7 +113,7 @@ augroup SetCompiler
         \ compiler tex
         \|setlocal makeprg=pdflatex\ -interaction=nonstopmode
         \|nnoremap <buffer> ,, :make %<CR>
-        \|nnoremap <buffer> ,v :!evince %<.pdf &<CR>
+        \|nnoremap <buffer> ,v :!okular %<.pdf &<CR>
   autocmd BufEnter * call <SID>makefile_exists()
 augroup END
 function! s:makefile_exists()
