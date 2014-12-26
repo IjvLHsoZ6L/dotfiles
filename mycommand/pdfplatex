@@ -1,6 +1,6 @@
 #! /bin/bash
 
-platex $* && \
+platex "$@" && \
   for arg in $*; do
     if [ -f ${arg%.tex}.dvi ]; then
       dvipdfmx ${arg%.tex}.dvi
