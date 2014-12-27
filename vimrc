@@ -67,6 +67,7 @@ noremap j gj
 noremap k gk
 noremap H ^
 noremap L $
+noremap <Space> <C-d>
 nnoremap <C-n> gt
 nnoremap <C-p> gT
 nnoremap Y y$
@@ -105,14 +106,13 @@ augroup SetCompiler
   autocmd FileType ocaml
         \ compiler ocaml
         \|setlocal makeprg=ocamlopt
-        \|nnoremap <buffer> ,, :!ocaml %<CR>
+        \|nnoremap <buffer> ,, :make % -o %<<CR>
         \|nnoremap <buffer> ,i :make -i %<CR>
-        \|nnoremap <buffer> ,b :make % -o %<<CR>
         \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType tex
         \ compiler tex
-        \|setlocal makeprg=pdflatex\ -interaction=nonstopmode
         \|nnoremap <buffer> ,, :make %<CR>
+        \|nnoremap <buffer> ,v :!okular %<.pdf &<CR>
   autocmd BufEnter * call <SID>makefile_exists()
 augroup END
 function! s:makefile_exists()
