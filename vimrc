@@ -95,7 +95,7 @@ augroup SetCompiler
         \|nnoremap <buffer> ,, :make % -o %<<CR>
         \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType haskell
-        \ setlocal makeprg=ghc\ -02
+        \ setlocal makeprg=ghc\ -O2
         \|nnoremap <buffer> ,, :make % -o %<<CR>
         \|nnoremap <buffer> ,r :!./%<<CR>
   autocmd FileType java

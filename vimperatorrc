@@ -11,15 +11,15 @@ noremap j 3j
 noremap k 3k
 noremap l 3l
 
-command -nargs=* eow tabopen eow.alc.co.jp/search?q=<args>
+command! -nargs=* eow tabopen eow.alc.co.jp/search?q=<args>
 noremap e :eow 
 
-command -nargs=* wikija tabopen ja.wikipedia.org/w/index.php?search=<args>
+command! -nargs=* wikija tabopen ja.wikipedia.org/w/index.php?search=<args>
 noremap wj :wikija 
 
-command -nargs=* wikien tabopen en.wikipedia.org/w/index.php?search=<args>
+command! -nargs=* wikien tabopen en.wikipedia.org/w/index.php?search=<args>
 noremap we :wikien 
 
-highlight Hint       z-index: 5000; font: bold 16px Courier, monospace; color: red; background: white;
-highlight HintElem   color: gray;  background-color: cyan;
-highlight HintActive color: black; background-color: lime;
+highlight Hint       z-index: 5000; font: bold 18px Courier, monospace; color: red; background: white;
+highlight HintElem   color: gray;  background: cyan;
+highlight HintActive color: black; background: lime;
