@@ -11,6 +11,9 @@ noremap j 3j
 noremap k 3k
 noremap l 3l
 
-highlight Hint       z-index: 5000; font: bold 150% Courier, monospace; color: red; background: white;
-highlight HintElem   color: gray;  background: cyan;
+nnoremap zs :zoom! 150<CR>
+nnoremap zd :zoom! 200<CR>
+
+highlight Hint       z-index: 5000; font: bold 100% Courier, monospace; color: red; background: cyan;
+highlight HintElem   color: gray;  background: yellow;
 highlight HintActive color: black; background: lime;
