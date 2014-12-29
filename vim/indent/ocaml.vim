@@ -130,12 +130,16 @@ function! GetOCamlIndent()
     return indent(s:prevmatch(plnum, '\v\[\|', '\v\|\]'))
 
   elseif line =~ '\v^\s*\|'
-    let pmlnum = s:prevmatch(plnum, '\v<match>|<function>|<type>|\(', '\v\)')
-    let pmline = getline(pmlnum)
-    if pmline =~ '\v^\s*(<match>|<function>)'
-      return indent(pmlnum)
+    if pline =~ '\v^\s*\|' || pline =~ '\v^\s*\)\s*'
+      return indent(plnum)
     else
-      return indent(pmlnum) + &shiftwidth
+      let pmlnum = s:prevmatch(plnum, '\v<match>|<function>|<type>|\(', '\v\)')
+      let pmline = getline(pmlnum)
+      if pmline =~ '\v^\s*(<match>|<function>)'
+        return indent(pmlnum)
+      else
+        return indent(pmlnum) + &shiftwidth
+      endif
     endif
 
   elseif pline =~ '\v(<in>|\*\))\s*$'
