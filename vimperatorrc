@@ -11,9 +11,13 @@ noremap j 3j
 noremap k 3k
 noremap l 3l
 
+nnoremap zz :zoom! 100<CR>
+nnoremap za :zoom! 120<CR>
 nnoremap zs :zoom! 150<CR>
 nnoremap zd :zoom! 200<CR>
 
-highlight Hint       z-index: 5000; font: bold 100% Courier, monospace; color: red; background: cyan;
-highlight HintElem   color: gray;  background: yellow;
+command! rc source ~/.vimperatorrc
+
+highlight Hint color: red; background: white; font: bold 18px arial; text-transform: uppercase; padding: 0px 2px;
+highlight HintElem color: black; background: cyan;
 highlight HintActive color: black; background: lime;
