@@ -72,6 +72,7 @@ noremap <Space> <C-d>
 nnoremap <C-n> gt
 nnoremap <C-p> gT
 nnoremap Y y$
+nnoremap <silent> gc :chdir %:p:h \| pwd<CR>
 nnoremap <silent> =a :call <SID>indentAllLine()<CR>
 function! s:indentAllLine()
   let l:save_cursor = getpos('.')
@@ -140,8 +141,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
 call neobundle#end()
@@ -171,6 +176,15 @@ imap <expr> <C-K> neosnippet#expandable_or_jumpable() ?
       \ '<Plug>(neosnippet_expand_or_jump)' : ''
 nmap <expr> <C-K> neosnippet#jumpable() ?
       \ 'i<Plug>(neosnippet_jump)' : ''
+
+" unite
+nnoremap gb :Unite -tab buffer<CR>
+nnoremap gz :Unite -tab file_mru<CR>
+
+" nerdtree
+let g:NERDTreeCaseSensitiveSort = 1
+nnoremap gn :tabe %:p:h<CR>
+nnoremap gN :tabe $HOME<CR>
 
 " colorscheme
 set t_Co=16
