@@ -16,20 +16,31 @@ setlocal indentkeys+=0=let,0=val,0=method,0=exception,0=external
 setlocal indentkeys+=0=type,0=class,0=module,0=open,0=include
 setlocal indentkeys+=0=(*
 setlocal indentkeys+=0=and,0=in,0=then,0=else,0=with,0=do,0=done,0=end
-setlocal indentkeys+=\|,),},]
+setlocal indentkeys+=\|,),],}
 setlocal nolisp
-setlocal nosmartindent
 
 " Only define the function once.
 if exists('*GetOCamlIndent')
   finish
 endif
 
+function! s:begins_with(line, pat)
+  return a:line =~ '\v\C^\s*(' . a:pat . ')'
+endfunction
+
+function! s:ends_with(line, pat)
+  return a:line =~ '\v\C(' . a:pat . ')\s*$'
+endfunction
+
+function! s:contains_only(line, pat)
+  return a:line =~ '\v\C^\s*(' . a:pat . ')\s*$'
+endfunction
+
 function! s:matchcount(line, pat)
   let mcount = 0
   let mstart = 0
   while 1
-    let mend = matchend(a:line, a:pat, mstart)
+    let mend = matchend(a:line, '\v\C(' . a:pat . ')', mstart)
     if mend == -1
       return mcount
     endif
@@ -55,11 +66,11 @@ function! s:prevmatch(lnum, pat, negpat)
 endfunction
 
 function! s:is_beginning(line)
-  if a:line =~ '\v^\s*\(\*'
+  if s:begins_with(a:line, '\(\*')
     return 1
-  elseif a:line =~ '\v^\s*<(let|val|method|exception|external)>'
+  elseif s:begins_with(a:line, '<let>|<val>|<method>|<exception>|<external>')
     return 1
-  elseif a:line =~ '\v^\s*<(type|class|module|open|include)>'
+  elseif s:begins_with(a:line, '<type>|<class>|<module>|<open>|<include>')
     return 1
   else
     return 0
@@ -67,9 +78,11 @@ function! s:is_beginning(line)
 endfunction
 
 function! s:is_completed(line)
-  if a:line =~ '\v<(if|then|else|match|try|with|while|for|do|begin|object|struct|sig)>\s*$'
+  if s:ends_with(a:line, '<if>|<then>|<else>|<match>|<try>|<with>|<while>|<for>|<do>')
     return 0
-  elseif a:line =~ '\v(\w|''|"|\)|\}|\])\s*$'
+  elseif s:ends_with(a:line, '<begin>|<object>|<struct>|<sig>')
+    return 0
+  elseif s:ends_with(a:line, '\w|''|"|\)|\]|\}')
     return 1
   else
     return 0
@@ -87,76 +100,76 @@ function! GetOCamlIndent()
   if plnum == 0
     return 0
 
-  elseif line =~ '\v^\s*<(and|in)>'
-    return indent(s:prevmatch(plnum, '\v<let>', '\v<in>'))
+  elseif s:begins_with(line, '<and>|<in>')
+    return indent(s:prevmatch(plnum, '<let>', '<in>'))
 
-  elseif line =~ '\v^\s*<then>'
-    return indent(s:prevmatch(plnum, '\v<if>', '\v<then>'))
+  elseif s:begins_with(line, '<then>')
+    return indent(s:prevmatch(plnum, '<if>', '<then>'))
 
-  elseif line =~ '\v^\s*<else>'
-    return indent(s:prevmatch(plnum, '\v<if>', '\v<else>'))
+  elseif s:begins_with(line, '<else>')
+    return indent(s:prevmatch(plnum, '<if>', '<else>'))
 
-  elseif line =~ '\v^\s*<with>'
-    return indent(s:prevmatch(plnum, '\v<(match|try)>', '\v<with>'))
+  elseif s:begins_with(line, '<with>')
+    return indent(s:prevmatch(plnum, '<match>|<try>', '<with>'))
 
-  elseif line =~ '\v^\s*<(do|done)>'
-    return indent(s:prevmatch(plnum, '\v<(while|for)>', '\v<done>'))
+  elseif s:begins_with(line, '<do>|<done>')
+    return indent(s:prevmatch(plnum, '<while>|<for>', '<done>'))
 
-  elseif line =~ '\v^\s*<end>'
-    return indent(s:prevmatch(plnum, '\v<(begin|object|struct|sig)>', '\v<end>'))
+  elseif s:begins_with(line, '<end>')
+    return indent(s:prevmatch(plnum, '<begin>|<object>|<struct>|<sig>', '<end>'))
 
-  elseif line =~ '\v^\s*;;'
+  elseif s:begins_with(line, ';;')
     return 0
 
-  elseif line =~ '\v^\s*\*\)'
-    return indent(s:prevmatch(plnum, '\v\(\*', '\v\*\)'))
+  elseif s:begins_with(line, '\*\)')
+    return indent(s:prevmatch(plnum, '\(\*', '\*\)'))
 
-  elseif line =~ '\v^\s*\)'
-    return indent(s:prevmatch(plnum, '\v\(', '\v\)'))
+  elseif s:begins_with(line, '\)')
+    return indent(s:prevmatch(plnum, '\(', '\)'))
 
-  elseif line =~ '\v^\s*\}'
-    return indent(s:prevmatch(plnum, '\v\{', '\v\}'))
+  elseif s:begins_with(line, '\]')
+    return indent(s:prevmatch(plnum, '\[', '\]'))
 
-  elseif line =~ '\v^\s*\]'
-    return indent(s:prevmatch(plnum, '\v\[', '\v\]'))
+  elseif s:begins_with(line, '\}')
+    return indent(s:prevmatch(plnum, '\{', '\}'))
 
-  elseif line =~ '\v^\s*\>\}'
-    return indent(s:prevmatch(plnum, '\v\{\<', '\v\>\}'))
+  elseif s:begins_with(line, '\|\]')
+    return indent(s:prevmatch(plnum, '\[\|', '\|\]'))
 
-  elseif line =~ '\v^\s*\>\]'
-    return indent(s:prevmatch(plnum, '\v\[\<', '\v\>\]'))
+  elseif s:begins_with(line, '\>\]')
+    return indent(s:prevmatch(plnum, '\[\<', '\>\]'))
 
-  elseif line =~ '\v^\s*\|\]'
-    return indent(s:prevmatch(plnum, '\v\[\|', '\v\|\]'))
+  elseif s:begins_with(line, '\>\}')
+    return indent(s:prevmatch(plnum, '\{\<', '\>\}'))
 
-  elseif line =~ '\v^\s*\|'
-    if pline =~ '\v^\s*\|' || pline =~ '\v^\s*\)\s*'
+  elseif s:begins_with(line, '\|')
+    if s:begins_with(pline, '\|') || s:contains_only(pline, '\)')
       return indent(plnum)
     else
-      let pmlnum = s:prevmatch(plnum, '\v<match>|<function>|<type>|\(', '\v\)')
+      let pmlnum = s:prevmatch(plnum, '<match>|<try>|<function>|<type>|\(', '\)')
       let pmline = getline(pmlnum)
-      if pmline =~ '\v^\s*(<match>|<function>)'
+      if s:begins_with(pmline, '<match>|<try>|<function>')
         return indent(pmlnum)
       else
         return indent(pmlnum) + &shiftwidth
       endif
     endif
 
-  elseif pline =~ '\v(<in>|\*\))\s*$'
+  elseif s:ends_with(pline, '<in>|\*\)')
     return indent(plnum)
 
-  elseif pline =~ '\v;;\s*$'
+  elseif s:ends_with(pline, ';;')
     return 0
 
-  elseif pline =~ '\v;\s*$'
+  elseif s:ends_with(pline, ';')
     return indent(plnum)
 
-  elseif pline =~ '\v^\s*\|' && !s:is_completed(pline)
+  elseif s:begins_with(pline, '\|') && ! s:is_completed(pline)
     return indent(plnum) + 2 * &shiftwidth
 
   elseif s:is_completed(pline) && s:is_beginning(line)
     try
-      let pmlnum = s:prevmatch(plnum, '\v<begin>|<object>|<struct>|<sig>|\(\*', '\v<end>|\*\)')
+      let pmlnum = s:prevmatch(plnum, '<begin>|<object>|<struct>|<sig>|\(\*', '<end>|\*\)')
       return indent(pmlnum) + &shiftwidth
     catch 'prevmatch: Not found.'
       return 0
