@@ -147,6 +147,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'IjvLHsoZ6L/indent-ocaml.vim'
 NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
 call neobundle#end()
