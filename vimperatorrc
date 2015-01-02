@@ -11,6 +11,9 @@ noremap j 3j
 noremap k 3k
 noremap l 3l
 
+noremap g<C-N> :tabmove +1<CR>
+noremap g<C-P> :tabmove -1<CR>
+
 nnoremap zz :zoom! 100<CR>
 nnoremap za :zoom! 120<CR>
 nnoremap zs :zoom! 150<CR>
