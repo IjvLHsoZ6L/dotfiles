@@ -68,9 +68,11 @@ noremap j gj
 noremap k gk
 noremap H ^
 noremap L $
-noremap <Space> <C-d>
-nnoremap <C-n> gt
-nnoremap <C-p> gT
+noremap <Space> <C-D>
+nnoremap <C-N> gt
+nnoremap <C-P> gT
+nnoremap g<C-N> :tabmove +1<CR>
+nnoremap g<C-P> :tabmove -1<CR>
 nnoremap Y y$
 nnoremap <silent> gc :chdir %:p:h \| pwd<CR>
 nnoremap <silent> =a :call <SID>indentAllLine()<CR>
