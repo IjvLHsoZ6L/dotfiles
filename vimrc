@@ -97,26 +97,26 @@ augroup SetCompiler
   autocmd FileType c
         \ compiler gcc
         \|setlocal makeprg=gcc
-        \|nnoremap <buffer> ,, :make % -o %<<CR>
-        \|nnoremap <buffer> ,r :!./%<<CR>
+        \|nnoremap <buffer> ,, :make -o %< %<CR>
+        \|nnoremap <buffer> ,r :! ./%< <CR>
   autocmd FileType haskell
         \ setlocal makeprg=ghc\ -O2
-        \|nnoremap <buffer> ,, :make % -o %<<CR>
-        \|nnoremap <buffer> ,r :!./%<<CR>
+        \|nnoremap <buffer> ,, :make -o %< %<CR>
+        \|nnoremap <buffer> ,r :! ./%< <CR>
   autocmd FileType java
         \ compiler javac
         \|nnoremap <buffer> ,, :make %<CR>
-        \|nnoremap <buffer> ,r :!java %<<CR>
+        \|nnoremap <buffer> ,r :! java %< <CR>
   autocmd FileType ocaml
         \ compiler ocaml
         \|setlocal makeprg=ocamlopt
-        \|nnoremap <buffer> ,, :make % -o %<<CR>
+        \|nnoremap <buffer> ,, :make -o %< %<CR>
         \|nnoremap <buffer> ,i :make -i %<CR>
-        \|nnoremap <buffer> ,r :!./%<<CR>
+        \|nnoremap <buffer> ,r :! ./%< <CR>
   autocmd FileType tex
         \ compiler tex
         \|nnoremap <buffer> ,, :make %<CR>
-        \|nnoremap <buffer> ,v :!okular %<.pdf &<CR>
+        \|nnoremap <buffer> ,v :! okular %<.pdf & <CR>
   autocmd BufEnter * call <SID>makefile_exists()
 augroup END
 function! s:makefile_exists()
@@ -149,6 +149,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'dag/vim2hs'
 NeoBundle 'IjvLHsoZ6L/indent-ocaml.vim'
 NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
