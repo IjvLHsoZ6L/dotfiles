@@ -101,7 +101,8 @@ augroup SetCompiler
         \|nnoremap <buffer> ,r :! ./%< <CR>
   autocmd FileType haskell
         \ setlocal makeprg=ghc\ -O2
-        \|nnoremap <buffer> ,, :make -o %< %<CR>
+        \|nnoremap <buffer> ,, :w \|! runghc %<CR>
+        \|nnoremap <buffer> ,b :make -o %< %<CR>
         \|nnoremap <buffer> ,r :! ./%< <CR>
   autocmd FileType java
         \ compiler javac
@@ -110,9 +111,10 @@ augroup SetCompiler
   autocmd FileType ocaml
         \ compiler ocaml
         \|setlocal makeprg=ocamlopt
-        \|nnoremap <buffer> ,, :make -o %< %<CR>
-        \|nnoremap <buffer> ,i :make -i %<CR>
+        \|nnoremap <buffer> ,, :w \|! ocaml %<CR>
+        \|nnoremap <buffer> ,b :make -o %< %<CR>
         \|nnoremap <buffer> ,r :! ./%< <CR>
+        \|nnoremap <buffer> ,i :make -i %<CR>
   autocmd FileType tex
         \ compiler tex
         \|nnoremap <buffer> ,, :make %<CR>
@@ -150,6 +152,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
+NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'IjvLHsoZ6L/indent-ocaml.vim'
 NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
