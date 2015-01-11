@@ -2,6 +2,6 @@
 
 source /etc/skel/.bashrc
 
-PS1="$(echo "$PS1" | sed 's/@\\h//g')"
+PS1="\W \$ "
 EDITOR=vi
 FCEDIT=vi
