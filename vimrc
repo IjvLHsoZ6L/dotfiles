@@ -104,7 +104,7 @@ augroup SetCompiler
         \|nnoremap <buffer> ,, :w \|! runghc %<CR>
         \|nnoremap <buffer> ,b :make -o %< %<CR>
         \|nnoremap <buffer> ,r :! ./%<<CR>
-        \|nnoremap <buffer> ,i :w \|! ghci %<CR>
+        \|nnoremap <buffer> ,i :w \|! hugs %<CR>
   autocmd FileType java
         \ compiler javac
         \|nnoremap <buffer> ,, :make %<CR>
@@ -153,7 +153,6 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
-NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'IjvLHsoZ6L/indent-ocaml.vim'
 NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
