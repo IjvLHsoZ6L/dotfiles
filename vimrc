@@ -95,31 +95,25 @@ nnoremap ,p :cprevious<CR>
 augroup SetCompiler
   autocmd!
   autocmd FileType c
-        \ compiler gcc
-        \|setlocal makeprg=gcc
-        \|nnoremap <buffer> ,, :make -o %< %<CR>
-        \|nnoremap <buffer> ,r :! ./%<<CR>
-  autocmd FileType haskell
-        \ setlocal makeprg=ghc\ -O2
-        \|nnoremap <buffer> ,, :w \|! runghc %<CR>
-        \|nnoremap <buffer> ,b :make -o %< %<CR>
-        \|nnoremap <buffer> ,r :! ./%<<CR>
-        \|nnoremap <buffer> ,i :w \|! hugs %<CR>
+        \  compiler gcc
+        \| setlocal makeprg=gcc
+        \| nnoremap <buffer> ,, :make -o %< %<CR>
+        \| nnoremap <buffer> ,r :! ./%<<CR>
   autocmd FileType java
-        \ compiler javac
-        \|nnoremap <buffer> ,, :make %<CR>
-        \|nnoremap <buffer> ,r :! java %<<CR>
+        \  compiler javac
+        \| nnoremap <buffer> ,, :make %<CR>
+        \| nnoremap <buffer> ,r :! java %<<CR>
   autocmd FileType ocaml
-        \ compiler ocaml
-        \|setlocal makeprg=ocamlopt
-        \|nnoremap <buffer> ,, :w \|! ocaml %<CR>
-        \|nnoremap <buffer> ,b :make -o %< %<CR>
-        \|nnoremap <buffer> ,r :! ./%<<CR>
-        \|nnoremap <buffer> ,i :make -i %<CR>
+        \  compiler ocaml
+        \| setlocal makeprg=ocamlopt
+        \| nnoremap <buffer> ,, :w \|! ocaml %<CR>
+        \| nnoremap <buffer> ,b :make -o %< %<CR>
+        \| nnoremap <buffer> ,r :! ./%<<CR>
+        \| nnoremap <buffer> ,i :make -i %<CR>
   autocmd FileType tex
-        \ compiler tex
-        \|nnoremap <buffer> ,, :make %<CR>
-        \|nnoremap <buffer> ,v :! okular %<.pdf &<CR>
+        \  compiler tex
+        \| nnoremap <buffer> ,, :make %<CR>
+        \| nnoremap <buffer> ,v :! okular %<.pdf &<CR>
   autocmd BufEnter * call <SID>makefile_exists()
 augroup END
 function! s:makefile_exists()
@@ -143,6 +137,7 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -152,7 +147,9 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'dag/vim2hs'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'raichoo/haskell-vim'
 NeoBundle 'IjvLHsoZ6L/indent-ocaml.vim'
 NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
