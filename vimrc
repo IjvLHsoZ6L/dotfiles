@@ -103,6 +103,15 @@ augroup SetCompiler
         \  compiler javac
         \| nnoremap <buffer> ,, :make %<CR>
         \| nnoremap <buffer> ,r :! java %<<CR>
+  autocmd FileType haskell
+        \  nnoremap <buffer> ,, :setlocal makeprg=runghc \| make %<CR>
+        \| nnoremap <buffer> ,b :setlocal makeprg=ghc\ -O2 \| make %<CR>
+        \| nnoremap <buffer> ,r :! ./%<<CR>
+        \| nnoremap <buffer> ,g :w \| GhcModCheck<CR>
+        \| nnoremap <buffer> ,h :w \| HLint<CR>
+        \| nnoremap <buffer> ,i :w \|! ghci %<CR>
+        \| nnoremap <buffer> ,t :w \| GhcModType<CR>
+        \| nnoremap <buffer> <C-L> :GhcModTypeClear<CR>
   autocmd FileType ocaml
         \  compiler ocaml
         \| setlocal makeprg=ocamlopt
@@ -120,6 +129,7 @@ function! s:makefile_exists()
   if filereadable('Makefile')
     setlocal makeprg=make
     nnoremap <buffer> ,, :make<CR>
+    nnoremap <buffer> ,b :make build<CR>
     nnoremap <buffer> ,r :make run<CR>
   endif
 endfunction
@@ -147,9 +157,9 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'raichoo/haskell-vim'
 NeoBundle 'IjvLHsoZ6L/indent-ocaml.vim'
 NeoBundle 'IjvLHsoZ6L/coq.vim'
 NeoBundleCheck
@@ -189,6 +199,9 @@ nnoremap gz :Unite -tab file_mru<CR>
 let g:NERDTreeCaseSensitiveSort = 1
 nnoremap gn :tabe %:p:h<CR>
 nnoremap gN :tabe $HOME<CR>
+
+" vim2hs
+let g:haskell_conceal = 0
 
 " colorscheme
 set t_Co=16
