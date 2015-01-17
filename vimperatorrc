@@ -21,7 +21,6 @@ nnoremap za :zoom! 120<CR>
 nnoremap zs :zoom! 150<CR>
 nnoremap zd :zoom! 200<CR>
 
-command! -nargs=* eow open eow <args>
 command! rc source ~/.vimperatorrc
 
 highlight Hint color: red; background: white; font: bold 100% "Courier New", monospace; text-transform: uppercase; padding: 0px 2px;
