@@ -1,5 +1,7 @@
 " vim: set filetype=vim :
 
+set titlestring=Firefox
+
 set toolbars=menu,tabs,navigation,nobookmarks,noaddons
 
 set focuscontent
