@@ -2,6 +2,6 @@
 
 source /etc/skel/.bashrc
 
-PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\w - Terminal\a\]\W \$ "
+PS1="\[\e]0;Terminal : \w\a\]\W \$ "
 EDITOR=vi
 FCEDIT=vi
