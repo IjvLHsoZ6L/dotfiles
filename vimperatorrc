@@ -2,7 +2,7 @@
 
 set titlestring=Firefox
 
-set toolbars=menu,tabs,navigation,nobookmarks,noaddons
+set toolbars=nomenu,tabs,navigation,nobookmarks,noaddons
 
 set focuscontent
 
