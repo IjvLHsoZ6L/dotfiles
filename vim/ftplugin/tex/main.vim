@@ -38,13 +38,13 @@ function! s:addcomp(key, val)
   endfor
 endfunction
 
-for s:line in readfile(expand('~/.vim/ftplugin/tex/commands.txt'))
+for s:line in readfile(expand('<sfile>:h') . '/commands.txt')
   if !empty(s:line) && s:line[0] !=# '%'
     call s:addcomp(s:line, '\' . s:line)
   endif
 endfor
 
-for s:line in readfile(expand('~/.vim/ftplugin/tex/abbreviation.txt'))
+for s:line in readfile(expand('<sfile>:h') . '/abbreviation.txt')
   if !empty(s:line) && s:line[0] !=# '%'
     let s:list = split(s:line)
     let s:val = remove(s:list, 0)
@@ -64,7 +64,7 @@ if filereadable(expand('%'))
   endfor
 endif
 
-call writefile(sort(keys(s:dict)), expand('~/.vim/ftplugin/tex/keys.dict'))
+call writefile(sort(keys(s:dict)), expand('<sfile>:h') . '/keys.dict')
 
 function! s:complete()
   let l:col = col('.')
