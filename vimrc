@@ -17,11 +17,10 @@ endif
 " display
 set title
 set number
+set cursorline
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 set display=lastline,uhex
-set showmatch
-set matchtime=1
 set showcmd
 set wildmenu
 set ambiwidth=double
@@ -108,7 +107,7 @@ augroup SetCompiler
         \| nnoremap <buffer> ,b :setlocal makeprg=ghc\ -O2 \| make %<CR>
         \| nnoremap <buffer> ,r :! ./%<<CR>
         \| nnoremap <buffer> ,g :w \| GhcModCheck<CR>
-        \| nnoremap <buffer> ,h :w \| HLint<CR>
+        \| nnoremap <buffer> ,h :w \|! hlint %<CR>
         \| nnoremap <buffer> ,i :w \|! ghci %<CR>
         \| nnoremap <buffer> ,t :w \| GhcModType<CR>
         \| nnoremap <buffer> <C-L> :GhcModTypeClear<CR>
