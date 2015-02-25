@@ -16,7 +16,7 @@ let g:tex_conceal = ''
 " compiler settings
 "===========================================================
 
-if search('jsarticle', 'n') || search('msjproc', 'n')
+if search('jsarticle', 'n') || search('jarticle', 'n') || search('msjproc', 'n')
   let b:tex_flavor = 'pdfplatex'
 else
   let b:tex_flavor = 'pdflatex'
