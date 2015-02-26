@@ -1,4 +1,4 @@
-" Maintainer:  IjvLHsoZ6L
+" Maintainer:  TOUNAI Shouta
 " Last Change: 2015 Dec 4
 
 " encoding
@@ -11,7 +11,7 @@ scriptencoding utf-8
 if has('gui_running')
   set lines=999
   set columns=999
-  set guifont=Monospace\ 18
+  set guifont=Ubuntu\ Mono\ 18
 endif
 
 " display
@@ -68,12 +68,12 @@ noremap k gk
 noremap H ^
 noremap L $
 noremap <Space> <C-D>
+nnoremap Y y$
 nnoremap <C-N> gt
 nnoremap <C-P> gT
-nnoremap g<C-N> :tabmove +1<CR>
-nnoremap g<C-P> :tabmove -1<CR>
-nnoremap Y y$
-nnoremap <silent> gc :chdir %:p:h \| pwd<CR>
+nnoremap <silent> g<C-N> :tabmove +1<CR>
+nnoremap <silent> g<C-P> :tabmove -1<CR>
+nnoremap <silent> cd :chdir %:p:h \| pwd<CR>
 nnoremap <silent> =a :call <SID>indentAllLine()<CR>
 function! s:indentAllLine()
   let l:save_cursor = getpos('.')
