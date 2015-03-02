@@ -159,8 +159,8 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'IjvLHsoZ6L/indent-ocaml.vim'
-NeoBundle 'IjvLHsoZ6L/coq.vim'
+NeoBundle 'tounaishouta/indent-ocaml.vim'
+NeoBundle 'tounaishouta/coq.vim'
 NeoBundleCheck
 call neobundle#end()
 

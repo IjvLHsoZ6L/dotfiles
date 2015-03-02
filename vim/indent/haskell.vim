@@ -1,6 +1,6 @@
 " Vim indent file
 " Language:    Haskell
-" Maintainer:  IjvLHsoZ6L
+" Maintainer:  TOUNAI Shouta <tounai.shouta@gmail.com>
 " Last Change: 2015 Jan 11
 
 " Only load this indent file when no other was loaded.
