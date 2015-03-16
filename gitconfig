@@ -4,7 +4,7 @@
 	l = log --oneline --graph
 	s = status
 [color]
-	ui = auto
+	ui = always
 [core]
 	editor = vim
 [push]
