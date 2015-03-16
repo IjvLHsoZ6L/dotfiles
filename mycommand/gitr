@@ -1,0 +1,18 @@
+#! /bin/bash
+
+cur=$(pwd)
+
+if [ -n "$*" ]; then
+  option="$*"
+else
+  option="status -s"
+fi
+
+for git in $(find * -name .git); do
+  dir=${git%.git}
+  cd $dir
+  pwd
+  git $option
+  echo
+  cd $cur
+done | less -R
