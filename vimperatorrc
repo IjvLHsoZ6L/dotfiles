@@ -6,7 +6,7 @@ set toolbars=nomenu,tabs,navigation,nobookmarks,noaddons
 
 set focuscontent
 
-set hintchars=hjklasdfgyuiopqwertnmzxcvb
+set hintchars=abcdefghijklmnopqrstuvwxyz
 
 noremap h 3h
 noremap j 3j
