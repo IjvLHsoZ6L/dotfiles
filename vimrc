@@ -67,6 +67,7 @@ noremap j gj
 noremap k gk
 noremap H ^
 noremap L $
+noremap M %
 noremap <Space> <C-D>
 nnoremap Y y$
 nnoremap <C-N> gt
