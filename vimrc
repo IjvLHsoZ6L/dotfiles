@@ -123,6 +123,8 @@ augroup SetCompiler
         \  compiler tex
         \| nnoremap <buffer> ,, :make %<CR>
         \| nnoremap <buffer> ,v :! okular %<.pdf &<CR>
+  autocmd FileType coffee
+        \| nnoremap <buffer> ,, :w \|! coffee -c %
   autocmd BufEnter * call <SID>makefile_exists()
 augroup END
 function! s:makefile_exists()
@@ -160,6 +162,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tounaishouta/indent-ocaml.vim'
 NeoBundle 'tounaishouta/coq.vim'
 NeoBundleCheck
