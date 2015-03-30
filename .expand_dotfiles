@@ -1,7 +1,0 @@
-#! /bin/bash
-
-for f in $(ls dotfiles/); do
-  echo .$f
-  [ -e .$f -o -L .$f ] && rm .$f
-  ln -s dotfiles/$f .$f
-done
