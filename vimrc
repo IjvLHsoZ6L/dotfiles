@@ -1,5 +1,5 @@
 " Maintainer:  TOUNAI Shouta
-" Last Change: 2015 Dec 4
+" Last Change: 2015 Mar 30
 
 " encoding
 set encoding=utf-8
@@ -32,6 +32,7 @@ set pumheight=10
 set incsearch
 set ignorecase
 set smartcase
+set infercase
 set gdefault
 
 " indent
@@ -70,78 +71,19 @@ noremap L $
 noremap M %
 noremap <Space> <C-D>
 nnoremap Y y$
+nnoremap , <Nop>
+nnoremap + ,
 nnoremap <C-N> gt
 nnoremap <C-P> gT
 nnoremap <silent> g<C-N> :tabmove +1<CR>
 nnoremap <silent> g<C-P> :tabmove -1<CR>
-nnoremap <silent> cd :chdir %:p:h \| pwd<CR>
-nnoremap <silent> =a :call <SID>indentAllLine()<CR>
-function! s:indentAllLine()
-  let l:save_cursor = getpos('.')
-  normal! gg=G
-  call setpos('.', l:save_cursor)
-endfunction
-
-" make
-nnoremap + ,
-nnoremap , <Nop>
-nnoremap ,, :make<CR>
-nnoremap ,wo :copen<CR>
-nnoremap ,wc :cclose<CR>
-nnoremap ,l :clist<CR>
-nnoremap ,c :cc<CR>
-nnoremap ,n :cnext<CR>
-nnoremap ,p :cprevious<CR>
-augroup SetCompiler
-  autocmd!
-  autocmd FileType c
-        \  compiler gcc
-        \| setlocal makeprg=gcc
-        \| nnoremap <buffer> ,, :make -o %< %<CR>
-        \| nnoremap <buffer> ,r :! ./%<<CR>
-  autocmd FileType java
-        \  compiler javac
-        \| nnoremap <buffer> ,, :make %<CR>
-        \| nnoremap <buffer> ,r :! java %<<CR>
-  autocmd FileType haskell
-        \  nnoremap <buffer> ,, :setlocal makeprg=runghc \| make %<CR>
-        \| nnoremap <buffer> ,b :setlocal makeprg=ghc\ -O2 \| make %<CR>
-        \| nnoremap <buffer> ,r :! ./%<<CR>
-        \| nnoremap <buffer> ,g :w \| GhcModCheck<CR>
-        \| nnoremap <buffer> ,h :w \|! hlint %<CR>
-        \| nnoremap <buffer> ,i :w \|! ghci %<CR>
-        \| nnoremap <buffer> ,t :w \| GhcModType<CR>
-        \| nnoremap <buffer> <C-L> :GhcModTypeClear<CR>
-  autocmd FileType ocaml
-        \  compiler ocaml
-        \| setlocal makeprg=ocamlopt
-        \| nnoremap <buffer> ,, :w \|! ocaml %<CR>
-        \| nnoremap <buffer> ,b :make -o %< %<CR>
-        \| nnoremap <buffer> ,r :! ./%<<CR>
-        \| nnoremap <buffer> ,i :make -i %<CR>
-  autocmd FileType tex
-        \  compiler tex
-        \| nnoremap <buffer> ,, :make %<CR>
-        \| nnoremap <buffer> ,v :! okular %<.pdf &<CR>
-  autocmd FileType coffee
-        \| nnoremap <buffer> ,, :w \|! coffee -c %
-  autocmd BufEnter * call <SID>makefile_exists()
-augroup END
-function! s:makefile_exists()
-  if filereadable('Makefile')
-    setlocal makeprg=make
-    nnoremap <buffer> ,, :make<CR>
-    nnoremap <buffer> ,b :make build<CR>
-    nnoremap <buffer> ,r :make run<CR>
-  endif
-endfunction
-
-" latex
-let g:tex_flavor = 'latex'
 
 " netrw
 let g:netrw_list_hide = '\v^\.[^.]'
 let g:netrw_sort_sequence = '\v.*'
+
+" latex
+let g:tex_flavor = 'latex'
 
 " neobundle
 if has('vim_starting')
@@ -150,15 +92,12 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
@@ -168,20 +107,12 @@ NeoBundle 'tounaishouta/coq.vim'
 NeoBundleCheck
 call neobundle#end()
 
+" vimshell.vim
+nnoremap <silent> <C-T> :VimShellTab<CR>
+
 " neocomplcache
 let g:neocomplcache_enable_at_startup            = 1
 let g:neocomplcache_auto_completion_start_length = 1
-let g:neocomplcache_min_keyword_length           = 3
-let g:neocomplcache_min_syntax_length            = 3
-let g:neocomplcache_enable_ignore_case           = 1
-let g:neocomplcache_enable_smart_case            = 1
-let g:neocomplcache_dictionary_filetype_lists    = {
-      \ 'java': expand('~/.vim/dict/java.dict'),
-      \ 'javascript': expand('~/.vim/dict/javascript.dict'),
-      \ 'ocaml': expand('~/.vim/dict/ocaml.dict'),
-      \ 'text': expand('~/.vim/ftplugin/tex/keys.dict'),
-      \ 'default': '',
-      \ }
 inoremap <expr> <CR>    neocomplcache#close_popup() . '<CR>'
 inoremap <expr> <C-L>   neocomplcache#complete_common_string()
 inoremap <expr> <Tab>   pumvisible() ? '<C-N>' : '<Tab>'
@@ -189,19 +120,8 @@ inoremap <expr> <S-Tab> pumvisible() ? '<C-P>' : '<S-Tab>'
 
 " neosnippet
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
-imap <expr> <C-K> neosnippet#expandable_or_jumpable() ?
-      \ '<Plug>(neosnippet_expand_or_jump)' : ''
-nmap <expr> <C-K> neosnippet#jumpable() ?
-      \ 'i<Plug>(neosnippet_jump)' : ''
-
-" unite
-nnoremap gb :Unite -tab buffer<CR>
-nnoremap gz :Unite -tab file_mru<CR>
-
-" nerdtree
-let g:NERDTreeCaseSensitiveSort = 1
-nnoremap gn :tabe %:p:h<CR>
-nnoremap gN :tabe $HOME<CR>
+imap <expr> <C-K> neosnippet#expandable_or_jumpable() ? '<Plug>(neosnippet_expand_or_jump)' : ''
+nmap <expr> <C-K> neosnippet#jumpable() ? 'i<Plug>(neosnippet_jump)' : ''
 
 " vim2hs
 let g:haskell_conceal = 0
