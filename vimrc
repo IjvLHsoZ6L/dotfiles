@@ -71,8 +71,9 @@ noremap L $
 noremap M %
 noremap <Space> <C-D>
 nnoremap Y y$
-nnoremap , <Nop>
 nnoremap + ,
+nnoremap , <Nop>
+nnoremap ,, :make<CR>
 nnoremap <C-N> gt
 nnoremap <C-P> gT
 nnoremap <silent> g<C-N> :tabmove +1<CR>
