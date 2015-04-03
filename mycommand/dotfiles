@@ -1,0 +1,8 @@
+#! /bin/bash
+
+if [ -d dotfiles ]; then
+  for f in $(ls dotfiles); do
+    echo $f
+    ln -s -f dotfiles/$f .$f
+  done
+fi
