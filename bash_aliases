@@ -18,6 +18,10 @@ alias rm='\rm -i'
 alias mv='\mv -i'
 alias cp='\cp -i'
 
+# copy and paste
+alias cc='xclip -selection clipboard'
+alias cv='xclip -o -selection clipboard'
+
 # re-execute command
 alias his='\fc -l'
 alias r='\fc -s'
