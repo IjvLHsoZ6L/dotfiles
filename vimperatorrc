@@ -23,6 +23,6 @@ nnoremap zd :zoom! 200<CR>
 
 command! rc source ~/.vimperatorrc
 
-highlight Hint color: red; background: white; font: bold 100% "Courier New", monospace; text-transform: uppercase; padding: 0px 2px;
+highlight Hint color: red; background: white; font: bold 100% Helvetica, sans-serif; text-transform: uppercase; padding: 0px 2px;
 highlight HintElem color: black; background: cyan;
 highlight HintActive color: black; background: lime;
