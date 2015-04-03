@@ -1,0 +1,3 @@
+for f in $@; do
+  git clone ssh://tounai@git.codebreak.com/tounai/"$f".git
+done
