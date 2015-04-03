@@ -1,0 +1,8 @@
+#! /bin/bash
+
+for f in $(ls dotfiles); do
+  if [ -e .$f -o -h .$f ]; then
+    rm .$f
+  fi
+  ln -s dotfiles/$f .$f
+done
