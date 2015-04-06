@@ -1,7 +1,8 @@
 #! /bin/bash
 
-for f in $(ls dotfiles); do
-  echo $f
-  [ -e .$f ] && rm .$f
-  ln -s dotfiles/$f .$f
+dir=$(pwd)
+for f in *; do
+  echo "$f"
+  [ -e "$HOME/.$f" ] && rm "$HOME/.$f"
+  ln -s "$dir/$f" "$HOME/.$f"
 done
