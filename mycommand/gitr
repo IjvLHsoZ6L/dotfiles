@@ -1,5 +1,7 @@
 #! /bin/bash
 
+(
+
 cur=$(pwd)
 
 if [ -n "$*" ]; then
@@ -15,4 +17,8 @@ for git in $(find * -name .git); do
   git $option
   echo
   cd $cur
-done | less -R
+done
+
+echo "done."
+
+) | less -R
