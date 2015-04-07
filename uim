@@ -1,9 +1,16 @@
 ;; custom-global.scm
-(define custom-activate-default-im-name? #f)
+(define custom-activate-default-im-name? #t)
 (define custom-preserved-default-im-name 'skk)
+(define default-im-name 'skk)
 (define enabled-im-list '(skk))
-(define enable-im-switch? #f)
-(define enable-im-toggle? #f)
+(define enable-im-switch? #t)
+(define switch-im-key '("<Control>Shift_key" "<Shift>Control_key"))
+(define switch-im-key? (make-key-predicate '("<Control>Shift_key" "<Shift>Control_key")))
+(define switch-im-skip-direct-im? #f)
+(define enable-im-toggle? #t)
+(define toggle-im-key '("<Meta> " "<Control> "))
+(define toggle-im-key? (make-key-predicate '("<Meta> " "<Control> ")))
+(define toggle-im-alt-im 'skk)
 (define uim-color 'uim-color-uim)
 (define candidate-window-style 'horizontal)
 (define candidate-window-position 'caret)
@@ -14,13 +21,63 @@
 
 ;; custom-toolbar.scm
 (define toolbar-display-time 'never)
+(define toolbar-show-action-based-switcher-button? #t)
+(define imsw-coverage 'system-global)
+(define toolbar-show-switcher-button? #f)
+(define toolbar-show-pref-button? #t)
+(define toolbar-show-dict-button? #f)
+(define toolbar-show-input-pad-button? #f)
+(define toolbar-show-handwriting-input-pad-button? #f)
+(define toolbar-show-help-button? #f)
+(define toolbar-help-browser 'system)
+(define toolbar-help-browser-name "firefox")
+(define toolbar-icon-for-dark-background? #f)
 
 ;; custom-annotation.scm
 (define skk-show-annotation? #f)
+(define skk-show-annotation-in-preedit? #f)
+(define enable-annotation? #f)
+(define annotation-agent 'eb)
+(define eb-enable-for-annotation? #f)
+(define annotation-eb-dic-path "/usr/share/dict")
+(define annotation-dict-server "dict.org")
+(define annotation-dict-servname 2628)
+(define annotation-dict-database "web1913")
+(define annotation-dict-cache-words 256)
+(define annotation-filter-server-setting? 'pipe)
+(define annotation-filter-unix-domain-socket-path "/path/of/socket")
+(define annotation-filter-tcpserver-name "localhost")
+(define annotation-filter-tcpserver-port 6789)
+(define annotation-filter-command "/path/of/filter-program")
+
+;; custom-xim.scm
+(define uim-xim-use-xft-font? #f)
+(define uim-xim-xft-font-name "Sans")
+
+;; custom-notify.scm
+(define notify-agent 'stderr)
+
+;; custom-http.scm
+(define http-proxy-setting 'direct)
+(define http-proxy-hostname "localhost")
+(define http-proxy-port 8080)
+(define http-timeout 3000)
+
+;; custom-predict.scm
+(define predict-custom-enable? #f)
+(define predict-custom-methods '())
+(define predict-custom-look-dict "/usr/share/dict/words")
+(define predict-custom-look-candidates-max 10)
+(define predict-custom-look-skk-jisyo "/usr/share/skk/SKK-JISYO.L")
+(define predict-custom-look-skk-candidates-max 10)
+(define predict-custom-sqlite3-candidates-max 5)
+(define predict-custom-google-suggest-candidates-max 5)
+(define predict-custom-google-suggest-language 'en)
+(define predict-custom-google-suggest-use-ssl #t)
 
 ;; custom-ja-rk-rule.scm
 (define ja-rk-rule-type 'uim)
-(define ja-rk-rule-table-basic '(("-" "" "°º") ("," "" "°¢") ("." "" "°£") ("!" "" "°™") ("\"" "" "°…") ("#" "" "°Ù") ("$" "" "°") ("%" "" "°Û") ("&" "" "°ı") ("'" "" "°«") ("(" "" "° ") (")" "" "°À") ("~" "" "°¡") ("=" "" "°·") ("^" "" "°∞") ("\\" "" "°¿") ("|" "" "°√") ("`" "" "°∆") ("@" "" "°˜") ("{" "" "°–") ("[" "" "°÷") ("+" "" "°‹") (";" "" "°®") ("*" "" "°ˆ") (":" "" "°ß") ("}" "" "°—") ("]" "" "°◊") ("<" "" "°„") (">" "" "°‰") ("?" "" "°©") ("/" "" "°ø") ("_" "" "°≤") ("yen" "" "°Ô") ("1" "" "1") ("2" "" "2") ("3" "" "3") ("4" "" "4") ("5" "" "5") ("6" "" "6") ("7" "" "7") ("8" "" "8") ("9" "" "9") ("0" "" "0") ("a" "" "§¢") ("i" "" "§§") ("u" "" "§¶") ("e" "" "§®") ("o" "" "§™") ("xa" "" "§°") ("xi" "" "§£") ("xyi" "" "§£") ("xu" "" "§•") ("xe" "" "§ß") ("xye" "" "§ß") ("xo" "" "§©") ("la" "" "§°") ("li" "" "§£") ("lu" "" "§•") ("le" "" "§ß") ("lo" "" "§©") ("kk" "k" "§√") ("ka" "" "§´") ("ki" "" "§≠") ("ku" "" "§Ø") ("ke" "" "§±") ("ko" "" "§≥") ("kya" "" "§≠§„") ("kyi" "" "§≠§£") ("kyu" "" "§≠§Â") ("kye" "" "§≠§ß") ("kyo" "" "§≠§Á") ("gg" "g" "§√") ("ga" "" "§¨") ("gi" "" "§Æ") ("gu" "" "§∞") ("ge" "" "§≤") ("go" "" "§¥") ("gya" "" "§Æ§„") ("gyi" "" "§Æ§£") ("gyu" "" "§Æ§Â") ("gye" "" "§Æ§ß") ("gyo" "" "§Æ§Á") ("qa" "" "§Ø§°") ("qi" "" "§Ø§£") ("qu" "" "§Ø") ("qe" "" "§Ø§ß") ("qo" "" "§Ø§©") ("ss" "s" "§√") ("sa" "" "§µ") ("si" "" "§∑") ("su" "" "§π") ("se" "" "§ª") ("so" "" "§Ω") ("sya" "" "§∑§„") ("syi" "" "§∑§£") ("syu" "" "§∑§Â") ("sye" "" "§∑§ß") ("syo" "" "§∑§Á") ("zz" "z" "§√") ("za" "" "§∂") ("zi" "" "§∏") ("zu" "" "§∫") ("ze" "" "§º") ("zo" "" "§æ") ("zya" "" "§∏§„") ("zyi" "" "§∏§£") ("zyu" "" "§∏§Â") ("zye" "" "§∏§ß") ("zyo" "" "§∏§Á") ("jj" "j" "§√") ("ja" "" "§∏§„") ("ji" "" "§∏") ("ju" "" "§∏§Â") ("je" "" "§∏§ß") ("jo" "" "§∏§Á") ("jya" "" "§∏§„") ("jyi" "" "§∏§£") ("jyu" "" "§∏§Â") ("jye" "" "§∏§ß") ("jyo" "" "§∏§Á") ("tt" "t" "§√") ("tc" "c" "§√") ("ta" "" "§ø") ("ti" "" "§¡") ("tu" "" "§ƒ") ("te" "" "§∆") ("to" "" "§»") ("tya" "" "§¡§„") ("tyi" "" "§¡§£") ("tyu" "" "§¡§Â") ("tye" "" "§¡§ß") ("tyo" "" "§¡§Á") ("tsa" "" "§ƒ§°") ("tsi" "" "§ƒ§£") ("tsu" "" "§ƒ") ("tse" "" "§ƒ§ß") ("tso" "" "§ƒ§©") ("cya" "" "§¡§„") ("cyi" "" "§¡§£") ("cyu" "" "§¡§Â") ("cye" "" "§¡§ß") ("cyo" "" "§¡§Á") ("xtu" "" "§√") ("xtsu" "" "§√") ("cc" "c" "§√") ("dd" "d" "§√") ("da" "" "§¿") ("di" "" "§¬") ("du" "" "§≈") ("de" "" "§«") ("do" "" "§…") ("dya" "" "§¬§„") ("dyi" "" "§¬§£") ("dyu" "" "§¬§Â") ("dye" "" "§¬§ß") ("dyo" "" "§¬§Á") ("nn" "" "§Û") ("n'" "" "§Û") ("n" "" "§Û") ("na" "" "§ ") ("ni" "" "§À") ("nu" "" "§Ã") ("ne" "" "§Õ") ("no" "" "§Œ") ("nya" "" "§À§„") ("nyi" "" "§À§£") ("nyu" "" "§À§Â") ("nye" "" "§À§ß") ("nyo" "" "§À§Á") ("hh" "h" "§√") ("ha" "" "§œ") ("hi" "" "§“") ("hu" "" "§’") ("he" "" "§ÿ") ("ho" "" "§€") ("hya" "" "§“§„") ("hyi" "" "§“§£") ("hyu" "" "§“§Â") ("hye" "" "§“§ß") ("hyo" "" "§“§Á") ("ff" "f" "§√") ("fa" "" "§’§°") ("fi" "" "§’§£") ("fu" "" "§’") ("fe" "" "§’§ß") ("fo" "" "§’§©") ("fya" "" "§’§„") ("fyi" "" "§’§£") ("fyu" "" "§’§Â") ("fye" "" "§’§ß") ("fyo" "" "§’§Á") ("bb" "b" "§√") ("ba" "" "§–") ("bi" "" "§”") ("bu" "" "§÷") ("be" "" "§Ÿ") ("bo" "" "§‹") ("bya" "" "§”§„") ("byi" "" "§”§£") ("byu" "" "§”§Â") ("bye" "" "§”§ß") ("byo" "" "§”§Á") ("pp" "p" "§√") ("pa" "" "§—") ("pi" "" "§‘") ("pu" "" "§◊") ("pe" "" "§⁄") ("po" "" "§›") ("pya" "" "§‘§„") ("pyi" "" "§‘§£") ("pyu" "" "§‘§Â") ("pye" "" "§‘§ß") ("pyo" "" "§‘§Á") ("mm" "m" "§√") ("mb" "b" "§Û") ("mp" "p" "§Û") ("ma" "" "§ﬁ") ("mi" "" "§ﬂ") ("mu" "" "§‡") ("me" "" "§·") ("mo" "" "§‚") ("mya" "" "§ﬂ§„") ("myi" "" "§ﬂ§£") ("myu" "" "§ﬂ§Â") ("mye" "" "§ﬂ§ß") ("myo" "" "§ﬂ§Á") ("yy" "y" "§√") ("ya" "" "§‰") ("yu" "" "§Ê") ("ye" "" "§§§ß") ("yo" "" "§Ë") ("xca" "" "•ı") ("xka" "" "•ı") ("xke" "" "•ˆ") ("xya" "" "§„") ("xyu" "" "§Â") ("xyo" "" "§Á") ("rr" "r" "§√") ("ra" "" "§È") ("ri" "" "§Í") ("ru" "" "§Î") ("re" "" "§Ï") ("ro" "" "§Ì") ("ltu" "" "§√") ("ltsu" "" "§√") ("lya" "" "§„") ("lyi" "" "§£") ("lyu" "" "§Â") ("lye" "" "§ß") ("lyo" "" "§Á") ("rya" "" "§Í§„") ("ryi" "" "§Í§£") ("ryu" "" "§Í§Â") ("rye" "" "§Í§ß") ("ryo" "" "§Í§Á") ("ww" "w" "§√") ("wa" "" "§Ô") ("wi" "" "§¶§£") ("wu" "" "§¶") ("we" "" "§¶§ß") ("wo" "" "§Ú") ("wha" "" "§¶§°") ("whi" "" "§¶§£") ("whu" "" "§¶") ("whe" "" "§¶§ß") ("who" "" "§¶§©") ("vv" "v" "§√") ("va" "" "§¶°´§°") ("vi" "" "§¶°´§£") ("vu" "" "§¶°´") ("ve" "" "§¶°´§ß") ("vo" "" "§¶°´§©") ("vya" "" "§¶°´§„") ("vyu" "" "§¶°´§Â") ("vyo" "" "§¶°´§Á") ("zk" "" "¢¨") ("zj" "" "¢≠") ("zh" "" "¢´") ("zl" "" "¢™") ("z-" "" "°¡") ("z[" "" "°ÿ") ("z]" "" "°Ÿ") ("z," "" "°≈") ("z." "" "°ƒ") ("z/" "" "°¶")))
+(define ja-rk-rule-table-basic '(("-" "" "„Éº") ("," "" "„ÄÅ") ("." "" "„ÄÇ") ("!" "" "ÔºÅ") ("\"" "" "‚Äù") ("#" "" "ÔºÉ") ("$" "" "ÔºÑ") ("%" "" "ÔºÖ") ("&" "" "ÔºÜ") ("'" "" "‚Äô") ("(" "" "Ôºà") (")" "" "Ôºâ") ("~" "" "„Äú") ("=" "" "Ôºù") ("^" "" "Ôºæ") ("\\" "" "Ôºº") ("|" "" "ÔΩú") ("`" "" "‚Äò") ("@" "" "Ôº†") ("{" "" "ÔΩõ") ("[" "" "„Äå") ("+" "" "Ôºã") (";" "" "Ôºõ") ("*" "" "Ôºä") (":" "" "Ôºö") ("}" "" "ÔΩù") ("]" "" "„Äç") ("<" "" "Ôºú") (">" "" "Ôºû") ("?" "" "Ôºü") ("/" "" "Ôºè") ("_" "" "Ôºø") ("yen" "" "Ôø•") ("1" "" "1") ("2" "" "2") ("3" "" "3") ("4" "" "4") ("5" "" "5") ("6" "" "6") ("7" "" "7") ("8" "" "8") ("9" "" "9") ("0" "" "0") ("a" "" "„ÅÇ") ("i" "" "„ÅÑ") ("u" "" "„ÅÜ") ("e" "" "„Åà") ("o" "" "„Åä") ("xa" "" "„ÅÅ") ("xi" "" "„ÅÉ") ("xyi" "" "„ÅÉ") ("xu" "" "„ÅÖ") ("xe" "" "„Åá") ("xye" "" "„Åá") ("xo" "" "„Åâ") ("la" "" "„ÅÅ") ("li" "" "„ÅÉ") ("lu" "" "„ÅÖ") ("le" "" "„Åá") ("lo" "" "„Åâ") ("kk" "k" "„Å£") ("ka" "" "„Åã") ("ki" "" "„Åç") ("ku" "" "„Åè") ("ke" "" "„Åë") ("ko" "" "„Åì") ("kya" "" "„Åç„ÇÉ") ("kyi" "" "„Åç„ÅÉ") ("kyu" "" "„Åç„ÇÖ") ("kye" "" "„Åç„Åá") ("kyo" "" "„Åç„Çá") ("gg" "g" "„Å£") ("ga" "" "„Åå") ("gi" "" "„Åé") ("gu" "" "„Åê") ("ge" "" "„Åí") ("go" "" "„Åî") ("gya" "" "„Åé„ÇÉ") ("gyi" "" "„Åé„ÅÉ") ("gyu" "" "„Åé„ÇÖ") ("gye" "" "„Åé„Åá") ("gyo" "" "„Åé„Çá") ("qa" "" "„Åè„ÅÅ") ("qi" "" "„Åè„ÅÉ") ("qu" "" "„Åè") ("qe" "" "„Åè„Åá") ("qo" "" "„Åè„Åâ") ("ss" "s" "„Å£") ("sa" "" "„Åï") ("si" "" "„Åó") ("su" "" "„Åô") ("se" "" "„Åõ") ("so" "" "„Åù") ("sya" "" "„Åó„ÇÉ") ("syi" "" "„Åó„ÅÉ") ("syu" "" "„Åó„ÇÖ") ("sye" "" "„Åó„Åá") ("syo" "" "„Åó„Çá") ("zz" "z" "„Å£") ("za" "" "„Åñ") ("zi" "" "„Åò") ("zu" "" "„Åö") ("ze" "" "„Åú") ("zo" "" "„Åû") ("zya" "" "„Åò„ÇÉ") ("zyi" "" "„Åò„ÅÉ") ("zyu" "" "„Åò„ÇÖ") ("zye" "" "„Åò„Åá") ("zyo" "" "„Åò„Çá") ("jj" "j" "„Å£") ("ja" "" "„Åò„ÇÉ") ("ji" "" "„Åò") ("ju" "" "„Åò„ÇÖ") ("je" "" "„Åò„Åá") ("jo" "" "„Åò„Çá") ("jya" "" "„Åò„ÇÉ") ("jyi" "" "„Åò„ÅÉ") ("jyu" "" "„Åò„ÇÖ") ("jye" "" "„Åò„Åá") ("jyo" "" "„Åò„Çá") ("tt" "t" "„Å£") ("tc" "c" "„Å£") ("ta" "" "„Åü") ("ti" "" "„Å°") ("tu" "" "„Å§") ("te" "" "„Å¶") ("to" "" "„Å®") ("tya" "" "„Å°„ÇÉ") ("tyi" "" "„Å°„ÅÉ") ("tyu" "" "„Å°„ÇÖ") ("tye" "" "„Å°„Åá") ("tyo" "" "„Å°„Çá") ("tsa" "" "„Å§„ÅÅ") ("tsi" "" "„Å§„ÅÉ") ("tsu" "" "„Å§") ("tse" "" "„Å§„Åá") ("tso" "" "„Å§„Åâ") ("cya" "" "„Å°„ÇÉ") ("cyi" "" "„Å°„ÅÉ") ("cyu" "" "„Å°„ÇÖ") ("cye" "" "„Å°„Åá") ("cyo" "" "„Å°„Çá") ("xtu" "" "„Å£") ("xtsu" "" "„Å£") ("cc" "c" "„Å£") ("dd" "d" "„Å£") ("da" "" "„Å†") ("di" "" "„Å¢") ("du" "" "„Å•") ("de" "" "„Åß") ("do" "" "„Å©") ("dya" "" "„Å¢„ÇÉ") ("dyi" "" "„Å¢„ÅÉ") ("dyu" "" "„Å¢„ÇÖ") ("dye" "" "„Å¢„Åá") ("dyo" "" "„Å¢„Çá") ("nn" "" "„Çì") ("n'" "" "„Çì") ("n" "" "„Çì") ("na" "" "„Å™") ("ni" "" "„Å´") ("nu" "" "„Å¨") ("ne" "" "„Å≠") ("no" "" "„ÅÆ") ("nya" "" "„Å´„ÇÉ") ("nyi" "" "„Å´„ÅÉ") ("nyu" "" "„Å´„ÇÖ") ("nye" "" "„Å´„Åá") ("nyo" "" "„Å´„Çá") ("hh" "h" "„Å£") ("ha" "" "„ÅØ") ("hi" "" "„Å≤") ("hu" "" "„Åµ") ("he" "" "„Å∏") ("ho" "" "„Åª") ("hya" "" "„Å≤„ÇÉ") ("hyi" "" "„Å≤„ÅÉ") ("hyu" "" "„Å≤„ÇÖ") ("hye" "" "„Å≤„Åá") ("hyo" "" "„Å≤„Çá") ("ff" "f" "„Å£") ("fa" "" "„Åµ„ÅÅ") ("fi" "" "„Åµ„ÅÉ") ("fu" "" "„Åµ") ("fe" "" "„Åµ„Åá") ("fo" "" "„Åµ„Åâ") ("fya" "" "„Åµ„ÇÉ") ("fyi" "" "„Åµ„ÅÉ") ("fyu" "" "„Åµ„ÇÖ") ("fye" "" "„Åµ„Åá") ("fyo" "" "„Åµ„Çá") ("bb" "b" "„Å£") ("ba" "" "„Å∞") ("bi" "" "„Å≥") ("bu" "" "„Å∂") ("be" "" "„Åπ") ("bo" "" "„Åº") ("bya" "" "„Å≥„ÇÉ") ("byi" "" "„Å≥„ÅÉ") ("byu" "" "„Å≥„ÇÖ") ("bye" "" "„Å≥„Åá") ("byo" "" "„Å≥„Çá") ("pp" "p" "„Å£") ("pa" "" "„Å±") ("pi" "" "„Å¥") ("pu" "" "„Å∑") ("pe" "" "„Å∫") ("po" "" "„ÅΩ") ("pya" "" "„Å¥„ÇÉ") ("pyi" "" "„Å¥„ÅÉ") ("pyu" "" "„Å¥„ÇÖ") ("pye" "" "„Å¥„Åá") ("pyo" "" "„Å¥„Çá") ("mm" "m" "„Å£") ("mb" "b" "„Çì") ("mp" "p" "„Çì") ("ma" "" "„Åæ") ("mi" "" "„Åø") ("mu" "" "„ÇÄ") ("me" "" "„ÇÅ") ("mo" "" "„ÇÇ") ("mya" "" "„Åø„ÇÉ") ("myi" "" "„Åø„ÅÉ") ("myu" "" "„Åø„ÇÖ") ("mye" "" "„Åø„Åá") ("myo" "" "„Åø„Çá") ("yy" "y" "„Å£") ("ya" "" "„ÇÑ") ("yu" "" "„ÇÜ") ("ye" "" "„ÅÑ„Åá") ("yo" "" "„Çà") ("xca" "" "„Éµ") ("xka" "" "„Éµ") ("xke" "" "„É∂") ("xya" "" "„ÇÉ") ("xyu" "" "„ÇÖ") ("xyo" "" "„Çá") ("rr" "r" "„Å£") ("ra" "" "„Çâ") ("ri" "" "„Çä") ("ru" "" "„Çã") ("re" "" "„Çå") ("ro" "" "„Çç") ("ltu" "" "„Å£") ("ltsu" "" "„Å£") ("lya" "" "„ÇÉ") ("lyi" "" "„ÅÉ") ("lyu" "" "„ÇÖ") ("lye" "" "„Åá") ("lyo" "" "„Çá") ("rya" "" "„Çä„ÇÉ") ("ryi" "" "„Çä„ÅÉ") ("ryu" "" "„Çä„ÇÖ") ("rye" "" "„Çä„Åá") ("ryo" "" "„Çä„Çá") ("ww" "w" "„Å£") ("wa" "" "„Çè") ("wi" "" "„ÅÜ„ÅÉ") ("wu" "" "„ÅÜ") ("we" "" "„ÅÜ„Åá") ("wo" "" "„Çí") ("wha" "" "„ÅÜ„ÅÅ") ("whi" "" "„ÅÜ„ÅÉ") ("whu" "" "„ÅÜ") ("whe" "" "„ÅÜ„Åá") ("who" "" "„ÅÜ„Åâ") ("vv" "v" "„Å£") ("va" "" "„ÅÜ„Çõ„ÅÅ") ("vi" "" "„ÅÜ„Çõ„ÅÉ") ("vu" "" "„ÅÜ„Çõ") ("ve" "" "„ÅÜ„Çõ„Åá") ("vo" "" "„ÅÜ„Çõ„Åâ") ("vya" "" "„ÅÜ„Çõ„ÇÉ") ("vyu" "" "„ÅÜ„Çõ„ÇÖ") ("vyo" "" "„ÅÜ„Çõ„Çá") ("zk" "" "‚Üë") ("zj" "" "‚Üì") ("zh" "" "‚Üê") ("zl" "" "‚Üí") ("z-" "" "„Äú") ("z[" "" "„Äé") ("z]" "" "„Äè") ("z," "" "‚Ä•") ("z." "" "‚Ä¶") ("z/" "" "„Éª")))
 (define ja-rk-rule-keep-consonant? #f)
 
 ;; custom-global-keys1.scm
@@ -30,10 +87,10 @@
 (define generic-off-key? (make-key-predicate '("zenkaku-hankaku" "<Shift> ")))
 (define generic-begin-conv-key '(" "))
 (define generic-begin-conv-key? (make-key-predicate '(" ")))
-(define generic-commit-key '("<IgnoreCase><Control>j" "return" "<IgnoreCase><Control>m"))
-(define generic-commit-key? (make-key-predicate '("<IgnoreCase><Control>j" "return" "<IgnoreCase><Control>m")))
-(define generic-cancel-key '("escape" "<IgnoreShift><Control>[" "<IgnoreCase><Control>g"))
-(define generic-cancel-key? (make-key-predicate '("escape" "<IgnoreShift><Control>[" "<IgnoreCase><Control>g")))
+(define generic-commit-key '("<IgnoreCase><Control>j" generic-return-key))
+(define generic-commit-key? (make-key-predicate '("<IgnoreCase><Control>j" generic-return-key?)))
+(define generic-cancel-key '("escape" "<Control>[" "<IgnoreCase><Control>g"))
+(define generic-cancel-key? (make-key-predicate '("escape" "<Control>[" "<IgnoreCase><Control>g")))
 (define generic-next-candidate-key '(" " "down" "<IgnoreCase><Control>n"))
 (define generic-next-candidate-key? (make-key-predicate '(" " "down" "<IgnoreCase><Control>n")))
 (define generic-prev-candidate-key '("up" "<IgnoreCase><Control>p"))
@@ -67,14 +124,26 @@
 (define skk-use-candidate-window? #t)
 (define skk-commit-candidate-by-label-key? #t)
 (define skk-candidate-selection-style 'ddskk-like)
-(define skk-use-manual-candwin-setting? #t)
-(define skk-candidate-op-count 2)
+(define skk-use-manual-candwin-setting? #f)
+(define skk-candidate-op-count 5)
 (define skk-nr-candidate-max 7)
 (define skk-widgets '(widget_skk_input_mode))
 (define default-widget_skk_input_mode 'action_skk_latin)
 (define skk-input-mode-actions '(action_skk_latin action_skk_hiragana action_skk_katakana action_skk_hankana action_skk_wide_latin))
 (define default-widget_skk_kana_input_method 'action_skk_roma)
 (define skk-kana-input-method-actions '(action_skk_roma))
+
+;; custom-skk-dict.scm
+(define skk-use-skkserv? #f)
+(define skk-skkserv-enable-completion? #f)
+(define skk-skkserv-completion-timeout 2000)
+(define skk-skkserv-use-env? #t)
+(define skk-skkserv-hostname "localhost")
+(define skk-skkserv-portnum 1178)
+(define skk-skkserv-address-family 'unspecified)
+(define skk-dic-file-name "/usr/share/skk/SKK-JISYO")
+(define skk-personal-dic-filename "/home/tounai/.skk-jisyo")
+(define skk-uim-personal-dic-filename "/home/tounai/.skk-uim-jisyo")
 
 ;; custom-skk-advanced.scm
 (define skk-style 'skk-style-ddskk-like)
@@ -160,4 +229,3 @@
 (define skk-go-right-key '(generic-go-right-key))
 (define skk-go-right-key? (make-key-predicate '(generic-go-right-key?)))
 
-;; vim: ft=scheme fenc=euc-jp
