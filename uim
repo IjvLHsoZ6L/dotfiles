@@ -180,8 +180,8 @@
 (define skk-commit-key? (make-key-predicate '("<IgnoreCase><Control>j")))
 (define skk-cancel-key '(generic-cancel-key))
 (define skk-cancel-key? (make-key-predicate '(generic-cancel-key?)))
-(define skk-sticky-key '())
-(define skk-sticky-key? (make-key-predicate '()))
+(define skk-sticky-key '("<IgnoreShift>;"))
+(define skk-sticky-key? (make-key-predicate '("<IgnoreShift>;")))
 
 ;; custom-skk-keys2.scm
 (define skk-return-key '(generic-return-key))
