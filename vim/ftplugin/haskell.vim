@@ -1,6 +1,6 @@
 augroup Haskell
   autocmd!
-  autocmd BufWritePost * call s:haskellWritePost()
+  autocmd BufWritePost *.hs call s:haskellWritePost()
 augroup END
 
 function s:haskellWritePost()
