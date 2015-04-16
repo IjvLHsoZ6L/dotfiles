@@ -8,13 +8,13 @@ else
   option="status -s"
 fi
 
-for git in $(find * -name .git); do
-  dir=${git%.git}
-  cd $dir
-  pwd
+for git in $(find $cur -name .git); do
+  dir="${git%.git}"
+  cd "$dir"
+  echo "${dir#$cur/}"
   git $option
   echo
-  cd $cur
+  cd "$cur"
 done
 
 echo "done."
