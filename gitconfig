@@ -1,8 +1,13 @@
 [alias]
-	br = branch
-	co = checkout
+	a = add
 	l = log --oneline --graph
 	s = status
+	br = branch
+	co = checkout
+	cm = commit
+	df = diff
+	pl = pull
+	ps = push
 [color]
 	ui = always
 [core]
