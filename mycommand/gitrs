@@ -2,12 +2,17 @@
 
 cur=$(pwd)
 
-for git in $(find $cur -name .git); do
+sta=0
+
+for git in $(find . -name .git); do
   dir="${git%.git}"
   cd "$dir"
   if [ -n "$(git status -s)" ]; then
-    echo "${dir#$cur/}"
+    echo "$dir"
     git status -s
+    sta=1
   fi
   cd "$cur"
 done
+
+exit $sta
