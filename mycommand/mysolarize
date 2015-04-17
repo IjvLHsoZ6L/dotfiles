@@ -1,6 +1,6 @@
 #! /bin/bash
 
 if [ ! -d ~/Downloads/gnome-terminal-colors-solarized ]; then
-  git clone git://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/Downloads/gnome-terminal-colors-solarized
+  git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/Downloads/gnome-terminal-colors-solarized
 fi
 bash ~/Downloads/gnome-terminal-colors-solarized/install.sh
