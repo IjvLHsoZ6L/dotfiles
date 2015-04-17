@@ -5,13 +5,13 @@ cur=$(pwd)
 if [ -n "$*" ]; then
   option="$*"
 else
-  option="status -s"
+  option="status"
 fi
 
-for git in $(find $cur -name .git); do
+for git in $(find . -name .git); do
   dir="${git%.git}"
   cd "$dir"
-  echo "${dir#$cur/}"
+  echo "$dir"
   git $option
   echo
   cd "$cur"
