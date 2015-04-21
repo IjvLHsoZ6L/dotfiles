@@ -19,8 +19,8 @@ alias mv='\mv -i'
 alias cp='\cp -i'
 
 # copy and paste
-alias cc='xclip -selection clipboard'
-alias cv='xclip -o -selection clipboard'
+alias xc='\xclip -selection clipboard'
+alias xp='\xclip -o -selection clipboard'
 
 # re-execute command
 alias his='\fc -l'
@@ -30,4 +30,4 @@ alias r='\fc -s'
 function cdla {
   builtin cd "$@" && la
 }
-alias cd='cdla'
+alias cd='\cdla'
