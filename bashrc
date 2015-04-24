@@ -2,6 +2,6 @@
 
 source /etc/skel/.bashrc
 
-PS1="\n\[\e]0;Terminal : \w\a\]\W \$ "
-EDITOR=vi
-FCEDIT=vi
+export PS1="\n\[\e]0;Terminal : \w\a\]\W \$ "
+export EDITOR=vi
+export FCEDIT=vi
