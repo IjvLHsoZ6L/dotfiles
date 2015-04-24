@@ -51,8 +51,8 @@ alias optimize='sudo powertop --auto-tune'
 # git recursive
 gitr() {
   cur=$(pwd)
-  if [ -n "$@" ]; then
-    option="$@"
+  if [ -n "$*" ]; then
+    option="$*"
   else
     option=status
   fi
