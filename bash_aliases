@@ -23,17 +23,19 @@ alias xc='xclip -selection clipboard'
 alias xp='xclip -o -selection clipboard'
 
 # re-execute command
-alias his='fc -l'
+alias h='fc -l'
 alias r='fc -s'
 
 # change directory with listing
-cdla() {
+cdla ()
+{
   \cd $@ && la
 }
-alias cd='\cdla'
+alias cd='cdla'
 
 # update
-update() {
+update ()
+{
   echo sudo apt-get update
   sudo apt-get update
   echo sudo apt-get dist-upgrade -y
@@ -49,7 +51,8 @@ update() {
 alias optimize='sudo powertop --auto-tune'
 
 # git recursive
-gitr() {
+gitr ()
+{
   cur=$(pwd)
   if [ -n "$*" ]; then
     option="$*"
@@ -67,7 +70,8 @@ gitr() {
   echo done.
 }
 
-gitrs() {
+gitrs ()
+{
   cur=$(pwd)
   sta=0
   for git in $(find . -name .git); do
@@ -84,21 +88,24 @@ gitrs() {
 }
 
 # clone from github
-github() {
+github ()
+{
   for f in $@; do
     git clone git@github.com:tounaishouta/${f}.git
   done
 }
 
 # clone from codebreak
-codebreak() {
+codebreak ()
+{
   for f in $@; do
     git clone ssh://tounai@git.codebreak.com/tounai/${f}.git
   done
 }
 
 # pdfplatex
-pdfplatex() {
+pdfplatex ()
+{
   if platex $@; then
     for arg in $@; do
       if [ -f ${arg%.tex}.dvi ]; then
@@ -109,7 +116,8 @@ pdfplatex() {
 }
 
 # make password
-mkpw() {
+mkpw ()
+{
   chars=()
   for c in {0..9} {a..z} {A..Z}; do
     chars=(${chars[@]} $c)
@@ -124,7 +132,8 @@ mkpw() {
 alias caps2ctrl="dconf write /org/gnome/desktop/input-sources/xkb-options \"['ctrl:nocaps', 'terminate:ctrl_alt_bksp']\""
 
 # solarize gnome terminal
-solarize() {
+solarize ()
+{
   if [ ! -d ~/Downloads/gnome-terminal-colors-solarized ]; then
     git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/Downloads/gnome-terminal-colors-solarized
   fi
