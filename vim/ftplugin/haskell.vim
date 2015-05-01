@@ -3,7 +3,7 @@ augroup Haskell
   autocmd BufWritePost *.hs call s:haskellWritePost()
 augroup END
 
-function s:haskellWritePost()
+function! s:haskellWritePost()
   let nr = winbufnr(0)
   GhcModCheck
   if winbufnr(0) == nr
