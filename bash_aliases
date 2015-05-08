@@ -47,6 +47,15 @@ update ()
   echo done.
 }
 
+apdate ()
+{
+  echo sudo apt update
+  sudo apt update
+  echo sudo apt full-upgrade
+  sudo apt full-upgrade
+  echo done.
+}
+
 # powertop
 alias optimize='sudo powertop --auto-tune'
 
