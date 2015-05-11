@@ -38,22 +38,34 @@ update ()
 {
   echo sudo apt-get update
   sudo apt-get update
+  echo
+
   echo sudo apt-get dist-upgrade -y
   sudo apt-get dist-upgrade -y
+  echo
+
   echo sudo apt-get autoremove -y
   sudo apt-get autoremove -y
+  echo
+
   echo sudo apt-get autoclean
   sudo apt-get autoclean
-  echo done.
+  echo
+
+  echo Done
 }
 
 apdate ()
 {
   echo sudo apt update
   sudo apt update
+  echo
+
   echo sudo apt full-upgrade
   sudo apt full-upgrade
-  echo done.
+  echo
+
+  echo Done
 }
 
 # powertop
@@ -62,7 +74,9 @@ alias optimize='sudo powertop --auto-tune'
 # git recursive
 gitr ()
 {
-  cur=$(pwd)
+  local cur=$(pwd)
+  local option
+  local dir
   if [ -n "$*" ]; then
     option="$*"
   else
@@ -76,13 +90,14 @@ gitr ()
     echo
     \cd $cur
   done
-  echo done.
+  echo Done
 }
 
 gitrs ()
 {
-  cur=$(pwd)
-  sta=0
+  local cur=$(pwd)
+  local sta=0
+  local dir
   for git in $(find . -name .git); do
     dir=${git%.git}
     \cd $dir
@@ -127,11 +142,11 @@ pdfplatex ()
 # make password
 mkpw ()
 {
-  chars=()
+  local chars=()
   for c in {0..9} {a..z} {A..Z}; do
     chars=(${chars[@]} $c)
   done
-  len=${#chars[@]}
+  local len=${#chars[@]}
   for i in {1..10}; do
     echo -n ${chars[$RANDOM % $len]}
   done
