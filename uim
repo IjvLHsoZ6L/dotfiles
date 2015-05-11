@@ -13,6 +13,7 @@
 (define uim-xim-use-xft-font?               #t)
 (define uim-xim-xft-font-name               "TakaoExGothic")
 (define skk-widgets                         '(widget_skk_input_mode))
+(define skk-uim-personal-dic-filename       "/home/tounai/Dropbox/temp/skk-uim-jisyo")
 (define skk-auto-start-henkan?              #f)
 (define skk-dcomp-activate?                 #t)
 (define skk-use-with-vi?                    #t)
