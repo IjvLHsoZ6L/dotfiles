@@ -68,8 +68,8 @@
 ;; custom-skk-dict.scm
 (define skk-use-skkserv?              #f)
 (define skk-dic-file-name             "/usr/share/skk/SKK-JISYO")
-(define skk-personal-dic-filename     "/home/tounai/Dropbox/skk-jisyo")
-(define skk-uim-personal-dic-filename "/home/tounai/Dropbox/skk-uim-jisyo")
+(define skk-personal-dic-filename     "/home/tounai/Dropbox/dict/skk-jisyo")
+(define skk-uim-personal-dic-filename "/home/tounai/Dropbox/dict/skk-uim-jisyo")
 
 ;; custom-skk-advanced.scm
 (define skk-style                       'skk-style-ddskk-like)
