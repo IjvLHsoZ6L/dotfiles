@@ -99,7 +99,7 @@
 
 ;; custom-skk-keys2.scm
 (define-key skk-return-key?                           '("<Control>m" "return"))
-(define-key skk-latin-conv-key?                       '())
+(define-key skk-latin-conv-key?                       '("/"))
 (define-key skk-conv-wide-latin-key?                  '())
 (define-key skk-conv-opposite-case-key?               '())
 (define-key skk-begin-completion-key?                 '("<Control>i" "tab"))
