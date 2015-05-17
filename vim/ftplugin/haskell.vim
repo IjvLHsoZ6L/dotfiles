@@ -1,17 +1,10 @@
 augroup Haskell
   autocmd!
-  autocmd BufWritePost *.hs call s:haskellWritePost()
+  autocmd BufWritePost *.hs GhcModCheckAndLintAsync
 augroup END
 
-function! s:haskellWritePost()
-  let nr = winbufnr(0)
-  GhcModCheck
-  if winbufnr(0) == nr
-    GhcModLint
-  endif
-endfunction
-
-nnoremap <buffer><silent> ,, :w \|! runghc %<CR>
-nnoremap <buffer><silent> ,b :w \|! ghc -O2 %<CR>
+setlocal makeprg=ghc\ -O2
+nnoremap <buffer><silent> ,b :make %<CR>
 nnoremap <buffer><silent> ,r :! ./%:r<CR>
-nnoremap <buffer><silent> ,i :w \|! ghci %<CR>
+nnoremap <buffer><silent> ,i :! ghci %<CR>
+nnoremap <buffer><silent> ,, :! runghc %<CR>
