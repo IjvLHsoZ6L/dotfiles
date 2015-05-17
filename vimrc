@@ -83,7 +83,7 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
@@ -96,11 +96,9 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundleCheck
 call neobundle#end()
 
-" neocomplcache
-let g:neocomplcache_enable_at_startup            = 1
-let g:neocomplcache_auto_completion_start_length = 1
-inoremap <expr> <CR>  neocomplcache#close_popup() . '<CR>'
-inoremap <expr> <Tab> neocomplcache#complete_common_string()
+" neocomplete
+let g:neocomplete#enable_at_startup = 1
+inoremap <expr> <Tab> neocomplete#complete_common_string()
 
 " neosnippet
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
