@@ -21,7 +21,6 @@ set laststatus=2
 set cmdheight=2
 
 " serch, substitute
-set hlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -61,7 +60,6 @@ noremap N Nzz
 noremap * *zz
 noremap # #zz
 noremap <Space> <C-D>
-nnoremap <silent> <Esc> :nohlsearch<CR>
 nnoremap Y y$
 nnoremap + ,
 nnoremap , <Nop>
