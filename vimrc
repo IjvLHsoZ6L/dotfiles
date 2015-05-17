@@ -1,18 +1,11 @@
 " Maintainer:  TOUNAI Shouta
-" Last Change: 2015 Mar 30
+" Last Change: 2015 May 17
 
 " encoding
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis,latin1
 set fileformats=unix,mac,dos
 scriptencoding utf-8
-
-" for GVim
-if has('gui_running')
-  set lines=999
-  set columns=999
-  set guifont=Ubuntu\ Mono\ 18
-endif
 
 " display
 set title
@@ -26,9 +19,9 @@ set wildmenu
 set ambiwidth=double
 set laststatus=2
 set cmdheight=2
-set pumheight=10
 
 " serch, substitute
+set hlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -36,9 +29,9 @@ set infercase
 set gdefault
 
 " indent
-set expandtab
 set autoindent
 set smartindent
+set expandtab
 set smarttab
 set tabstop=2
 set softtabstop=2
@@ -52,24 +45,23 @@ set virtualedit=all
 set backspace=indent,eol,start
 
 " editing
-set modeline
 set noswapfile
 set confirm
 set hidden
 set autoread
 set autowrite
-augroup SetFormatOptions
-  autocmd!
-  autocmd BufEnter * setlocal formatoptions=Bj
-augroup END
+set formatoptions=
 
 " mappings
-noremap j gj
-noremap k gk
 noremap H ^
 noremap L $
 noremap M %
+noremap n nzz
+noremap N Nzz
+noremap * *zz
+noremap # #zz
 noremap <Space> <C-D>
+nnoremap <silent> <Esc> :nohlsearch<CR>
 nnoremap Y y$
 nnoremap + ,
 nnoremap , <Nop>
@@ -93,7 +85,6 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -104,21 +95,14 @@ NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'Twinside/vim-hoogle'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'tounaishouta/indent-ocaml.vim'
-NeoBundle 'tounaishouta/coq.vim'
 NeoBundleCheck
 call neobundle#end()
-
-" vimshell.vim
-nnoremap <silent> <C-T> :VimShellTab<CR>
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup            = 1
 let g:neocomplcache_auto_completion_start_length = 1
-inoremap <expr> <CR>    neocomplcache#close_popup() . '<CR>'
-inoremap <expr> <C-L>   neocomplcache#complete_common_string()
-inoremap <expr> <Tab>   pumvisible() ? '<C-N>' : '<Tab>'
-inoremap <expr> <S-Tab> pumvisible() ? '<C-P>' : '<S-Tab>'
+inoremap <expr> <CR>  neocomplcache#close_popup() . '<CR>'
+inoremap <expr> <Tab> neocomplcache#complete_common_string()
 
 " neosnippet
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
