@@ -92,6 +92,7 @@ NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'Twinside/vim-hoogle'
+NeoBundle 'LaTex-Box-Team/LaTex-Box'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundleCheck
 call neobundle#end()
@@ -107,6 +108,12 @@ nmap <expr> <C-K> neosnippet#jumpable() ? 'i<Plug>(neosnippet_jump)' : ''
 
 " vim2hs
 let g:haskell_conceal = 0
+
+" LaTeX-BOX
+let g:LatexBox_split_type                   = 'new'
+let g:LatexBox_output_type                  = 'pdf'
+let g:LatexBox_latexmk_options              = '-pdfdvi'
+" let g:LatexBox_latexmk_options              = '-pdfdvi -latex=platex'
 
 " colorscheme
 set t_Co=16
