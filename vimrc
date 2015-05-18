@@ -99,11 +99,13 @@ call neobundle#end()
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#keyword_patterns  = { 'default' : '\h\w*' }
 inoremap <expr> <Tab>   pumvisible() ? '<C-N>' : '<S-Tab>'
 inoremap <expr> <S-Tab> pumvisible() ? '<C-P>' : '<Tab>'
-inoremap <expr> <C-L>   neocomplete#complete_common_string()
-inoremap <expr> <C-G>   neocomplete#undo_completion()
 inoremap <expr> <CR>    neocomplete#close_popup() . '<CR>'
+inoremap <expr> <C-G>   neocomplete#undo_completion()
+inoremap <expr> <C-L>   neocomplete#complete_common_string()
 
 " neosnippet
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
