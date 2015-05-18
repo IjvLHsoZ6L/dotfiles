@@ -44,6 +44,7 @@ set virtualedit=all
 set backspace=indent,eol,start
 
 " editing
+set modeline
 set noswapfile
 set confirm
 set hidden
