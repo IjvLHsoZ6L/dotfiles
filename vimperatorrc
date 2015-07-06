@@ -17,12 +17,10 @@ noremap g<C-N> :tabmove +1<CR>
 noremap g<C-P> :tabmove -1<CR>
 
 nnoremap zz :zoom! 100<CR>
-nnoremap za :zoom! 120<CR>
+nnoremap za :zoom! 125<CR>
 nnoremap zs :zoom! 150<CR>
 nnoremap zd :zoom! 200<CR>
 
 command! rc source ~/.vimperatorrc
 
-highlight Hint color: red; background: white; font: bold 100% Helvetica, sans-serif; text-transform: uppercase; padding: 0px 2px;
-highlight HintElem color: black; background: cyan;
-highlight HintActive color: black; background: lime;
+highlight Hint font-family: "Ubuntu Mono"; color: #00A; background: #FF5; border: solid 1px #00A; border-radius: 3px; padding: 0px 2px;
