@@ -10,11 +10,6 @@ set hintchars=abcdefghijklmnopqrstuvwxyz
 
 set ignorecase
 
-noremap h 3h
-noremap j 3j
-noremap k 3k
-noremap l 3l
-
 noremap g<C-N> :tabmove +1<CR>
 noremap g<C-P> :tabmove -1<CR>
 
