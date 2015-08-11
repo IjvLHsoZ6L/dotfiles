@@ -20,6 +20,6 @@ nnoremap zd :zoom! 200<CR>
 
 command! rc source ~/.vimperatorrc
 
-highlight Hint font-family: "Ubuntu Mono"; color: #00C; background: #FF9; border: solid 1px #00C; border-radius: 3px; padding: 0px 2px;
+highlight Hint font-family: "Ubuntu Mono"; color: #00C; background: #FF9; border: solid 1px #00C; border-radius: 3px; padding: 0px 2px; text-transform: uppercase;
 highlight HintElem background: none
 highlight HintActive background: cyan
