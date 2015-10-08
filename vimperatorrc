@@ -10,6 +10,8 @@ set hintchars=abcdefghijklmnopqrstuvwxyz
 
 set ignorecase
 
+noremap b :bmarks!<Space>
+
 noremap g<C-N> :tabmove +1<CR>
 noremap g<C-P> :tabmove -1<CR>
 
