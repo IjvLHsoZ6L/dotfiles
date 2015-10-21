@@ -19,8 +19,7 @@ alias mv='\mv -i'
 alias cp='\cp -i'
 
 # copy and paste
-alias xc='xclip -selection clipboard'
-alias xp='xclip -o -selection clipboard'
+alias clip='xclip -selection clipboard'
 
 # re-execute command
 alias h='fc -l'
