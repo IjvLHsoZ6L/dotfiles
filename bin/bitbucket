@@ -1,0 +1,5 @@
+#! /bin/bash
+
+for f in $@; do
+  git clone git@bitbucket.org:tounaishouta/${f}.git
+done
