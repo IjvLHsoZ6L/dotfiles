@@ -1,10 +1,12 @@
 #! /bin/bash
 
 chars=()
-for c in {0..9} {a..z} {A..Z}; do
+for c in {a..z} {A..Z} {0..9}; do
   chars=(${chars[@]} $c)
 done
+
 len=${#chars[@]}
+
 for i in {1..10}; do
   echo -n "${chars[$RANDOM % $len]}"
 done
