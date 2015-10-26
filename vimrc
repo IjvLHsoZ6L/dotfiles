@@ -1,6 +1,10 @@
 " Maintainer:  TOUNAI Shouta
 " Last Change: 2015 May 17
 
+" guifont
+set guifont=Ubuntu\ Mono\ 18
+set guifontwide=TakaoGothic\ 18
+
 " encoding
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis,latin1
