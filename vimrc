@@ -74,6 +74,14 @@ nnoremap <C-P> gT
 nnoremap <silent> g<C-N> :tabmove +1<CR>
 nnoremap <silent> g<C-P> :tabmove -1<CR>
 
+command! Makefile call <SID>makefile()
+function! s:makefile()
+  setlocal makeprg=make
+  nmap     <buffer> ,, ,b,r
+  nnoremap <buffer> ,b :! make<CR>
+  nnoremap <buffer> ,r :! make run<CR>
+endfunction
+
 " netrw
 let g:netrw_list_hide = '\v^\.[^.]'
 let g:netrw_sort_sequence = '\v.*'
