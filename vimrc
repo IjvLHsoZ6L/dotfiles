@@ -69,6 +69,7 @@ nnoremap Y y$
 nnoremap + ,
 nnoremap , <Nop>
 nnoremap ,, :make<CR>
+nnoremap ,m :Makefile<CR>
 nnoremap <C-N> gt
 nnoremap <C-P> gT
 nnoremap <silent> g<C-N> :tabmove +1<CR>
