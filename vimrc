@@ -108,6 +108,7 @@ NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'Twinside/vim-hoogle'
 NeoBundle 'LaTex-Box-Team/LaTex-Box'
+NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundleCheck
 call neobundle#end()
