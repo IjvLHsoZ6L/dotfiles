@@ -8,7 +8,7 @@ compiler go
 nnoremap <buffer><silent> ,b :make %<CR>
 nnoremap <buffer><silent> ,r :! ./%:r<CR>
 nnoremap <buffer><silent> ,f :! go fmt %<CR>
-nmap     <buffer><silent> ,, :! go run %<CR>
+nnoremap <buffer><silent> ,, :! go run %<CR>
 
 augroup GOLANG
   autocmd!
