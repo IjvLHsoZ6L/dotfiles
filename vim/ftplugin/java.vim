@@ -1,7 +1,7 @@
 setlocal expandtab
 setlocal shiftwidth=4
 
-setlocal makeprg=javac
+compiler javac
 nnoremap <buffer><silent> ,b :make %<CR>
 nnoremap <buffer><silent> ,r :! java %:r<CR>
 nmap     <buffer><silent> ,, ,b,r

@@ -4,7 +4,7 @@ setlocal softtabstop=4
 setlocal shiftwidth=4
 setlocal nolist
 
-setlocal makeprg=go\ build
+compiler go
 nnoremap <buffer><silent> ,b :make %<CR>
 nnoremap <buffer><silent> ,r :! ./%:r<CR>
 nnoremap <buffer><silent> ,f :! go fmt %<CR>
