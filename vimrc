@@ -26,9 +26,6 @@ set cmdheight=2
 
 " serch, substitute
 set incsearch
-set ignorecase
-set smartcase
-set infercase
 set gdefault
 
 " indent
