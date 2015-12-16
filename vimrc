@@ -1,17 +1,17 @@
 " Maintainer:  TOUNAI Shouta
 " Last Change: 2015 May 17
 
-" guifont
-set guifont=Ubuntu\ Mono\ 18
-set guifontwide=TakaoGothic\ 18
-
-" encoding
+" encoding {{{1
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis,latin1
 set fileformats=unix,mac,dos
 scriptencoding utf-8
 
-" display
+" guifont {{{1
+set guifont=Ubuntu\ Mono\ 18
+set guifontwide=TakaoGothic\ 18
+
+" display {{{1
 set title
 set number
 set cursorline
@@ -23,12 +23,13 @@ set wildmenu
 set ambiwidth=double
 set laststatus=2
 set cmdheight=2
+set foldmethod=marker
 
-" serch, substitute
+" serch, substitute {{{1
 set incsearch
 set gdefault
 
-" indent
+" indent {{{1
 set autoindent
 set smartindent
 set expandtab
@@ -37,14 +38,14 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-" moving
+" moving {{{1
 set scrolloff=4
 set sidescrolloff=8
 set nostartofline
 set virtualedit=all
 set backspace=indent,eol,start
 
-" editing
+" editing {{{1
 set modeline
 set noswapfile
 set confirm
@@ -52,16 +53,17 @@ set hidden
 set autoread
 set autowrite
 set formatoptions=
+set clipboard=unnamedplus
 
-" mappings
+" mappings {{{1
 noremap H ^
 noremap L $
 noremap M %
+noremap <Space> <C-D>
 noremap n nzz
 noremap N Nzz
 noremap * *zz
 noremap # #zz
-noremap <Space> <C-D>
 nnoremap Y y$
 nnoremap + ,
 nnoremap , <Nop>
@@ -80,14 +82,14 @@ function! s:makefile()
   nnoremap <buffer> ,r :! make run<CR>
 endfunction
 
-" netrw
+" netrw {{{1
 let g:netrw_list_hide = '\v^\.[^.]'
 let g:netrw_sort_sequence = '\v.*'
 
-" latex
+" latex {{{1
 let g:tex_flavor = 'latex'
 
-" neobundle
+" neobundle {{{1
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
@@ -99,18 +101,16 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'tpope/vim-surround'
+NeoBundle 'LaTex-Box-Team/LaTex-Box'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'Twinside/vim-hoogle'
-NeoBundle 'LaTex-Box-Team/LaTex-Box'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundleCheck
 call neobundle#end()
 
-" neocomplete
+" neocomplete {{{1
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#keyword_patterns  = { 'default' : '\h\w*' }
@@ -120,25 +120,23 @@ inoremap <expr> <CR>    neocomplete#close_popup() . '<CR>'
 inoremap <expr> <C-G>   neocomplete#undo_completion()
 inoremap <expr> <C-L>   neocomplete#complete_common_string()
 
-" neosnippet
+" neosnippet {{{1
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
 imap <expr> <C-K> neosnippet#expandable_or_jumpable() ? '<Plug>(neosnippet_expand_or_jump)' : ''
 nmap <expr> <C-K> neosnippet#jumpable() ? 'i<Plug>(neosnippet_jump)' : ''
 
-" vim2hs
-let g:haskell_conceal = 0
-
-" LaTeX-BOX
+" LaTeX-BOX {{{1
 let g:LatexBox_split_type                   = 'new'
 let g:LatexBox_output_type                  = 'pdf'
-let g:LatexBox_latexmk_options              = '-pdfdvi'
-" let g:LatexBox_latexmk_options              = '-pdfdvi -latex=platex'
 
-" colorscheme
+" vim2hs {{{1
+let g:haskell_conceal = 0
+
+" colorscheme {{{1
 set t_Co=16
 set background=dark
 colorscheme solarized
 syntax on
 
-" set on filetype detection
+" set on filetype detection {{{1
 filetype plugin indent on
