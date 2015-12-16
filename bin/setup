@@ -1,0 +1,22 @@
+sudo apt-get install -y \
+  \
+  nautilus-dropbox \
+  ubuntu-restricted-extras \
+  powertop \
+  git \
+  vim-gnome \
+  uim uim-skk skkdic \
+  synaptic \
+  gparted \
+  xclip \
+  tree \
+  nkf \
+  pdftk \
+  \
+  latexmk texlive-lang-japanese texlive-math-extra texlive-fonts-extra texlive-latex-recommended \
+  golang \
+  ghc ghc-mod ghc-prof hlint hoogle threadscope \
+  ocaml \
+  scala \
+  default-jdk icedtea-netx \
+  nodejs-legacy npm \
