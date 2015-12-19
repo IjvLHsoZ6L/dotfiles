@@ -56,17 +56,17 @@ set formatoptions=
 set clipboard=unnamedplus
 
 " mappings {{{1
-noremap H ^
-noremap L $
-noremap M %
-noremap <Space> <C-D>
-noremap n nzz
-noremap N Nzz
-noremap * *zz
-noremap # #zz
+noremap  H ^
+noremap  L $
+map      M %
 nnoremap Y y$
-nnoremap + ,
-nnoremap , <Nop>
+noremap  <Space> <C-D>
+noremap  n nzz
+noremap  N Nzz
+noremap  * *zz
+noremap  # #zz
+noremap  + ,
+noremap  , <Nop>
 nnoremap ,, :make<CR>
 nnoremap ,m :Makefile<CR>
 nnoremap <C-N> gt
@@ -84,29 +84,26 @@ endfunction
 
 " netrw {{{1
 let g:netrw_list_hide = '\v^\.[^.]'
-let g:netrw_sort_sequence = '\v.*'
-
-" latex {{{1
-let g:tex_flavor = 'latex'
+let g:netrw_sort_sequence = ''
 
 " neobundle {{{1
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'LaTex-Box-Team/LaTex-Box'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'dag/vim2hs'
+NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'lervag/vimtex'
 NeoBundleCheck
 call neobundle#end()
 
@@ -125,12 +122,8 @@ let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
 imap <expr> <C-K> neosnippet#expandable_or_jumpable() ? '<Plug>(neosnippet_expand_or_jump)' : ''
 nmap <expr> <C-K> neosnippet#jumpable() ? 'i<Plug>(neosnippet_jump)' : ''
 
-" LaTeX-BOX {{{1
-let g:LatexBox_split_type                   = 'new'
-let g:LatexBox_output_type                  = 'pdf'
-
-" vim2hs {{{1
-let g:haskell_conceal = 0
+" vimtex {{{1
+let g:vimtex_latexmk_options = '-pdfdvi'
 
 " colorscheme {{{1
 set t_Co=16
