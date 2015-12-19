@@ -13,6 +13,9 @@ alias ll='ls -hlF'
 alias lla='ls -hlAF'
 export LC_COLLATE=C
 
+# tree
+alias t='tree'
+
 # -i option
 alias rm='\rm -i'
 alias mv='\mv -i'
