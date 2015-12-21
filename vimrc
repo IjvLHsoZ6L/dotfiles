@@ -98,12 +98,12 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'dag/vim2hs'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'lervag/vimtex'
+NeoBundle 'neovimhaskell/haskell-vim'
 NeoBundleCheck
 call neobundle#end()
 
