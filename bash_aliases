@@ -15,6 +15,7 @@ export LC_COLLATE=C
 
 # tree
 alias t='tree'
+alias tl='tree | less'
 
 # -i option
 alias rm='\rm -i'
