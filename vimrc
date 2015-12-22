@@ -8,8 +8,7 @@ set fileformats=unix,mac,dos
 scriptencoding utf-8
 
 " guifont {{{1
-set guifont=Ubuntu\ Mono\ 18
-set guifontwide=Migu\ 1M\ 18
+" set guifont=Monospace\ 18
 
 " display {{{1
 set title
