@@ -6,6 +6,7 @@ sudo apt-get install -y \
   git \
   vim-gnome \
   uim uim-skk skkdic \
+  thunderbird-locale-ja \
   synaptic \
   gparted \
   xclip \
