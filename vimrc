@@ -103,6 +103,7 @@ NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'lervag/vimtex'
 NeoBundle 'neovimhaskell/haskell-vim'
+NeoBundle 'udalov/kotlin-vim'
 NeoBundleCheck
 call neobundle#end()
 
