@@ -15,12 +15,12 @@
     (package-install package)))
 
 ;; Install evil
-(package-install-with-refresh 'evil)
-(package-install-with-refresh 'seq)
+;; (package-install-with-refresh 'evil)
+;; (package-install-with-refresh 'seq)
 
 ;; Enable evil
-(require 'evil)
-(evil-mode 1)
+;; (require 'evil)
+;; (evil-mode 1)
 
 ;; map <C-h> to <backspace>
 (keyboard-translate ?\C-h ?\C-?)
