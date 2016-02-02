@@ -1,27 +1,30 @@
-sudo apt-get install -y \
-  \
-  nautilus-dropbox \
-  ubuntu-restricted-extras \
-  powertop \
-  git \
-  vim-gnome \
-  uim uim-skk skkdic \
-  thunderbird-locale-ja \
-  synaptic \
-  gparted \
-  xclip \
-  tree \
-  nkf \
-  pdftk \
-  \
-  latexmk texlive-lang-japanese texlive-math-extra texlive-fonts-extra texlive-latex-recommended \
-  golang \
-  ghc ghc-mod ghc-prof hlint hoogle threadscope \
-  ocaml \
-  scala \
-  default-jdk icedtea-netx \
-  nodejs-legacy npm \
-  \
-  fonts-ipafont \
-  fonts-ipaexfont \
-  fonts-migmix \
+declare -a list=()
+
+declare  INPUT=""
+
+ask() {
+  echo "install" $@ "? [y/n]"
+  read INPUT
+  [ "$INPUT" = "y" ] && list+=( $@ )
+}
+
+ask git
+ask ubuntu-restricted-extras
+ask nautilus-dropbox
+ask uim uim-skk skkdic
+ask vim-gnome
+ask fonts-ipafont fonts-ipaexfont fonts-migmix
+ask powertop synaptic gparted
+ask xclip tree nkf pdftk
+ask ghc-prof ghc-mod hlint
+ask default-jdk icedtea-netx
+ask scala
+ask golang
+ask ocaml
+ask nodejs-legacy npm
+ask latexmk texlive-lang-japanese texlive-math-extra texlive-fonts-extra texlive-latex-recommended
+
+echo "The following will be installed:" ${list[@]}
+echo "Ok? [y/n]"
+read INPUT
+[ "$INPUT" = "y" ] && sudo apt-get install -y "${list[@]}"
