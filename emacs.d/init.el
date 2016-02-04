@@ -15,20 +15,20 @@
     (package-install package)))
 
 ;; Install evil
-;; (package-install-with-refresh 'evil)
-;; (package-install-with-refresh 'seq)
+(package-install-with-refresh 'evil)
+(package-install-with-refresh 'seq)
 
 ;; Enable evil
 ;; (require 'evil)
 ;; (evil-mode 1)
 
 ;; map <C-h> to <backspace>
-(keyboard-translate ?\C-h ?\C-?)
+(global-set-key "\C-h" 'delete-backward-char)
 
 ;; do not make backup files
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
 ;; set default font
-(add-to-list 'default-frame-alist
-             '(font . "Monospace-16"))
+(set-face-attribute 'default nil :family "Ubuntu Mono" :height 160)
+(set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Migu 1M"))
