@@ -25,6 +25,7 @@ set cmdheight=2
 set foldmethod=marker
 
 " serch, substitute {{{1
+set ignorecase
 set incsearch
 set gdefault
 
