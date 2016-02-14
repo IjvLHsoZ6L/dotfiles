@@ -6,15 +6,21 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
-(defun package-install-with-refresh (package) (unless (assq package package-alist) (package-refresh-contents)) (unless (package-installed-p package) (package-install package)))
+(defun package-install-with-refresh (package)
+  (unless (assq package package-alist) (package-refresh-contents))
+  (unless (package-installed-p package) (package-install package)))
 
-;; Install evil
+;; Install
 (package-install-with-refresh 'evil)
 (package-install-with-refresh 'seq)
+(package-install-with-refresh 'solarized-theme)
 
 ;; Enable evil
 (require 'evil)
-;; (evil-mode 1)
+;; (evil-mode t)
+
+;; Enable Solarized
+(load-theme 'solarized-dark t)
 
 ;; do not display startup message
 (setq inhibit-startup-message t)
@@ -30,8 +36,11 @@
 (set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
 (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Migu 1M"))
 
+;; do not display toolbar
+(tool-bar-mode 0)
+
 ;; show corresponding parentheses
-(show-paren-mode 1)
+(show-paren-mode t)
 
 ;; line number
 (global-linum-mode t)
