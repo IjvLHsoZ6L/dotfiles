@@ -124,6 +124,7 @@ imap <expr> <C-K> neosnippet#expandable_or_jumpable() ? '<Plug>(neosnippet_expan
 nmap <expr> <C-K> neosnippet#jumpable() ? 'i<Plug>(neosnippet_jump)' : ''
 
 " vimtex {{{1
+let g:tex_flavor = 'latex'
 let g:vimtex_latexmk_options = '-pdfdvi'
 
 " colorscheme {{{1
