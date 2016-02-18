@@ -20,7 +20,8 @@
 ;; (evil-mode t)
 
 ;; Enable Solarized
-(load-theme 'solarized-dark t)
+;; (load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 
 ;; do not display startup message
 (setq inhibit-startup-message t)
