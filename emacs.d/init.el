@@ -38,13 +38,16 @@
 (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Migu 1M"))
 
 ;; do not display toolbar
-(tool-bar-mode 0)
+(tool-bar-mode -1)
 
 ;; show corresponding parentheses
 (show-paren-mode t)
 
-;; line number
+;; show line number
 (global-linum-mode t)
+
+;; show column number
+(column-number-mode t)
 
 ;; highlight cursor line
 (global-hl-line-mode t)
