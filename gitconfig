@@ -9,7 +9,7 @@
 	pl = pull
 	ps = push
 [color]
-	ui = always
+	ui = auto
 [core]
 	editor = vim
 [push]
