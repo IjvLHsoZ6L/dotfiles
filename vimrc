@@ -134,5 +134,11 @@ set background=dark
 colorscheme solarized
 syntax on
 
+" .md as markdown
+augroup MdAsMarkdown
+  autocmd!
+  autocmd BufNewFile,BufRead *.md setfiletype markdown
+augroup END
+
 " set on filetype detection {{{1
 filetype plugin indent on
