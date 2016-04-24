@@ -14,6 +14,7 @@ set guifont=Monospace\ 18
 set title
 set number
 set cursorline
+set colorcolumn=80
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 set display=lastline,uhex
@@ -52,13 +53,12 @@ set confirm
 set hidden
 set autoread
 set autowrite
-set formatoptions=
 set clipboard=unnamedplus
 
 " mappings {{{1
 noremap  H ^
 noremap  L $
-map      M %
+noremap  M %
 nnoremap Y y$
 noremap  <Space> <C-D>
 noremap  n nzz
@@ -67,20 +67,10 @@ noremap  * *zz
 noremap  # #zz
 noremap  + ,
 noremap  , <Nop>
-nnoremap ,, :make<CR>
-nnoremap ,m :Makefile<CR>
 nnoremap <C-N> gt
 nnoremap <C-P> gT
 nnoremap <silent> g<C-N> :tabmove +1<CR>
 nnoremap <silent> g<C-P> :tabmove -1<CR>
-
-command! Makefile call <SID>makefile()
-function! s:makefile()
-  setlocal makeprg=make
-  nmap     <buffer> ,, ,b,r
-  nnoremap <buffer> ,b :! make<CR>
-  nnoremap <buffer> ,r :! make run<CR>
-endfunction
 
 " netrw {{{1
 let g:netrw_list_hide = '\v^\.[^.]'
