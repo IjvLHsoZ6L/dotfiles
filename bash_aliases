@@ -36,3 +36,6 @@ cdla ()
 {
   \cd $@ && la
 }
+
+# vimagit
+alias magit='vim -c MagitOnly'
