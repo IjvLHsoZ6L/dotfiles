@@ -1,16 +1,22 @@
 " Maintainer:  TOUNAI Shouta
 " Last Change: 2015 May 17
 
-" encoding {{{1
+if &compatible
+  set nocompatible
+endif
+
+" encoding {{{
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis,latin1
 set fileformats=unix,mac,dos
 scriptencoding utf-8
+" }}}
 
-" guifont {{{1
+" guifont {{{
 set guifont=Monospace\ 18
+" }}}
 
-" display {{{1
+" display {{{
 set title
 set number
 set cursorline
@@ -24,13 +30,15 @@ set ambiwidth=double
 set laststatus=2
 set cmdheight=2
 set foldmethod=marker
+" }}}
 
-" serch, substitute {{{1
+" serch, substitute {{{
 set ignorecase
 set incsearch
 set gdefault
+" }}}
 
-" indent {{{1
+" indent {{{
 set autoindent
 set smartindent
 set expandtab
@@ -38,15 +46,17 @@ set smarttab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+" }}}
 
-" moving {{{1
+" moving {{{
 set scrolloff=4
 set sidescrolloff=8
 set nostartofline
 set virtualedit=all
 set backspace=indent,eol,start
+" }}}
 
-" editing {{{1
+" editing {{{
 set modeline
 set noswapfile
 set confirm
@@ -54,8 +64,9 @@ set hidden
 set autoread
 set autowrite
 set clipboard=unnamedplus
+" }}}
 
-" mappings {{{1
+" mappings {{{
 noremap  H ^
 noremap  L $
 noremap  M %
@@ -71,35 +82,49 @@ nnoremap <C-N> gt
 nnoremap <C-P> gT
 nnoremap <silent> g<C-N> :tabmove +1<CR>
 nnoremap <silent> g<C-P> :tabmove -1<CR>
+" }}}
 
-" netrw {{{1
+" netrw {{{
 let g:netrw_list_hide = '\v^\.[^.]'
 let g:netrw_sort_sequence = ''
+" }}}
 
-" neobundle {{{1
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+" dein {{{
+let s:dein_dir = expand('~/.vim/dein')
+let s:dein_rep = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_rep)
+  execute '! git clone https://github.com/Shougo/dein.vim' s:dein_rep
 endif
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'jreybert/vimagit'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'lervag/vimtex'
-NeoBundle 'neovimhaskell/haskell-vim'
-NeoBundle 'udalov/kotlin-vim'
-NeoBundleCheck
-call neobundle#end()
+execute 'set runtimepath^=' . s:dein_rep
 
-" neocomplete {{{1
+call dein#begin(s:dein_dir)
+
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('altercation/vim-colors-solarized')
+call dein#add('derekwyatt/vim-scala', {'on_ft': 'scala'})
+call dein#add('eagletmt/ghcmod-vim', {'on_ft': 'haskell'})
+call dein#add('eagletmt/neco-ghc', {'on_ft': 'haskell'})
+call dein#add('itchyny/lightline.vim')
+call dein#add('jreybert/vimagit')
+call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+call dein#add('lervag/vimtex', {'on_ft': 'tex'})
+call dein#add('neovimhaskell/haskell-vim', {'on_ft': 'haskell'})
+call dein#add('udalov/kotlin-vim', {'on_ft': 'kotlin'})
+
+call dein#end()
+
+filetype plugin indent on
+
+if dein#check_install()
+  call dein#install()
+endif
+" }}}
+
+" neocomplete {{{
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#keyword_patterns  = { 'default' : '\h\w*' }
@@ -108,27 +133,29 @@ inoremap <expr> <S-Tab> pumvisible() ? '<C-P>' : '<Tab>'
 inoremap <expr> <CR>    neocomplete#close_popup() . '<CR>'
 inoremap <expr> <C-G>   neocomplete#undo_completion()
 inoremap <expr> <C-L>   neocomplete#complete_common_string()
+" }}}
 
-" neosnippet {{{1
+" neosnippet {{{
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
 imap <expr> <C-K> neosnippet#expandable_or_jumpable() ? '<Plug>(neosnippet_expand_or_jump)' : ''
 nmap <expr> <C-K> neosnippet#jumpable() ? 'i<Plug>(neosnippet_jump)' : ''
+" }}}
 
-" vimtex {{{1
+" vimtex {{{
 let g:tex_flavor = 'latex'
 let g:vimtex_latexmk_options = '-pdfdvi'
+" }}}
 
-" colorscheme {{{1
+" colorscheme {{{
 set t_Co=16
 set background=dark
 colorscheme solarized
 syntax on
+" }}}
 
-" .md as markdown
+" .md as markdown {{{
 augroup MdAsMarkdown
   autocmd!
   autocmd BufNewFile,BufRead *.md setfiletype markdown
 augroup END
-
-" set on filetype detection {{{1
-filetype plugin indent on
+" }}}
