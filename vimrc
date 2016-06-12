@@ -1,6 +1,3 @@
-" Maintainer:  TOUNAI Shouta
-" Last Change: 2015 May 17
-
 if &compatible
   set nocompatible
 endif
@@ -10,10 +7,6 @@ set encoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis,latin1
 set fileformats=unix,mac,dos
 scriptencoding utf-8
-" }}}
-
-" guifont {{{
-set guifont=Monospace\ 18
 " }}}
 
 " display {{{
@@ -34,7 +27,9 @@ set foldmethod=marker
 
 " serch, substitute {{{
 set ignorecase
+set smartcase
 set incsearch
+set hlsearch
 set gdefault
 " }}}
 
@@ -82,6 +77,7 @@ nnoremap <C-N> gt
 nnoremap <C-P> gT
 nnoremap <silent> g<C-N> :tabmove +1<CR>
 nnoremap <silent> g<C-P> :tabmove -1<CR>
+nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 " }}}
 
 " netrw {{{
