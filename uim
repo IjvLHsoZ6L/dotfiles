@@ -115,7 +115,7 @@
 (define-key skk-begin-conv-with-completion-key?  '())
 (define-key skk-commit-with-conv-completion-key? '())
 (define-key skk-next-candidate-key?              '("<Control>n" " " "down"))
-(define-key skk-prev-candidate-key?              '("<Control>p" "<Shift> " "up"))
+(define-key skk-prev-candidate-key?              '("<Control>p" "<Shift> " "up" "x"))
 (define-key skk-next-page-key?                   '("next"))
 (define-key skk-prev-page-key?                   '("prior"))
 (define-key skk-backspace-key?                   '("<Control>h" "backspace"))
