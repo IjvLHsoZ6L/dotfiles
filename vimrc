@@ -72,7 +72,8 @@ noremap  * *zz
 noremap  # #zz
 noremap  , <Nop>
 noremap  + ,
-nnoremap <Space> :nohlsearch<CR>
+nnoremap <Space> <C-D>
+nnoremap <Esc><Esc> :nohlsearch<CR>
 nnoremap s <Nop>
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
