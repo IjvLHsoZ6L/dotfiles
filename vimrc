@@ -65,19 +65,42 @@ set clipboard=unnamedplus
 noremap  H ^
 noremap  L $
 noremap  M %
-nnoremap Y y$
-noremap  <Space> <C-D>
+noremap  Y y$
 noremap  n nzz
 noremap  N Nzz
 noremap  * *zz
 noremap  # #zz
-noremap  + ,
 noremap  , <Nop>
+noremap  + ,
+nnoremap <Space> :nohlsearch<CR>
+nnoremap s <Nop>
+nnoremap ss :split<CR>
+nnoremap sv :vsplit<CR>
+nnoremap sh <C-W>h
+nnoremap sj <C-W>j
+nnoremap sk <C-W>k
+nnoremap sl <C-W>l
+nnoremap sw <C-W>w
+nnoremap sH <C-W>H
+nnoremap sJ <C-W>J
+nnoremap sK <C-W>K
+nnoremap sL <C-W>L
+nnoremap sr <C-W>r
+nnoremap so <C-W>o
+nnoremap s= <C-W>=
+nnoremap s> <C-W>>
+nnoremap s< <C-W><
+nnoremap s+ <C-W>+
+nnoremap s- <C-W>-
+nnoremap st :tabnew<CR>
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sf :tabmove +1<CR>
+nnoremap sb :tabmove -1<CR>
+nnoremap sq :quit<CR>
+nnoremap sQ :bdelete<CR>
 nnoremap <C-N> gt
 nnoremap <C-P> gT
-nnoremap <silent> g<C-N> :tabmove +1<CR>
-nnoremap <silent> g<C-P> :tabmove -1<CR>
-nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
 " }}}
 
 " netrw {{{
