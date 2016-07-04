@@ -9,5 +9,6 @@ nnoremap <buffer><silent> ,, :! runghc %<CR>
 
 augroup Haskell
   autocmd!
-  autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+  " autocmd BufWritePost *.hs GhcModCheckAndLintAsync
+  autocmd BufWritePost *.hs ! ghc-mod check % && ghc-mod lint %
 augroup END
