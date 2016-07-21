@@ -19,7 +19,7 @@ ask powertop synaptic gparted
 ask xclip tree nkf pdftk
 ask ghc ghc-mod hlint
 # ask ghc-prof ghc-mod hlint
-ask mcs mono-runtime
+ask mono-mcs mono-runtime
 ask default-jdk
 # ask default-jdk icedtea-netx
 ask scala
