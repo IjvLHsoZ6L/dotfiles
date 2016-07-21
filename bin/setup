@@ -17,13 +17,17 @@ ask vim-gnome
 ask fonts-migmix
 ask powertop synaptic gparted
 ask xclip tree nkf pdftk
-ask ghc-prof ghc-mod hlint
-ask default-jdk icedtea-netx
+ask ghc ghc-mod hlint
+# ask ghc-prof ghc-mod hlint
+ask mcs mono-runtime
+ask default-jdk
+# ask default-jdk icedtea-netx
 ask scala
 ask golang
 ask ocaml
 ask nodejs-legacy npm
-ask latexmk texlive-lang-japanese texlive-math-extra texlive-fonts-extra texlive-latex-recommended
+# ask latexmk texlive-lang-japanese texlive-math-extra texlive-fonts-extra texlive-latex-recommended
+ask latexmk texlive-lang-japanese texlive-latex-recommended texlive-math-extra
 
 echo "The following will be installed:" ${list[@]}
 echo "Ok? [y/n]"
