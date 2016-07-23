@@ -1,5 +1,5 @@
 setlocal expandtab
-setlocal shiftwidth=4
+setlocal shiftwidth=2
 
 setlocal makeprg=ocamlopt
 nnoremap <buffer><silent> ,b :make % -o %:r<CR>
