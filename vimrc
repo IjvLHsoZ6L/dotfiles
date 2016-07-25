@@ -133,6 +133,7 @@ call dein#add('jreybert/vimagit')
 call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
 call dein#add('lervag/vimtex', {'on_ft': 'tex'})
 call dein#add('neovimhaskell/haskell-vim', {'on_ft': 'haskell'})
+call dein#add('rust-lang/rust.vim', {'on_ft': 'rust'})
 call dein#add('udalov/kotlin-vim', {'on_ft': 'kotlin'})
 
 call dein#end()
