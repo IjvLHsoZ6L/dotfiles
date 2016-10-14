@@ -1,3 +1,4 @@
+#! /bin/bash
 declare -a list=()
 
 declare  INPUT=""
@@ -10,12 +11,11 @@ ask() {
 
 ask git
 ask ubuntu-restricted-extras
-ask nautilus-dropbox
 ask uim uim-skk skkdic
 ask vim-gnome
-# ask fonts-ipafont fonts-ipaexfont fonts-migmix
-ask fonts-migmix
-ask powertop synaptic gparted
+ask powertop
+ask synaptic
+ask gparted
 ask xclip tree nkf pdftk
 ask ghc ghc-mod hlint
 # ask ghc-prof ghc-mod hlint
@@ -27,7 +27,10 @@ ask golang
 ask ocaml
 ask nodejs-legacy npm
 # ask latexmk texlive-lang-japanese texlive-math-extra texlive-fonts-extra texlive-latex-recommended
-ask latexmk texlive-lang-japanese texlive-latex-recommended texlive-math-extra
+ask latexmk texlive-latex-recommended texlive-math-extra
+ask texlive-lang-japanese
+ask fonts-ipafont fonts-ipaexfont fonts-migmix
+ask nautilus-dropbox
 
 echo "The following will be installed:" ${list[@]}
 echo "Ok? [y/n]"
