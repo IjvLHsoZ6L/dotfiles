@@ -1,4 +1,4 @@
 #! /bin/bash
 
-echo sudo powertop -q --auto-tune
+echo sudo powertop --auto-tune
 sudo powertop --auto-tune
