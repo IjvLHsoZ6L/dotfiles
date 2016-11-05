@@ -9,7 +9,7 @@ ask() {
   [ "$INPUT" = "y" ] && list+=( $@ )
 }
 
-ask git
+ask git tig
 ask ubuntu-restricted-extras
 ask uim uim-skk skkdic
 ask vim-gnome
