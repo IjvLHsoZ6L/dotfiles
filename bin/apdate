@@ -1,19 +1,19 @@
 #! /bin/bash
 
-echo sudo apt-get update
-sudo apt-get update
+echo sudo apt update
+sudo apt update
 echo
 
-echo sudo apt-get -y dist-upgrade
-sudo apt-get -y dist-upgrade
+echo sudo apt -y dist-upgrade
+sudo apt -y dist-upgrade
 echo
 
-echo sudo apt-get -y autoremove
-sudo apt-get -y autoremove
+echo sudo apt -y autoremove
+sudo apt -y autoremove
 echo
 
-echo sudo apt-get autoclean
-sudo apt-get autoclean
+echo sudo apt autoclean
+sudo apt autoclean
 echo
 
 echo Done

@@ -35,4 +35,4 @@ ask nautilus-dropbox
 echo "The following will be installed:" ${list[@]}
 echo "Ok? [y/n]"
 read INPUT
-[ "$INPUT" = "y" ] && sudo apt-get -y install "${list[@]}"
+[ "$INPUT" = "y" ] && sudo apt -y install "${list[@]}"
