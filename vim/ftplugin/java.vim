@@ -2,7 +2,7 @@ setlocal expandtab
 setlocal shiftwidth=4
 
 compiler javac
-nnoremap <buffer><silent> ,b :make %<CR>
+nnoremap <buffer><silent> ,b :make -Xlint %<CR>
 nnoremap <buffer><silent> ,r :! java %:r<CR>
 nmap     <buffer><silent> ,, ,b,r
 
