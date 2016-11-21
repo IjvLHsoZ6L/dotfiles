@@ -1,7 +1,11 @@
 #! /bin/bash
 # .bash_aliases
 
-# less
+# color
+alias ls='ls --color=always'
+alias grep='grep --color=always'
+alias fgrep='fgrep --color=always'
+alias egrep='egrep --color=always'
 alias less='less -R'
 
 # list
