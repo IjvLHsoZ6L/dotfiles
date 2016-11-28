@@ -13,7 +13,7 @@ set smartcase
 
 set complete=sfl
 
-nnoremap e :tabopen http://eow.alc.co.jp/search?q=
+nnoremap e :tabopen eow<Space>
 nnoremap b :bmarks!<Space>
 
 nnoremap g<C-N> :tabmove +1<CR>
