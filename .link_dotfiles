@@ -1,5 +1,12 @@
 #! /bin/bash
 
+for f in $HOME/.*; do
+  if [ -h $f ]; then
+    echo "rm $f"
+    rm $f
+  fi
+done
+
 dir=$(pwd)
 for f in *; do
   echo "$f"
