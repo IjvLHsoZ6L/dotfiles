@@ -2,14 +2,17 @@
 
 for f in $HOME/.*; do
   if [ -h $f ]; then
-    echo "rm $f"
+    echo rm $f
     rm $f
   fi
 done
 
 dir=$(pwd)
 for f in *; do
-  echo "$f"
-  [ -e "$HOME/.$f" ] && rm "$HOME/.$f"
+  if [ -e "$HOME/.$f" ]; then
+    echo rm "$HOME/.$f"
+    rm "$HOME/.$f"
+  fi
+  echo ln -s "$dir/$f" "$HOME/.$f"
   ln -s "$dir/$f" "$HOME/.$f"
 done
