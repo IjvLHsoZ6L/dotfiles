@@ -75,7 +75,7 @@ noremap  + ,
 nnoremap <C-N> gt
 nnoremap <C-P> gT
 nnoremap <Space> <C-D>
-nnoremap <silent> <Esc> :nohlsearch<CR>
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 " }}}
 
 " netrw {{{
