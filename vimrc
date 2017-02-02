@@ -62,19 +62,16 @@ set clipboard=unnamedplus
 " }}}
 
 " mappings {{{
-noremap  H ^
-noremap  L $
-noremap  M %
-noremap  Y y$
-noremap  n nzz
-noremap  N Nzz
-noremap  * *zz
-noremap  # #zz
-noremap  , <Nop>
-noremap  + ,
+noremap p p`]
+noremap y y`]
+noremap n nzz
+noremap n nzz
+noremap * *zz
+noremap # #zz
+noremap , <Nop>
+noremap + ,
 nnoremap <C-N> gt
 nnoremap <C-P> gT
-nnoremap <Space> <C-D>
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 " }}}
 
@@ -153,11 +150,4 @@ set t_Co=16
 set background=dark
 colorscheme solarized
 syntax on
-" }}}
-
-" .md as markdown {{{
-augroup MdAsMarkdown
-  autocmd!
-  autocmd BufNewFile,BufRead *.md setfiletype markdown
-augroup END
 " }}}
