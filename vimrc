@@ -62,14 +62,14 @@ set clipboard=unnamedplus
 " }}}
 
 " mappings {{{
-noremap p p`]
-noremap y y`]
 noremap n nzz
 noremap n nzz
 noremap * *zz
 noremap # #zz
 noremap , <Nop>
 noremap + ,
+noremap p p`]
+vnoremap y y`]
 nnoremap <C-N> gt
 nnoremap <C-P> gT
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
