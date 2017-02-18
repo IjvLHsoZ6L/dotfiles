@@ -1,3 +1,5 @@
+" vim: foldmethod=marker
+
 if &compatible
   set nocompatible
 endif
@@ -21,16 +23,15 @@ set showcmd
 set wildmenu
 set ambiwidth=double
 set laststatus=2
-set cmdheight=2
-set foldmethod=marker
 " }}}
 
-" serch, substitute {{{
+" substitute, search {{{
+set gdefault
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
-set gdefault
+nohlsearch
 " }}}
 
 " indent {{{
@@ -62,16 +63,16 @@ set clipboard=unnamedplus
 " }}}
 
 " mappings {{{
-noremap n nzz
-noremap n nzz
-noremap * *zz
-noremap # #zz
-noremap , <Nop>
-noremap + ,
-noremap p p`]
+noremap  n nzz
+noremap  N Nzz
+noremap  p p`]
 vnoremap y y`]
-nnoremap <C-N> gt
-nnoremap <C-P> gT
+noremap  * *N
+vnoremap * yq/P<CR>N
+noremap  # #N
+vnoremap # yq?P<CR>N
+vnoremap < <gv
+vnoremap > >gv
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 " }}}
 
@@ -92,10 +93,12 @@ call dein#begin(s:dein_dir)
 
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('Shougo/neoyank.vim')
 call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('baabelfish/nvim-nim', {'on_ft': 'nim'})
 call dein#add('derekwyatt/vim-scala', {'on_ft': 'scala'})
@@ -109,6 +112,7 @@ call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
 call dein#add('lervag/vimtex', {'on_ft': 'tex'})
 call dein#add('pangloss/vim-javascript', {'on_ft': 'javascript'})
 call dein#add('rust-lang/rust.vim', {'on_ft': 'rust'})
+call dein#add('tpope/vim-surround')
 call dein#add('udalov/kotlin-vim', {'on_ft': 'kotlin'})
 
 call dein#end()
@@ -138,6 +142,16 @@ inoremap <expr> <C-L>   neocomplete#complete_common_string()
 let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
 imap <expr> <C-K> neosnippet#expandable_or_jumpable() ? '<Plug>(neosnippet_expand_or_jump)' : ''
 nmap <expr> <C-K> neosnippet#jumpable() ? 'i<Plug>(neosnippet_jump)' : ''
+" }}}
+
+" unite {{{
+nnoremap <Space><Space> :Unite buffer file_mru file<CR>
+nnoremap <Space>fr      :Unite file_rec -input=
+nnoremap <Space>y       :Unite history/yank<CR>
+augroup UNITE
+  autocmd!
+  autocmd FileType unite nmap <buffer> <Esc><Esc> <Plug>(unite_exit)
+augroup END
 " }}}
 
 " vimtex {{{
