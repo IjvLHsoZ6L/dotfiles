@@ -15,7 +15,6 @@ scriptencoding utf-8
 set title
 set number
 set cursorline
-set colorcolumn=80
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 set display=lastline,uhex
@@ -23,6 +22,7 @@ set showcmd
 set wildmenu
 set ambiwidth=double
 set laststatus=2
+let &colorcolumn = join(range(81,999),",")
 " }}}
 
 " substitute, search {{{
