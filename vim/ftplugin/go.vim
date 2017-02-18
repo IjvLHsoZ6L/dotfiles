@@ -5,12 +5,10 @@ setlocal shiftwidth=4
 setlocal nolist
 
 compiler go
-nnoremap <buffer><silent> ,b :make %<CR>
-nnoremap <buffer><silent> ,r :! ./%:r<CR>
-nnoremap <buffer><silent> ,f :! go fmt %<CR>
-nnoremap <buffer><silent> ,, :! go run %<CR>
+nnoremap <buffer> <Space>b :make %<CR>
+nnoremap <buffer> <Space>r :! ./%:r<CR>
 
-augroup GOLANG
+augroup Go
   autocmd!
-  autocmd BufWritePost *.go normal ,f,b
+  autocmd BufWritePost *.go make % | copen
 augroup END

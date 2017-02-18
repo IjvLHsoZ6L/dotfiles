@@ -1,11 +1,13 @@
 setlocal expandtab
-setlocal shiftwidth=2
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4
 
-nnoremap <buffer><silent> ,b :! nim compile %<CR>
-nnoremap <buffer><silent> ,r :! ./%:r<CR>
-nmap     <buffer><silent> ,, ,b,r
+setlocal makeprg=nim
+nnoremap <buffer> <Space>b :make compile %<CR>
+nnoremap <buffer> <Space>r :! ./%:r<CR>
 
 augroup Nim
   autocmd!
-  autocmd BufWritePost *.nim make
+  autocmd BufWritePost *.nim make compile % | copen
 augroup END

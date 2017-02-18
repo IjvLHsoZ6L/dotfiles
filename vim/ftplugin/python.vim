@@ -1,5 +1,6 @@
 setlocal expandtab
+setlocal tabstop=4
+setlocal softtabstop=4
 setlocal shiftwidth=4
 
-setlocal makeprg=python
-nnoremap <buffer><silent> ,, :make %<CR>
+nnoremap <buffer> <Space>r :! python  %<CR>

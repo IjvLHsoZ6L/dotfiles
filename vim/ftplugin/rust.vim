@@ -1,12 +1,13 @@
 setlocal expandtab
+setlocal tabstop=4
+setlocal softtabstop=4
 setlocal shiftwidth=4
 
 setlocal makeprg=rustc
-nnoremap <buffer><silent> ,b :make %<CR>
-nnoremap <buffer><silent> ,r :! ./%:r<CR>
-nmap     <buffer><silent> ,, ,b,r
+nnoremap <buffer> <Space>b :make %<CR>
+nnoremap <buffer> <Space>r :! ./%:r<CR>
 
 augroup Rust
   autocmd!
-  autocmd BufWritePost *.rs normal ,b
+  autocmd BufWritePost *.rs make % | copen
 augroup END

@@ -1,12 +1,13 @@
 setlocal expandtab
+setlocal tabstop=4
+setlocal softtabstop=4
 setlocal shiftwidth=4
 
 setlocal makeprg=mcs
-nnoremap <buffer><silent> ,b :make %<CR>
-nnoremap <buffer><silent> ,r :! mono %:r.exe<CR>
-nmap     <buffer><silent> ,, ,b,r
+nnoremap <buffer> <Space>b :make %<CR>
+nnoremap <buffer> <Space>r :! mono %:r.exe<CR>
 
-augroup CSharp
+augroup C#
   autocmd!
-  autocmd BufWritePost *.cs normal ,b
+  autocmd BufWritePost *.cs make % | copen
 augroup END

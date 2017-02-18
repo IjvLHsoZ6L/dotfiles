@@ -1,12 +1,13 @@
 setlocal expandtab
+setlocal tabstop=4
+setlocal softtabstop=4
 setlocal shiftwidth=4
 
 setlocal makeprg=g++\ -std=c++11\ -Wall\ -O2
-nnoremap <buffer><silent> ,b :make -o %:r %<CR>
-nnoremap <buffer><silent> ,r :! ./%:r<CR>
-nmap     <buffer><silent> ,, ,b,r
+nnoremap <buffer> <Space>b :make -o %:r %<CR>
+nnoremap <buffer> <Space>r :! ./%:r<CR>
 
-augroup CPP
+augroup C++
   autocmd!
-  autocmd BufWritePost *.cpp normal ,b
+  autocmd BufWritePost *.cpp make -o %:r % | copen
 augroup END
