@@ -1,7 +1,14 @@
 #! /usr/bin/perl
 
-# replace 'latex' to 'platex' if necessary
-$latex        = 'latex -halt-on-error';
-$latex_silent = 'latex -halt-on-error -interaction=batchmode';
+$use_japaese = 1;
 
-$pdf_mode     = 3;
+if ($use_japaese) {
+  $pdf_mode = 3;
+  $latex    = 'platex %O %S';
+  $dvipdf   = 'dvipdfmx %O %S';
+} else {
+  $pdf_mode = 1;
+  $pdflatex = 'pdflatex %O %S';
+}
+
+$pdf_previewer = 'evince %O %S';

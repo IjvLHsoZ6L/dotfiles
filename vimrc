@@ -155,8 +155,8 @@ augroup END
 " }}}
 
 " vimtex {{{
-let g:tex_flavor = 'latex'
-let g:vimtex_latexmk_options = '-pdfdvi'
+let g:tex_flavor             = 'latex'
+let g:vimtex_latexmk_options = '-verbose -file-line-error -interaction=nonstopmode'
 " }}}
 
 " colorscheme {{{
