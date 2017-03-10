@@ -23,9 +23,9 @@ tl ()
 }
 
 # -i option
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
+alias rm='rm -iv'
+alias mv='mv -iv'
+alias cp='cp -iv'
 
 # copy and paste
 alias clip='xclip -selection clipboard'
