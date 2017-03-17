@@ -15,6 +15,7 @@ scriptencoding utf-8
 set title
 set number
 set cursorline
+set colorcolumn=81
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<,nbsp:%
 set display=lastline,uhex
@@ -22,7 +23,7 @@ set showcmd
 set wildmenu
 set ambiwidth=double
 set laststatus=2
-let &colorcolumn = join(range(81,999),",")
+set guifont=monospace\ 15
 " }}}
 
 " substitute, search {{{
@@ -73,12 +74,7 @@ noremap  # #N
 vnoremap # yq?P<CR>N
 vnoremap < <gv
 vnoremap > >gv
-nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
-" }}}
-
-" netrw {{{
-let g:netrw_list_hide = '\v^\.[^.]'
-let g:netrw_sort_sequence = ''
+nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
 " }}}
 
 " dein {{{
@@ -90,31 +86,40 @@ endif
 execute 'set runtimepath^=' . s:dein_rep
 
 call dein#begin(s:dein_dir)
-
 call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/neoyank.vim')
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-call dein#add('altercation/vim-colors-solarized')
-call dein#add('baabelfish/nvim-nim', {'on_ft': 'nim'})
-call dein#add('derekwyatt/vim-scala', {'on_ft': 'scala'})
+" CoffeeScript
+call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+" Elixir
+call dein#add('elixir-lang/vim-elixir', {'on_ft': 'elixir'})
+" Haskell
 call dein#add('eagletmt/ghcmod-vim', {'on_ft': 'haskell'})
 call dein#add('eagletmt/neco-ghc', {'on_ft': 'haskell'})
-call dein#add('elixir-lang/vim-elixir', {'on_ft': 'elixir'})
-call dein#add('itchyny/lightline.vim')
 call dein#add('itchyny/vim-haskell-indent', {'on_ft': 'haskell'})
-call dein#add('jreybert/vimagit')
-call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
-call dein#add('lervag/vimtex', {'on_ft': 'tex'})
+" JavaScript
 call dein#add('pangloss/vim-javascript', {'on_ft': 'javascript'})
-call dein#add('rust-lang/rust.vim', {'on_ft': 'rust'})
-call dein#add('tpope/vim-surround')
+" Kotlin
 call dein#add('udalov/kotlin-vim', {'on_ft': 'kotlin'})
-
+" Nim
+call dein#add('baabelfish/nvim-nim', {'on_ft': 'nim'})
+" Rust
+call dein#add('rust-lang/rust.vim', {'on_ft': 'rust'})
+" Scala
+call dein#add('derekwyatt/vim-scala', {'on_ft': 'scala'})
+" TeX
+call dein#add('lervag/vimtex', {'on_ft': 'tex'})
+" Unite
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/neoyank.vim')
+" misc.
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('altercation/vim-colors-solarized')
+call dein#add('itchyny/lightline.vim')
+call dein#add('jreybert/vimagit')
+call dein#add('tpope/vim-surround')
 call dein#end()
 
 filetype plugin indent on
@@ -127,36 +132,31 @@ if dein#check_install()
 endif
 " }}}
 
-" neocomplete {{{
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#keyword_patterns  = { 'default' : '\h\w*' }
-inoremap <expr> <Tab>   pumvisible() ? '<C-N>' : '<S-Tab>'
-inoremap <expr> <S-Tab> pumvisible() ? '<C-P>' : '<Tab>'
-inoremap <expr> <CR>    neocomplete#close_popup() . '<CR>'
-inoremap <expr> <C-G>   neocomplete#undo_completion()
-inoremap <expr> <C-L>   neocomplete#complete_common_string()
+" TeX {{{
+let g:tex_flavor = 'latex'
 " }}}
 
-" neosnippet {{{
-let g:neosnippet#snippets_directory = expand('~/.vim/snippets/')
-imap <expr> <C-K> neosnippet#expandable_or_jumpable() ? '<Plug>(neosnippet_expand_or_jump)' : ''
-nmap <expr> <C-K> neosnippet#jumpable() ? 'i<Plug>(neosnippet_jump)' : ''
-" }}}
-
-" unite {{{
+" Unite {{{
 nnoremap <Space><Space> :Unite buffer file_mru file<CR>
 nnoremap <Space>fr      :Unite file_rec -input=
 nnoremap <Space>y       :Unite history/yank<CR>
 augroup UNITE
   autocmd!
-  autocmd FileType unite nmap <buffer> <Esc><Esc> <Plug>(unite_exit)
+  autocmd FileType unite nmap <buffer> <ESC><ESC> <Plug>(unite_exit)
 augroup END
 " }}}
 
-" vimtex {{{
-let g:tex_flavor             = 'latex'
-let g:vimtex_latexmk_options = '-verbose -file-line-error -interaction=nonstopmode'
+" neocomplete {{{
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+inoremap <expr> <TAB>   pumvisible() ? '<C-N>' : '<TAB>'
+inoremap <expr> <S-TAB> pumvisible() ? '<C-P>' : '<S-TAB>'
+" }}}
+
+" neosnippet {{{
+imap <C-K> <Plug>(neosnippet_expand_or_jump)
+smap <C-K> <Plug>(neosnippet_jump)
+nmap <C-K> i<Plug>(neosnippet_jump)
 " }}}
 
 " colorscheme {{{
