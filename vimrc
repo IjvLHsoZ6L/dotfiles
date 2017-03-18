@@ -64,6 +64,9 @@ set clipboard=unnamedplus
 " }}}
 
 " mappings {{{
+noremap  H ^
+noremap  L $
+noremap  M %
 noremap  n nzz
 noremap  N Nzz
 noremap  p p`]
@@ -74,7 +77,7 @@ noremap  # #N
 vnoremap # yq?P<CR>N
 vnoremap < <gv
 vnoremap > >gv
-nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 " }}}
 
 " dein {{{
@@ -119,6 +122,7 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('itchyny/lightline.vim')
 call dein#add('jreybert/vimagit')
+call dein#add('mhinz/vim-startify')
 call dein#add('tpope/vim-surround')
 call dein#end()
 
@@ -142,15 +146,15 @@ nnoremap <Space>fr      :Unite file_rec -input=
 nnoremap <Space>y       :Unite history/yank<CR>
 augroup UNITE
   autocmd!
-  autocmd FileType unite nmap <buffer> <ESC><ESC> <Plug>(unite_exit)
+  autocmd FileType unite nmap <buffer> <Esc><Esc> <Plug>(unite_exit)
 augroup END
 " }}}
 
 " neocomplete {{{
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
-inoremap <expr> <TAB>   pumvisible() ? '<C-N>' : '<TAB>'
-inoremap <expr> <S-TAB> pumvisible() ? '<C-P>' : '<S-TAB>'
+inoremap <expr> <Tab>   pumvisible() ? '<C-N>' : '<Tab>'
+inoremap <expr> <S-Tab> pumvisible() ? '<C-P>' : '<S-Tab>'
 " }}}
 
 " neosnippet {{{
