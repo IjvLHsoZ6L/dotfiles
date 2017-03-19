@@ -71,6 +71,7 @@ noremap  n nzz
 noremap  N Nzz
 noremap  p p`]
 vnoremap y y`]
+nnoremap Y y$
 noremap  * *N
 vnoremap * yq/P<CR>N
 noremap  # #N
