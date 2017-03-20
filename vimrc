@@ -91,6 +91,7 @@ execute 'set runtimepath^=' . s:dein_rep
 
 call dein#begin(s:dein_dir)
 call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 " CoffeeScript
 call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
 " Elixir
@@ -119,7 +120,6 @@ call dein#add('Shougo/neoyank.vim')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('altercation/vim-colors-solarized')
 call dein#add('itchyny/lightline.vim')
 call dein#add('jreybert/vimagit')
@@ -142,10 +142,15 @@ let g:tex_flavor = 'latex'
 " }}}
 
 " Unite {{{
-nnoremap <Space><Space> :Unite buffer file_mru file<CR>
-nnoremap <Space>fr      :Unite file_rec -input=
-nnoremap <Space>y       :Unite history/yank<CR>
-augroup UNITE
+nnoremap [unite]  <Nop>
+nmap     <Space>u [unite]
+nnoremap [unite]b :Unite buffer<CR>
+nnoremap [unite]f :Unite file<CR>
+nnoremap [unite]l :Unite line<CR>
+nnoremap [unite]m :Unite file_mru<CR>
+nnoremap [unite]r :Unite file_rec<CR>
+nnoremap [unite]y :Unite history/yank<CR>
+augroup Unite
   autocmd!
   autocmd FileType unite nmap <buffer> <Esc><Esc> <Plug>(unite_exit)
 augroup END
