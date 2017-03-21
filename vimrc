@@ -13,6 +13,7 @@ scriptencoding utf-8
 
 " display {{{
 set title
+set titlestring=%t
 set number
 set cursorline
 set colorcolumn=81
