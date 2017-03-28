@@ -127,6 +127,7 @@ call dein#add('jreybert/vimagit')
 call dein#add('mhinz/vim-startify')
 call dein#add('tpope/vim-surround')
 call dein#end()
+call map(dein#check_clean(), "delete(v:val, 'rf')")
 
 filetype plugin indent on
 
