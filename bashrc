@@ -2,7 +2,7 @@
 
 source /etc/skel/.bashrc
 
-export PS1="\[\e]0;\w\a\]\n\w\n\[\e[1;35m\]\$ \[\e[0m\]"
+export PS1="\[\e]0;Terminal: \w\a\]\n\w\n\[\e[1;35m\]\$ \[\e[0m\]"
 export PS2="\[\e[1;35m\]> \[\e[0m\]"
 export PS4="\[\e[1;35m\]+ \[\e[0m\]"
 export EDITOR=vi
