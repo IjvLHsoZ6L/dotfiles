@@ -6,6 +6,7 @@ setlocal nolist
 
 compiler go
 nnoremap <buffer> <Space>b :make %<CR>
+nnoremap <buffer> <Space>f :! go fmt %<CR>
 nnoremap <buffer> <Space>r :! ./%:r<CR>
 
 augroup Go
