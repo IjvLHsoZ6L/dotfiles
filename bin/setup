@@ -18,15 +18,12 @@ ask synaptic
 ask gparted
 ask xclip tree nkf pdftk
 ask ghc ghc-mod hlint
-# ask ghc-prof ghc-mod hlint
 ask mono-mcs mono-runtime
 ask default-jdk
-# ask default-jdk icedtea-netx
 ask scala
 ask golang
 ask ocaml
 ask nodejs-legacy npm
-# ask latexmk texlive-lang-japanese texlive-math-extra texlive-fonts-extra texlive-latex-recommended
 ask latexmk texlive-latex-recommended texlive-math-extra
 ask texlive-lang-japanese
 ask fonts-ipafont fonts-ipaexfont fonts-migmix
@@ -35,4 +32,4 @@ ask nautilus-dropbox
 echo "The following will be installed:" ${list[@]}
 echo "Ok? [y/n]"
 read INPUT
-[ "$INPUT" = "y" ] && sudo apt -y install "${list[@]}"
+[ "$INPUT" = "y" ] && sudo apt-get -y install "${list[@]}"

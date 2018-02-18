@@ -1,19 +1,12 @@
 #! /bin/bash
 
-echo sudo apt update
-sudo apt update
-echo
+withlog () {
+  echo ">>" $@
+  $@
+  echo
+}
 
-echo sudo apt -y dist-upgrade
-sudo apt -y dist-upgrade
-echo
-
-echo sudo apt -y autoremove
-sudo apt -y autoremove
-echo
-
-echo sudo apt autoclean
-sudo apt autoclean
-echo
-
-echo Done
+withlog sudo apt-get update
+withlog sudo apt-get -y dist-upgrade
+withlog sudo apt-get -y autoremove
+withlog sudo apt-get autoclean
