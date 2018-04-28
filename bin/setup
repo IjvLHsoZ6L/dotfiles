@@ -11,7 +11,8 @@ ask() {
 
 ask git tig
 ask ubuntu-restricted-extras
-ask uim uim-skk skkdic
+# ask uim uim-skk skkdic
+ask fcitx-mozc
 ask vim-gnome
 ask powertop
 ask synaptic
