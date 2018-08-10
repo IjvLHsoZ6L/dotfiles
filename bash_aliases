@@ -44,3 +44,10 @@ cdla ()
 
 # vimagit
 alias magit='vim -c MagitOnly'
+
+# vi
+alias vi='vim -u NONE'
+
+# python
+alias python='python3'
+alias pip='pip3'

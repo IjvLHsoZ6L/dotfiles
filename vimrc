@@ -93,30 +93,41 @@ execute 'set runtimepath^=' . s:dein_rep
 call dein#begin(s:dein_dir)
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+
 " CoffeeScript
-call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+" call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+
 " Elixir
-call dein#add('elixir-lang/vim-elixir', {'on_ft': 'elixir'})
+" call dein#add('elixir-lang/vim-elixir', {'on_ft': 'elixir'})
+
 " Haskell
 call dein#add('eagletmt/ghcmod-vim', {'on_ft': 'haskell'})
 call dein#add('eagletmt/neco-ghc', {'on_ft': 'haskell'})
-call dein#add('itchyny/vim-haskell-indent', {'on_ft': 'haskell'})
+" call dein#add('itchyny/vim-haskell-indent', {'on_ft': 'haskell'})
+
 " JavaScript
-call dein#add('pangloss/vim-javascript', {'on_ft': 'javascript'})
+" call dein#add('pangloss/vim-javascript', {'on_ft': 'javascript'})
+
 " Kotlin
-call dein#add('udalov/kotlin-vim', {'on_ft': 'kotlin'})
+" call dein#add('udalov/kotlin-vim', {'on_ft': 'kotlin'})
+
 " Nim
-call dein#add('baabelfish/nvim-nim', {'on_ft': 'nim'})
+" call dein#add('baabelfish/nvim-nim', {'on_ft': 'nim'})
+
 " Rust
-call dein#add('rust-lang/rust.vim', {'on_ft': 'rust'})
+" call dein#add('rust-lang/rust.vim', {'on_ft': 'rust'})
+
 " Scala
-call dein#add('derekwyatt/vim-scala', {'on_ft': 'scala'})
+" call dein#add('derekwyatt/vim-scala', {'on_ft': 'scala'})
+
 " TeX
-call dein#add('lervag/vimtex', {'on_ft': 'tex'})
+" call dein#add('lervag/vimtex', {'on_ft': 'tex'})
+
 " Unite
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neoyank.vim')
+
 " misc.
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neosnippet.vim')
@@ -126,6 +137,7 @@ call dein#add('itchyny/lightline.vim')
 call dein#add('jreybert/vimagit')
 call dein#add('mhinz/vim-startify')
 call dein#add('tpope/vim-surround')
+
 call dein#end()
 call map(dein#check_clean(), "delete(v:val, 'rf')")
 
