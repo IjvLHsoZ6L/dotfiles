@@ -3,5 +3,4 @@
 set editing-mode vi
 set keymap vi
 
-set visible-stats on
 set colored-stats on

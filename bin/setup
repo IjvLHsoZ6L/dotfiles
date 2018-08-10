@@ -11,12 +11,14 @@ ask() {
 
 ask git tig
 ask ubuntu-restricted-extras
-ask uim uim-skk skkdic
+# ask uim uim-skk skkdic
+ask gnome-tweak-tool
+ask fcitx-mozc
 ask vim-gnome
 ask powertop
 ask synaptic
 ask gparted
-ask xclip tree nkf pdftk
+ask xclip tree nkf # pdftk
 ask ghc ghc-mod hlint
 ask mono-mcs mono-runtime
 ask default-jdk
